@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>01 · В аэропорту · 俄语情景对话</title>
+<style>
+  :root{
+    --bg:#F4FAFD; --panel:#FFFFFF; --ink:#22313A; --muted:#6C7E89;
+    --line:#D9E7EE; --ice:#EAF4F9; --ice-2:#F7FCFE;
+    --blue:#1F4E79; --blue-2:#4C7E9B; --blue-soft:#E7F3F9;
+    --red:#D4514A; --red-deep:#B93B36; --red-soft:#FCEEED;
+    --green:#2F7D5B; --green-soft:#E9F5EF;
+    --gold:#C89B4A; --gold-soft:#FBF4E3;
+    --shadow:0 16px 40px rgba(43,87,108,.08);
+    --shadow-soft:0 8px 22px rgba(43,87,108,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:
+      radial-gradient(900px 540px at 4% -12%, #FFFFFF 0%, rgba(255,255,255,0) 64%),
+      radial-gradient(760px 480px at 102% 0%, #E3F2F9 0%, rgba(227,242,249,0) 62%),
+      radial-gradient(620px 420px at 70% 46%, rgba(255,255,255,.8) 0%, rgba(255,255,255,0) 68%),
+      linear-gradient(180deg,#F8FCFE 0%,var(--bg) 46%,#F1F9FC 100%);
+    min-height:100vh;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.45;
+    background-image:radial-gradient(rgba(116,165,190,.16) 1px, transparent 1.2px);
+    background-size:30px 30px;
+    mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.4) 35%,transparent 72%);
+  }
+  button{font-family:inherit;cursor:pointer}
+  .page{max-width:1120px;margin:0 auto;padding:0 22px 92px}
+  .topbar{display:flex;align-items:center;gap:12px;padding:18px 0 14px;border-bottom:1px solid rgba(217,231,238,.8)}
+  .brand{display:flex;align-items:center;gap:9px}
+  .brand-mark{width:33px;height:33px;border-radius:10px;background:var(--red);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:18px;font-weight:700;box-shadow:0 8px 16px rgba(212,81,74,.2)}
+  .brand b{display:block;font-size:14px;letter-spacing:.12em}
+  .brand small{display:block;font-size:10.5px;color:var(--muted);letter-spacing:.08em;margin-top:2px}
+  .top-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+  .scene-badge{font-size:10px;font-weight:900;color:#fff;background:var(--blue);border-radius:999px;padding:6px 10px;letter-spacing:.08em}
+  .zh-btn{border:1px solid var(--line);background:#fff;color:var(--blue);border-radius:999px;padding:6px 11px;font-size:11px;font-weight:800}
+  .zh-btn:hover{background:var(--ice-2);border-color:#BFDDE9}
+  .zh-btn[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+  .hero{padding:36px 0 20px}
+  .back-link{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:800;color:var(--muted);text-decoration:none;margin-bottom:11px}
+  .back-link:hover{color:var(--blue)}
+  .kicker{font-size:10.5px;letter-spacing:.22em;font-weight:900;color:var(--blue-2);display:flex;align-items:center;gap:8px;margin-bottom:9px}
+  .kicker i{width:7px;height:7px;border-radius:50%;background:var(--red)}
+  h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:48px;line-height:1.02;letter-spacing:-.02em;font-weight:700}
+  h1 span{font-size:18px;font-family:"PingFang SC","Hiragino Sans GB",sans-serif;font-weight:600;color:var(--muted);margin-left:12px;letter-spacing:.02em}
+  .lead{font-size:13px;line-height:1.7;color:var(--muted);max-width:790px;margin:10px 0 0}
+  .rounds{display:flex;gap:7px;flex-wrap:wrap;margin-top:17px}
+  .round{display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 10px 6px 6px;font-size:10.5px;color:var(--muted);transition:.15s}
+  .round b{width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--ice);color:var(--blue-2);font-size:9.5px}
+  .round.active{border-color:var(--blue);background:var(--blue);color:#fff;box-shadow:0 6px 14px rgba(31,78,121,.16)}
+  .round.active b{background:rgba(255,255,255,.2);color:#fff}
+  .round.done{border-color:#C8E2D6;background:var(--green-soft);color:var(--green)}
+  .round.done b{background:var(--green);color:#fff}
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 292px;gap:18px;align-items:start;margin-top:6px}
+  .main{min-width:0}
+  .scene-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+  .scene-visual{position:relative;height:190px;overflow:hidden;background:linear-gradient(180deg,#E7F4FA 0%,#F7FCFE 62%,#FFFFFF 100%);border-bottom:1px solid #E0EEF4}
+  .scene-visual:after{content:"";position:absolute;left:0;right:0;bottom:0;height:38px;background:#E1EEF4;border-top:3px solid #C9DFE8;background-image:linear-gradient(90deg,rgba(255,255,255,.45) 1px,transparent 1px);background-size:34px 34px}
+  .sign{position:absolute;z-index:2;left:24px;top:18px;background:var(--blue);color:#fff;border:3px solid #173E60;border-radius:5px;padding:7px 12px;font-size:10px;font-weight:900;letter-spacing:.12em;box-shadow:0 6px 12px rgba(31,78,121,.14)}
+  .sign:after{content:"→";margin-left:8px;color:#F7C9C5}
+  .led{position:absolute;z-index:2;right:26px;top:18px;width:142px;border-radius:5px;background:#263B49;color:#EAF4F9;border:2px solid #152833;padding:8px 10px;font-size:8px;font-weight:700;letter-spacing:.06em;box-shadow:0 7px 14px rgba(31,78,121,.14)}
+  .led b{display:flex;justify-content:space-between;color:#F2C230;font-size:9px;margin-bottom:4px}
+  .led span{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.14);padding-top:3px;margin-top:3px;color:#D3E6EF}
+  .belt{position:absolute;z-index:1;left:24px;bottom:38px;width:320px;height:72px;border:6px solid #AFC8D3;border-radius:999px 999px 20px 20px;background:#D8E7ED;transform:rotate(-2deg);box-shadow:inset 0 5px 0 rgba(255,255,255,.35)}
+  .belt:before{content:"";position:absolute;left:18px;right:18px;top:12px;height:28px;border-radius:999px;background:#AFC8D3;box-shadow:inset 0 4px 0 rgba(255,255,255,.25)}
+  .belt:after{content:"";position:absolute;left:18px;right:18px;bottom:8px;height:3px;background:repeating-linear-gradient(90deg,#8FACB8 0 12px,transparent 12px 24px)}
+  .case{position:absolute;z-index:3;bottom:14px;width:56px;height:37px;border-radius:7px;border:3px solid rgba(31,78,121,.22);box-shadow:0 4px 8px rgba(31,78,121,.10)}
+  .case:before{content:"";position:absolute;left:14px;top:-11px;width:23px;height:11px;border:3px solid rgba(31,78,121,.32);border-bottom:0;border-radius:7px 7px 0 0}
+  .case:after{content:"";position:absolute;bottom:-6px;left:5px;width:7px;height:7px;border-radius:50%;background:#40545E;box-shadow:35px 0 0 #40545E}
+  .case.c1{left:52px;background:#D9E2E7}
+  .case.c2{left:128px;bottom:18px;background:#9ECBDB;transform:rotate(3deg)}
+  .case.c3{left:202px;background:#E8B0A5}
+  .passport{position:absolute;z-index:3;right:190px;bottom:80px;width:58px;height:39px;border-radius:4px;background:#FFFDF8;border:3px solid var(--gold);transform:rotate(-5deg);box-shadow:0 6px 12px rgba(31,78,121,.12)}
+  .passport:before{content:"ПАСПОРТ";position:absolute;left:5px;top:8px;color:var(--blue);font-size:6px;font-weight:900;letter-spacing:.04em}
+  .passport:after{content:"";position:absolute;left:8px;right:8px;bottom:8px;height:2px;background:var(--gold);box-shadow:0 5px 0 rgba(31,78,121,.18)}
+  .exit-sign{position:absolute;z-index:4;right:24px;bottom:10px;display:flex;gap:5px}
+  .exit-sign span{font-size:7.5px;font-weight:900;letter-spacing:.08em;padding:4px 6px;border-radius:4px;background:#fff;color:var(--blue);border:1px solid #CFE3EC}
+  .exit-sign span:first-child{background:var(--red);color:#fff;border-color:var(--red)}
+  .scene-body{padding:16px 18px 18px}
+  .round-label{font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--blue-2);margin-bottom:9px}
+  .waiter{display:flex;gap:10px;align-items:flex-start}
+  .avatar{width:42px;height:42px;border-radius:50%;flex:none;background:var(--ice);border:1px solid #CFE5EE;display:flex;align-items:center;justify-content:center;font-size:19px}
+  .bubble{position:relative;flex:1;min-width:0;background:#F7FCFE;border:1px solid #D8EAF2;border-radius:14px;padding:10px 12px}
+  .bubble:before{content:"";position:absolute;left:-6px;top:15px;width:10px;height:10px;background:#F7FCFE;border-left:1px solid #D8EAF2;border-bottom:1px solid #D8EAF2;transform:rotate(45deg)}
+  .bubble-top{display:flex;align-items:center;gap:7px;margin-bottom:3px}
+  .who{font-size:10px;color:var(--muted);font-weight:800;letter-spacing:.04em}
+  .speak{margin-left:auto;border:1px solid var(--line);background:#fff;color:var(--blue);border-radius:999px;padding:3px 8px;font-size:10px;font-weight:800}
+  .speak:hover{background:var(--blue-soft);border-color:#C4E0EB}
+  .ru{font-family:"Iowan Old Style","Palatino Linotype",Georgia,"Times New Roman",serif}
+  .itt{font-size:17px;font-weight:700;line-height:1.35;color:var(--ink)}
+  .zh{font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:3px}
+  .prompt{font-size:12px;color:var(--muted);margin:16px 0 8px;font-weight:700}
+  .choices{display:flex;flex-direction:column;gap:8px}
+  .choice{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:11px;padding:10px 11px;color:var(--ink);transition:.13s}
+  .choice:hover{border-color:#BFDDE9;background:#F8FDFE;transform:translateY(-1px)}
+  .choice .letter{width:25px;height:25px;border-radius:50%;flex:none;background:var(--ice);color:var(--blue);font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .choice .main{min-width:0;display:flex;flex-direction:column;gap:1px}
+  .choice b{font-size:14px;line-height:1.35;font-weight:700}
+  .choice small{font-size:11px;color:var(--muted);line-height:1.4}
+  .choice.good{border-color:#9CCDB8;background:var(--green-soft);box-shadow:0 0 0 2px rgba(47,125,91,.1)}
+  .choice.good .letter{background:var(--green);color:#fff}
+  .choice.okay{border-color:#E1C887;background:var(--gold-soft)}
+  .choice.okay .letter{background:var(--gold);color:#fff}
+  .choice.wrong{border-color:#E5B3AE;background:var(--red-soft);opacity:.78}
+  .choice.wrong .letter{background:var(--red);color:#fff}
+  .choice.dim{opacity:.45}
+  .feedback{display:none;margin-top:12px;border:1px solid var(--line);border-radius:12px;padding:12px 13px;background:#fff}
+  .feedback.show{display:block}
+  .feedback.good{border-color:#B8DCCB;background:var(--green-soft)}
+  .feedback.bad{border-color:#E5B3AE;background:var(--red-soft)}
+  .feedback.okay{border-color:#E1C887;background:var(--gold-soft)}
+  .fb-title{font-size:12.5px;font-weight:900;margin-bottom:5px}
+  .feedback.good .fb-title{color:var(--green)}
+  .feedback.bad .fb-title{color:var(--red-deep)}
+  .feedback.okay .fb-title{color:#8A6628}
+  .fb-why{font-size:12px;line-height:1.65;color:#53666F}
+  .fb-tip{font-size:11px;line-height:1.6;color:#70848E;margin-top:7px;padding-top:7px;border-top:1px dashed rgba(112,132,142,.22)}
+  .retry{font-size:11px;color:var(--red-deep);font-weight:800;margin-top:7px}
+  .key{margin-top:9px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 10px}
+  .key-label{font-size:9px;letter-spacing:.12em;color:var(--muted);font-weight:900;margin-bottom:3px}
+  .key-it{font-size:13px;font-weight:700;display:flex;align-items:center;gap:7px;line-height:1.4}
+  .key-zh{font-size:10.5px;color:var(--muted);margin-top:2px}
+  .continue{margin-top:10px;border:0;border-radius:9px;background:var(--red);color:#fff;padding:9px 16px;font-size:12px;font-weight:800;box-shadow:0 5px 12px rgba(212,81,74,.16)}
+  .continue:hover{background:var(--red-deep)}
+  .side{display:flex;flex-direction:column;gap:12px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px;box-shadow:var(--shadow-soft)}
+  .card-title{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:900;margin-bottom:9px}
+  .chip{margin-left:auto;font-size:8.5px;font-weight:800;color:var(--blue);background:var(--blue-soft);border:1px solid #CFE5EE;border-radius:999px;padding:3px 6px;white-space:nowrap}
+  .vrow{display:flex;align-items:flex-start;gap:7px;padding:7px 0;border-top:1px dashed var(--line)}
+  .vrow:first-child{border-top:0;padding-top:0}
+  .vmain{min-width:0;flex:1}
+  .vmain b{font-size:12px;font-weight:700}
+  .vmain small{display:block;font-size:10px;color:var(--muted);margin-top:1px}
+  .vtag{flex:none;font-size:8px;font-weight:800;border-radius:999px;padding:3px 6px;margin-top:1px;white-space:nowrap}
+  .vtag.base{color:var(--green);background:var(--green-soft);border:1px solid #C8E2D6}
+  .vtag.scene{color:var(--red-deep);background:var(--red-soft);border:1px solid #EBC7C2}
+  .side-note{font-size:10.5px;line-height:1.55;color:var(--muted);margin-top:9px;border-top:1px dashed var(--line);padding-top:8px}
+  .mini-menu{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+  .mini-menu span{font-size:9.5px;color:#53666F;background:#F7FCFE;border:1px solid #D8EAF2;border-radius:7px;padding:5px 6px;line-height:1.35}
+  .mini-menu b{display:block;font-size:10px;color:var(--blue);line-height:1.3}
+  .steps{display:flex;flex-direction:column;gap:7px;font-size:11px;color:#53666F;line-height:1.5}
+  .steps span{display:flex;gap:7px}
+  .steps b{color:var(--red);font-weight:900}
+  .done-view{padding:34px 22px 28px;text-align:center}
+  .done-badge{width:48px;height:48px;border-radius:50%;margin:0 auto 12px;background:var(--green-soft);border:1px solid #C8E2D6;color:var(--green);display:flex;align-items:center;justify-content:center;font-size:23px;font-weight:900}
+  .done-view h2{font-size:24px;margin:0 0 6px}
+  .done-view p{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
+  .done-trip{font-size:14px!important;color:var(--blue)!important;font-weight:800;margin-top:7px!important}
+  .done-stats{font-size:12px;color:var(--blue);font-weight:800;margin:12px 0 5px}
+  .done-stats b{font-size:24px;color:var(--red);margin-right:3px}
+  .done-order{font-size:11.5px;color:var(--muted);margin:0 0 14px!important;min-height:17px}
+  .recap{display:flex;flex-direction:column;gap:7px;text-align:left;max-width:560px;margin:0 auto}
+  .recap-row{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 10px}
+  .recap-row div{min-width:0;flex:1}
+  .recap-row b{display:block;font-size:12.5px;line-height:1.35}
+  .recap-row small{display:block;font-size:10.5px;color:var(--muted);margin-top:1px}
+  .again{margin-top:15px;border:1px solid var(--red);background:var(--red);color:#fff;border-radius:9px;padding:9px 18px;font-size:12px;font-weight:800}
+  .again:hover{background:var(--red-deep)}
+  .done-note{font-size:10.5px;color:var(--muted);margin-top:10px}
+  .hide-zh .zh,.hide-zh .fb-why,.hide-zh .fb-tip,.hide-zh .retry,.hide-zh .side-note,.hide-zh .done-note,.hide-zh .vmain small,.hide-zh .mini-zh{display:none!important}
+  @media (max-width:860px){
+    .page{padding:0 14px 84px}
+    .topbar{flex-wrap:wrap}
+    .top-right{margin-left:auto}
+    .hero{padding-top:28px}
+    h1{font-size:38px}
+    h1 span{display:block;margin:6px 0 0;font-size:16px}
+    .lead{font-size:12.5px}
+    .layout{grid-template-columns:1fr}
+    .side{order:2}
+    .scene-visual{height:150px}
+    .sign{left:10px;top:10px;font-size:8px;padding:5px 7px;border-width:2px}
+    .led{right:10px;top:10px;width:116px;font-size:6.5px;padding:6px 7px}
+    .led b{font-size:7px}
+    .belt{left:8px;bottom:30px;width:220px;height:58px;border-width:4px}
+    .belt:before{left:12px;right:12px;top:9px;height:22px}
+    .case{width:42px;height:28px;border-width:2px;bottom:12px}
+    .case:before{left:10px;top:-8px;width:17px;height:8px;border-width:2px}
+    .case:after{width:5px;height:5px;bottom:-5px;box-shadow:26px 0 0 #40545E}
+    .case.c1{left:24px}.case.c2{left:82px;bottom:16px}.case.c3{left:140px}
+    .passport{right:150px;bottom:64px;width:44px;height:30px;border-width:2px}
+    .exit-sign{right:12px;bottom:10px}
+    .exit-sign span{font-size:6.5px;padding:3px 4px}
+    .scene-body{padding:14px}
+    .top-right .scene-badge{display:none}
+    .side{width:100%}
+    .done-view{padding:28px 16px 24px}
+  }
+  @media (max-width:420px){
+    h1{font-size:34px}
+    .scene-visual{height:136px}
+    .led{display:none}
+    .passport{right:22px;bottom:58px}
+    .belt{width:190px}
+    .case.c3{left:124px}
+    .exit-sign{display:none}
+    .choice b{font-size:13px}
+    .choice small{font-size:10.5px}
+  }
+</style>
+</head>
+<body class="hide-zh">
+<div class="page">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">Я</span>
+      <div><b>РУССКИЙ</b><small>俄语情景对话</small></div>
+    </div>
+    <div class="top-right">
+      <span class="scene-badge">01 · ПУЛКОВО</span>
+      <button class="zh-btn" id="zhToggle" type="button" aria-pressed="false">显示中文</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <a class="back-link" href="00-预备课.html">← 00 预备课</a>
+    <a class="back-link" href="index.html" style="margin-left:12px">大厅</a>
+    <div class="kicker"><i></i> СЦЕНА 01 · ПУЛКОВО · LED</div>
+    <h1>В аэропорту <span>在机场（圣彼得堡）</span></h1>
+    <p class="lead">八月下旬，你从北京飞到圣彼得堡。白夜已经结束，风有点凉；边检、行李转盘和行李查询柜台都在等你。7 轮 9 个决策。</p>
+    <div class="rounds">
+      <div class="round active" data-round="1"><b>1</b><span>边境 · 易</span></div>
+      <div class="round" data-round="2"><b>2</b><span>行李转盘 · 易</span></div>
+      <div class="round" data-round="3"><b>3</b><span>行李丢失 · 中</span></div>
+      <div class="round" data-round="4"><b>4</b><span>SIM / 问询 · 中</span></div>
+      <div class="round" data-round="5"><b>5</b><span>去市区 · 中</span></div>
+      <div class="round" data-round="6"><b>6</b><span>付款 · 中</span></div>
+      <div class="round" data-round="7"><b>7</b><span>到达 · 易</span></div>
+    </div>
+  </section>
+
+  <div class="layout">
+    <main class="main">
+      <section class="scene-card">
+        <div class="scene-visual">
+          <div class="sign">ПУЛКОВО</div>
+          <div class="led"><b><span>ПУЛКОВО · LED</span><span>ПРИЛЁТ</span></b><span><em>SU 205</em><em>PEK → LED</em></span><span><em>БАГАЖ</em><em>ЛЕНТА 3</em></span></div>
+          <div class="belt">
+            <span class="case c1"></span><span class="case c2"></span><span class="case c3"></span>
+          </div>
+          <div class="passport"></div>
+          <div class="exit-sign"><span>ТАКСИ</span><span>АВТОБУС</span></div>
+        </div>
+
+        <div id="playView">
+          <div class="scene-body">
+            <div class="round-label" id="roundLabel">第 1 轮 · 易 · 边境检查</div>
+            <div class="waiter">
+              <div class="avatar" id="avatar">🛂</div>
+              <div class="bubble">
+                <div class="bubble-top">
+                  <span class="who"><span id="whoRu">Пограни́чник</span><span class="zh" id="whoZh"> · 边检人员</span></span>
+                  <button class="speak" id="waiterSpeak" data-speak="">♪ 听</button>
+                </div>
+                <div class="itt ru" id="waiterRu"></div>
+                <div class="zh" id="waiterZh"></div>
+              </div>
+            </div>
+            <div class="prompt" id="prompt">你会怎么回答？</div>
+            <div class="choices" id="choices"></div>
+            <div class="feedback" id="feedback" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="done-view" id="doneView" hidden>
+          <div class="done-badge">✓</div>
+          <h2>01 机场完成</h2>
+          <p>你从普尔科沃机场过了边检、找了行李、办了 SIM 卡，也选好了去市区的路。接下来，圣彼得堡真正开始了。</p>
+          <p class="done-trip">До́бро пожа́ловать в Петербу́рг!<span class="zh"> · 欢迎来到圣彼得堡</span></p>
+          <div class="done-stats"><b id="doneScore">0</b> / <span id="doneTotal">9</span> 次第一次就选对</div>
+          <p class="done-order" id="doneOrder"></p>
+          <div class="recap" id="recap"></div>
+          <button class="again" id="againBtn">再练一次</button>
+          <p class="done-note">没有分数和排行榜，只看自己这一次的选择。</p>
+        </div>
+      </section>
+    </main>
+
+    <aside class="side">
+      <div class="card">
+        <div class="card-title">本场景词汇 <span class="chip">СЛОВА</span></div>
+        <div id="vocabList"></div>
+        <div class="side-note">标「基础」的是 00 预备课学过的词；标「场景」的是机场里新增的固定说法。</div>
+      </div>
+      <div class="card">
+        <div class="card-title">机场小抄 <span class="chip">8 ФРАЗ</span></div>
+        <div class="mini-menu">
+          <span><b>Здра́вствуйте</b><i class="mini-zh">您好</i></span>
+          <span><b>Пожа́луйста</b><i class="mini-zh">请</i></span>
+          <span><b>Спаси́бо</b><i class="mini-zh">谢谢</i></span>
+          <span><b>Извини́те</b><i class="mini-zh">打扰一下</i></span>
+          <span><b>Я не понима́ю</b><i class="mini-zh">我不明白</i></span>
+          <span><b>Где …?</b><i class="mini-zh">……在哪里？</i></span>
+          <span><b>Ско́лько сто́ит?</b><i class="mini-zh">多少钱？</i></span>
+          <span><b>Мо́жно ка́ртой?</b><i class="mini-zh">可以刷卡吗？</i></span>
+        </div>
+        <div class="side-note"><b style="color:var(--blue)">Я не понима́ю.</b> 我不明白。<br><b style="color:var(--blue)">Повтори́те, пожа́луйста.</b> 请再说一遍。<br><b style="color:var(--blue)">Говори́те ме́дленнее.</b> 请说慢一点。</div>
+      </div>
+      <div class="card">
+        <div class="card-title">怎么练</div>
+        <div class="steps">
+          <span><b>1</b>先听工作人员说什么</span>
+          <span><b>2</b>选一个回答；很多步不止一个答案成立</span>
+          <span><b>3</b>看解释，再继续</span>
+        </div>
+        <div class="side-note">同一个决定可以换一种选法。点「再练一次」可以换箱子颜色、行李牌、交通方式和付款方式。♪ 点「听」可朗读。</div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const strip = s => String(s || '').normalize('NFC').replace(/́/g, '');
+
+const VOCAB = {
+  'аэропо́рт':{zh:'机场',pos:'名词',src:'scene'},
+  'Пу́лково':{zh:'普尔科沃机场',pos:'专有名词',src:'scene'},
+  'термина́л':{zh:'航站楼',pos:'名词',src:'scene'},
+  'рейс':{zh:'航班',pos:'名词',src:'scene'},
+  'Пеки́н':{zh:'北京',pos:'专有名词',src:'scene'},
+  'па́спорт':{zh:'护照',pos:'名词',src:'base'},
+  'паспо́ртный контро́ль':{zh:'护照检查',pos:'固定搭配',src:'scene'},
+  'пограни́чник':{zh:'边检人员',pos:'名词',src:'scene'},
+  'цель пое́здки':{zh:'出行目的',pos:'固定搭配',src:'scene'},
+  'учёба':{zh:'学习',pos:'名词',src:'scene'},
+  'университе́т':{zh:'大学',pos:'名词',src:'scene'},
+  'общежи́тие':{zh:'宿舍',pos:'名词',src:'scene'},
+  'гости́ница':{zh:'酒店',pos:'名词',src:'scene'},
+  'семе́стр':{zh:'学期',pos:'名词',src:'scene'},
+  'бага́ж':{zh:'行李',pos:'名词',src:'scene'},
+  'вы́дача багажа́':{zh:'行李提取',pos:'固定搭配',src:'scene'},
+  'бага́жная ле́нта':{zh:'行李转盘',pos:'固定搭配',src:'scene'},
+  'чемода́н':{zh:'行李箱',pos:'名词',src:'scene'},
+  'бага́жная би́рка':{zh:'行李牌',pos:'固定搭配',src:'scene'},
+  'потеря́лся':{zh:'丢失了',pos:'动词过去时',src:'scene'},
+  'сто́йка ро́зыска багажа́':{zh:'行李查询柜台',pos:'固定搭配',src:'scene'},
+  'опиши́те':{zh:'请描述',pos:'动词命令式',src:'scene'},
+  'се́рый':{zh:'灰色的',pos:'形容词',src:'scene'},
+  'чёрный':{zh:'黑色的',pos:'形容词',src:'scene'},
+  'большо́й':{zh:'大的',pos:'形容词',src:'scene'},
+  'колёсики':{zh:'小轮子',pos:'名词复数',src:'scene'},
+  'кра́сная ле́нта':{zh:'红色带子',pos:'固定搭配',src:'scene'},
+  'би́рка':{zh:'行李牌',pos:'名词',src:'scene'},
+  'телефо́н':{zh:'电话',pos:'名词',src:'base'},
+  'но́мер':{zh:'号码',pos:'名词',src:'base'},
+  'а́дрес':{zh:'地址',pos:'名词',src:'scene'},
+  'позвони́ть':{zh:'打电话',pos:'动词',src:'scene'},
+  'доста́вить':{zh:'送达',pos:'动词',src:'scene'},
+  'спра́вочная':{zh:'问询处',pos:'名词',src:'scene'},
+  'сим-ка́рта':{zh:'SIM 卡',pos:'名词',src:'scene'},
+  'интерне́т':{zh:'网络',pos:'名词',src:'scene'},
+  'эта́ж':{zh:'楼层',pos:'名词',src:'scene'},
+  'вы́ход':{zh:'出口',pos:'名词',src:'scene'},
+  'такси́':{zh:'出租车',pos:'不变名词',src:'scene'},
+  'официа́льное такси́':{zh:'正规出租车',pos:'固定搭配',src:'scene'},
+  'такси́ст':{zh:'出租车司机',pos:'名词',src:'scene'},
+  'авто́бус':{zh:'公交车',pos:'名词',src:'scene'},
+  'биле́т':{zh:'车票',pos:'名词',src:'scene'},
+  'остано́вка':{zh:'车站',pos:'名词',src:'scene'},
+  'метро́':{zh:'地铁',pos:'不变名词',src:'base'},
+  'ста́нция':{zh:'站',pos:'名词',src:'base'},
+  'Моско́вская':{zh:'莫斯科站',pos:'专有名词',src:'scene'},
+  'Василеостро́вская':{zh:'瓦西里岛站',pos:'专有名词',src:'scene'},
+  'Васи́льевский о́стров':{zh:'瓦西里岛',pos:'地名',src:'scene'},
+  'ли́ния':{zh:'街/线',pos:'名词',src:'scene'},
+  'рубль':{zh:'卢布',pos:'名词',src:'scene'},
+  'рубле́й':{zh:'卢布（复数二格）',pos:'名词',src:'scene'},
+  'нали́чные':{zh:'现金',pos:'名词复数',src:'scene'},
+  'ка́рта':{zh:'银行卡',pos:'名词',src:'scene'},
+  'оплати́ть':{zh:'支付',pos:'动词',src:'scene'},
+  'чек':{zh:'收据',pos:'名词',src:'scene'},
+  'сда́ча':{zh:'找零',pos:'名词',src:'scene'},
+  'сто́ить':{zh:'值……钱',pos:'动词',src:'base'},
+  'ско́лько':{zh:'多少',pos:'疑问词',src:'base'},
+  'куда́':{zh:'去哪里',pos:'疑问词',src:'base'},
+  'где':{zh:'在哪里',pos:'疑问词',src:'base'},
+  'дое́хать':{zh:'到达（乘车）',pos:'动词',src:'scene'},
+  'пешко́м':{zh:'步行',pos:'副词',src:'scene'},
+  'извини́те':{zh:'对不起/打扰一下',pos:'礼貌用语',src:'base'},
+  'спаси́бо':{zh:'谢谢',pos:'礼貌用语',src:'base'},
+  'пожа́луйста':{zh:'请/不客气',pos:'礼貌用语',src:'base'},
+  'до свида́ния':{zh:'再见',pos:'告别',src:'base'},
+  'всего́ до́брого':{zh:'一切顺利',pos:'告别',src:'base'},
+  'по́мощь':{zh:'帮助',pos:'名词',src:'scene'},
+  'нужна́':{zh:'需要（阴性）',pos:'形容词短尾',src:'scene'},
+  'мо́жно':{zh:'可以',pos:'情态词',src:'base'},
+  'не понима́ю':{zh:'我不明白',pos:'固定说法',src:'base'}
+};
+
+const STEPS = [
+  {
+    round:1, level:'易', title:'边境检查', stepNo:1, stepsInRound:2,
+    whoRu:'Пограни́чник', whoZh:'边检人员', avatar:'🛂',
+    waiter:{ru:'Здра́вствуйте! Ваш па́спорт, пожа́луйста.',zh:'您好！请出示您的护照。'},
+    prompt:'你会怎么回答？',
+    choices:[
+      {id:'a', ru:'Здра́вствуйте! Вот мой па́спорт.', zh:'您好！这是我的护照。', verdict:'best',
+       why:'问候 + 递护照，最稳。', key:'Вот мой па́спорт.', keyZh:'这是我的护照。',
+       tip:'边检窗口先说 Здра́вствуйте，再递护照。'},
+      {id:'b', ru:'Вот, пожа́луйста.', zh:'给您，请。', verdict:'best',
+       why:'简短、礼貌；对方已经知道你要递什么。', key:'Вот, пожа́луйста.', keyZh:'给您，请。'},
+      {id:'c', ru:'Я не понима́ю.', zh:'我不明白。', verdict:'okay',
+       why:'00 预备课的救急句，能用；边检会重复一遍，但会慢一点。', key:'Я не понима́ю.', keyZh:'我不明白。'},
+      {id:'d', ru:'Спаси́бо.', zh:'谢谢。', verdict:'wrong',
+       why:'只说了谢谢，没有把护照递过去。'}
+    ],
+    vocab:['аэропо́рт','па́спорт','пожа́луйста','пограни́чник','не понима́ю']
+  },
+  {
+    round:1, level:'易', title:'边境检查', stepNo:2, stepsInRound:2,
+    whoRu:'Пограни́чник', whoZh:'边检人员', avatar:'🛂',
+    waiter:{ru:'Цель пое́здки? Где вы бу́дете жить?',zh:'出行目的是什么？您将住在哪里？'},
+    prompt:'你要学习，住大学宿舍，一个学期。怎么说？',
+    choices:[
+      {id:'a', ru:'Учёба. В общежи́тии, на семе́стр.', zh:'学习。住宿舍，一个学期。', verdict:'best',
+       why:'目的、住处、时间一次说清。', set:{purpose:'study', housing:'dorm'},
+       key:'Учёба. В общежи́тии, на семе́стр.', keyZh:'学习。住宿舍，一个学期。',
+       tip:'на семе́стр = 一个学期；в общежи́тии = 在宿舍。'},
+      {id:'b', ru:'Я бу́ду учи́ться. В общежи́тии университе́та.', zh:'我要学习。住大学宿舍。', verdict:'best',
+       why:'没提时间，但已经回答了关键信息。', set:{purpose:'study', housing:'dorm'},
+       key:'Я бу́ду учи́ться. В общежи́тии университе́та.', keyZh:'我要学习。住大学宿舍。'},
+      {id:'c', ru:'Тури́зм. В гости́нице.', zh:'旅游。住酒店。', verdict:'wrong',
+       why:'学生签证说旅游，和材料不一致。'},
+      {id:'d', ru:'Я из Кита́я.', zh:'我来自中国。', verdict:'okay',
+       why:'回答了来源，但没回答目的和住处；边检会再问。', key:'Я из Кита́я.', keyZh:'我来自中国。'}
+    ],
+    vocab:['цель пое́здки','учёба','общежи́тие','семе́стр','университе́т','гости́ница']
+  },
+  {
+    round:2, level:'易', title:'行李转盘', stepNo:1, stepsInRound:1,
+    whoRu:'Сотру́дник спра́вочной', whoZh:'问询处', avatar:'ℹ️',
+    waiter:{ru:'Вам нужна́ по́мощь?',zh:'您需要帮助吗？'},
+    prompt:'你没看到自己的航班。怎么问北京航班的行李在哪里取？',
+    choices:[
+      {id:'a', ru:'Извини́те, где вы́дача багажа́ для ре́йса из Пеки́на?', zh:'打扰一下，北京航班的行李在哪里取？', verdict:'best',
+       why:'完整、准确；для ре́йса = 航班的。', set:{belt:'3'},
+       key:'Где вы́дача багажа́ для ре́йса из Пеки́на?', keyZh:'北京航班的行李在哪里取？',
+       tip:'для + 二格：для ре́йса из Пеки́на。'},
+      {id:'b', ru:'Где бага́ж?', zh:'行李在哪里？', verdict:'okay',
+       why:'能懂，但不够具体；对方会问你的航班。', set:{belt:'3'},
+       key:'Где бага́ж?', keyZh:'行李在哪里？'},
+      {id:'c', ru:'Ско́лько сто́ит бага́ж?', zh:'行李多少钱？', verdict:'wrong',
+       why:'行李不是这样问价的。'},
+      {id:'d', ru:'Мой чемода́н се́рый.', zh:'我的箱子是灰色的。', verdict:'okay',
+       why:'说了箱子颜色，但没问地点；对方会指路。', set:{belt:'3'},
+       key:'Мой чемода́н се́рый.', keyZh:'我的箱子是灰色的。'}
+    ],
+    vocab:['бага́ж','вы́дача багажа́','рейс','Пеки́н','бага́жная ле́нта','чемода́н']
+  },
+  {
+    round:3, level:'中', title:'行李丢失', stepNo:1, stepsInRound:2,
+    whoRu:'Сотру́дник слу́жбы багажа́', whoZh:'行李服务', avatar:'🧳',
+    waiter:{ru:'Здра́вствуйте! Чем я могу́ вам помочь?',zh:'您好！我能帮您什么？'},
+    prompt:'箱子一直没出来。你怎么说？',
+    choices:[
+      {id:'a', ru:'У меня́ потеря́лся чемода́н.', zh:'我的行李箱丢了。', verdict:'best',
+       why:'最直接；у меня́ потеря́лся 是固定说法。', set:{bag:'lost'},
+       key:'У меня́ потеря́лся чемода́н.', keyZh:'我的行李箱丢了。',
+       tip:'потеря́лся 配合阳性名词 чемода́н。'},
+      {id:'b', ru:'Мой чемода́н не пришёл.', zh:'我的行李箱没到。', verdict:'best',
+       why:'也很自然，强调“没出来”。', set:{bag:'lost'},
+       key:'Мой чемода́н не пришёл.', keyZh:'我的行李箱没到。'},
+      {id:'c', ru:'Я хочу́ купи́ть сим-ка́рту.', zh:'我想买 SIM 卡。', verdict:'wrong',
+       why:'这里是行李柜台，不是 SIM 柜台。'},
+      {id:'d', ru:'Где туале́т?', zh:'洗手间在哪里？', verdict:'wrong',
+       why:'问错地方；对方会指路，但行李问题没解决。'}
+    ],
+    vocab:['потеря́лся','чемода́н','бага́жная би́рка','сто́йка ро́зыска багажа́','по́мощь']
+  },
+  {
+    round:3, level:'中', title:'行李丢失', stepNo:2, stepsInRound:2,
+    whoRu:'Сотру́дник слу́жбы багажа́', whoZh:'行李服务', avatar:'🧳',
+    waiter:{ru:'Опиши́те, пожа́луйста, чемода́н, покажи́те бага́жную би́рку и оста́вьте но́мер телефо́на.',zh:'请描述行李箱，出示行李牌，并留下电话号码。'},
+    prompt:'你怎么描述箱子、行李牌和联系方式？',
+    choices:[
+      {id:'a', ru:'Он се́рый, большо́й, на колёсиках. Вот би́рка. Телефо́н: +86 …', zh:'灰色、很大、带轮子。这是行李牌。电话：+86……', verdict:'best',
+       why:'描述 + 行李牌 + 联系方式齐全。', set:{bagColor:'grey', tag:'yes', contact:'phone'},
+       key:'Он се́рый, большо́й, на колёсиках.', keyZh:'灰色、很大、带轮子。',
+       tip:'на колёсиках = 带轮子。'},
+      {id:'b', ru:'Он чёрный, с кра́сной ле́нтой. Би́рка есть. Вот мой но́мер.', zh:'黑色，有红色带子。行李牌在。这是我的号码。', verdict:'best',
+       why:'有辨识度；红色带子是关键。', set:{bagColor:'black', ribbon:'red', tag:'yes', contact:'phone'},
+       key:'Он чёрный, с кра́сной ле́нтой.', keyZh:'黑色，有红色带子。'},
+      {id:'c', ru:'Он оста́лся в Пеки́не.', zh:'它留在北京了。', verdict:'wrong',
+       why:'语法没错，但柜台需要的是描述，不是猜箱子在哪。'},
+      {id:'d', ru:'Би́рки нет, но он се́рый. Телефо́н: +86 …', zh:'没有行李牌，但它是灰色的。电话：+86……', verdict:'okay',
+       why:'没有行李牌也能报；对方会按航班号查。', set:{bagColor:'grey', tag:'no', contact:'phone'},
+       key:'Би́рки нет, но он се́рый.', keyZh:'没有行李牌，但它是灰色的。'}
+    ],
+    vocab:['се́рый','чёрный','большо́й','колёсики','кра́сная ле́нта','би́рка','телефо́н','но́мер','опиши́те']
+  },
+  {
+    round:4, level:'中', title:'SIM / 问询', stepNo:1, stepsInRound:1,
+    whoRu:'Сотру́дник спра́вочной', whoZh:'问询处', avatar:'📱',
+    waiter:{ru:'Вам нужна́ ещё по́мощь?',zh:'您还需要帮助吗？'},
+    prompt:'你想买一张能上网的本地 SIM 卡。怎么说？',
+    choices:[
+      {id:'a', ru:'Где мо́жно купи́ть сим-ка́рту?', zh:'哪里可以买 SIM 卡？', verdict:'best',
+       why:'最直接；мо́жно + 动词很常用。', set:{sim:'yes'},
+       key:'Где мо́жно купи́ть сим-ка́рту?', keyZh:'哪里可以买 SIM 卡？',
+       tip:'сим-ка́рта = SIM 卡；买卡通常要护照。'},
+      {id:'b', ru:'Мне нужна́ сим-ка́рта с интерне́том.', zh:'我需要一张带流量的 SIM 卡。', verdict:'best',
+       why:'说明需求；с интерне́том = 带网络。', set:{sim:'yes'},
+       key:'Мне нужна́ сим-ка́рта с интерне́том.', keyZh:'我需要一张带流量的 SIM 卡。'},
+      {id:'c', ru:'Где мо́жно купи́ть биле́т на авто́бус?', zh:'哪里可以买公交车票？', verdict:'okay',
+       why:'也是合理问题，但 SIM 卡没解决。', set:{sim:'no'},
+       key:'Где мо́жно купи́ть биле́т на авто́бус?', keyZh:'哪里可以买公交车票？'},
+      {id:'d', ru:'Я хочу́ ко́фе.', zh:'我想喝咖啡。', verdict:'wrong',
+       why:'这里不是咖啡馆。'}
+    ],
+    vocab:['сим-ка́рта','интерне́т','па́спорт','эта́ж','вы́ход','спра́вочная']
+  },
+  {
+    round:5, level:'中', title:'去市区', stepNo:1, stepsInRound:1,
+    whoRu:'Навига́ция', whoZh:'指示牌', avatar:'🧭',
+    waiter:{ru:'Как вы дое́дете до общежи́тия?',zh:'您怎么去宿舍？'},
+    prompt:'你会选哪种交通方式？',
+    choices:[
+      {id:'a', ru:'На такси́. Вот а́дрес: Васи́льевский о́стров, 14-я ли́ния.', zh:'坐出租车。地址是：瓦西里岛，14 线。', verdict:'best',
+       why:'地址完整；机场到瓦西里岛约 40–60 分钟。', set:{transport:'taxi'},
+       key:'На такси́. Вот а́дрес: Васи́льевский о́стров, 14-я ли́ния.', keyZh:'坐出租车。地址是：瓦西里岛，14 线。',
+       tip:'去正规出租车柜台，不要跟主动拉客的私人车走。'},
+      {id:'b', ru:'На авто́бусе 39 до метро́ «Моско́вская».', zh:'坐 39 路公交到“莫斯科站”。', verdict:'best',
+       why:'更省钱；到地铁站再换乘。', set:{transport:'bus'},
+       key:'На авто́бусе 39 до метро́ «Моско́вская».', keyZh:'坐 39 路公交到“莫斯科站”。'},
+      {id:'c', ru:'Пешко́м.', zh:'走路。', verdict:'wrong',
+       why:'机场离市区太远，不现实。'},
+      {id:'d', ru:'На метро́.', zh:'坐地铁。', verdict:'okay',
+       why:'机场没有地铁，要先坐公交到 Моско́вская。', set:{transport:'bus'},
+       key:'На метро́.', keyZh:'坐地铁。'}
+    ],
+    vocab:['такси́','авто́бус','метро́','остано́вка','а́дрес','Васи́льевский о́стров','ли́ния','дое́хать']
+  },
+  {
+    round:6, level:'中', title:'付款', stepNo:1, stepsInRound:1,
+    whoRu:'Води́тель', whoZh:'司机', avatar:'🚕',
+    waiter:() => state.transport === 'taxi'
+      ? {ru:'С вас ты́сяча две́сти рубле́й.',zh:'一共 1200 卢布。'}
+      : {ru:'Сто рубле́й.',zh:'100 卢布。'},
+    prompt:'你怎么付款？',
+    choices:() => state.transport === 'taxi' ? [
+      {id:'a', ru:'Мо́жно оплати́ть ка́ртой?', zh:'可以刷卡吗？', verdict:'best',
+       why:'最方便；正规出租车通常有 POS 机。', set:{payment:'card', receipt:'yes'},
+       key:'Мо́жно оплати́ть ка́ртой?', keyZh:'可以刷卡吗？'},
+      {id:'b', ru:'На́личными, пожа́луйста.', zh:'现金，谢谢。', verdict:'best',
+       why:'备现金更稳。', set:{payment:'cash', receipt:'yes'},
+       key:'На́личными, пожа́луйста.', keyZh:'现金，谢谢。'},
+      {id:'c', ru:'На́личными. Да́йте, пожа́луйста, чек.', zh:'现金。请给我收据。', verdict:'okay',
+       why:'现金 + 收据；比 A/B 多一步。', set:{payment:'cash', receipt:'yes'},
+       key:'Да́йте, пожа́луйста, чек.', keyZh:'请给我收据。'},
+      {id:'d', ru:'У меня́ нет де́нег.', zh:'我没钱。', verdict:'wrong',
+       why:'不能解决付款。'}
+    ] : [
+      {id:'a', ru:'На́личными, пожа́луйста.', zh:'现金，谢谢。', verdict:'best',
+       why:'公交最常见；准备好零钱。', set:{payment:'cash', receipt:'yes'},
+       key:'На́личными, пожа́луйста.', keyZh:'现金，谢谢。'},
+      {id:'b', ru:'Мо́жно оплати́ть ка́ртой?', zh:'可以刷卡吗？', verdict:'okay',
+       why:'不是所有公交都支持；问一句可以。', set:{payment:'card'},
+       key:'Мо́жно оплати́ть ка́ртой?', keyZh:'可以刷卡吗？'},
+      {id:'c', ru:'На́личными. Да́йте, пожа́луйста, биле́т.', zh:'现金。请给我车票。', verdict:'okay',
+       why:'现金 + 车票；公交一般给票。', set:{payment:'cash', receipt:'yes'},
+       key:'Да́йте, пожа́луйста, биле́т.', keyZh:'请给我车票。'},
+      {id:'d', ru:'У меня́ нет де́нег.', zh:'我没钱。', verdict:'wrong',
+       why:'不能解决付款。'}
+    ],
+    vocab:['рубль','рубле́й','ка́рта','нали́чные','оплати́ть','чек','сда́ча','биле́т']
+  },
+  {
+    round:7, level:'易', title:'到达 / 道谢', stepNo:1, stepsInRound:1,
+    whoRu:'Води́тель', whoZh:'司机', avatar:'🚌',
+    waiter:() => state.transport === 'taxi'
+      ? {ru:'Прие́хали. Вот ва́ше общежи́тие.',zh:'到了。这是您的宿舍。'}
+      : {ru:'Остано́вка «Моско́вская». Прие́хали.',zh:'“莫斯科站”到了。'},
+    prompt:'到站了，你会怎么说？',
+    choices:() => state.transport === 'taxi' ? [
+      {id:'a', ru:'Спаси́бо большо́е! До свида́ния.', zh:'非常感谢！再见。', verdict:'best',
+       why:'最稳。', set:{end:'dorm'}, key:'Спаси́бо большо́е! До свида́ния.', keyZh:'非常感谢！再见。'},
+      {id:'b', ru:'Спаси́бо, всего́ до́брого!', zh:'谢谢，一切顺利！', verdict:'best',
+       why:'更温暖。', set:{end:'dorm'}, key:'Спаси́бо, всего́ до́брого!', keyZh:'谢谢，一切顺利！'},
+      {id:'c', ru:'Где туале́т?', zh:'洗手间在哪里？', verdict:'wrong',
+       why:'已经到宿舍了，先办入住更实际。'},
+      {id:'d', ru:'Ско́лько сто́ит?', zh:'多少钱？', verdict:'okay',
+       why:'已经付过；司机可能会重复价格。', set:{end:'dorm'}, key:'Ско́лько сто́ит?', keyZh:'多少钱？'}
+    ] : [
+      {id:'a', ru:'Спаси́бо! До свида́ния.', zh:'谢谢！再见。', verdict:'best',
+       why:'下车去换地铁。', set:{end:'metro'}, key:'Спаси́бо! До свида́ния.', keyZh:'谢谢！再见。'},
+      {id:'b', ru:'Спаси́бо, всего́ до́брого!', zh:'谢谢，一切顺利！', verdict:'best',
+       why:'更温暖。', set:{end:'metro'}, key:'Спаси́бо, всего́ до́брого!', keyZh:'谢谢，一切顺利！'},
+      {id:'c', ru:'Где туале́т?', zh:'洗手间在哪里？', verdict:'wrong',
+       why:'先找地铁入口更实际。'},
+      {id:'d', ru:'Ско́лько сто́ит?', zh:'多少钱？', verdict:'okay',
+       why:'已经付过；可以再确认。', set:{end:'metro'}, key:'Ско́лько сто́ит?', keyZh:'多少钱？'}
+    ],
+    vocab:['общежи́тие','Моско́вская','Василеостро́вская','спаси́бо','до свида́ния','всего́ до́брого','метро́']
+  }
+];
+
+let idx = 0, pickedId = null, solved = false, wrong = new Set(), hadWrong = false, firstTry = 0;
+let state = {};
+let currentStep = null;
+let recapLog = [];
+
+function materialize(base){
+  return {
+    ...base,
+    waiter: typeof base.waiter === 'function' ? base.waiter() : base.waiter,
+    choices: typeof base.choices === 'function' ? base.choices() : base.choices,
+    vocab: typeof base.vocab === 'function' ? base.vocab() : base.vocab
+  };
+}
+function renderRounds(step){
+  document.querySelectorAll('.round').forEach(el => {
+    const r = +el.dataset.round;
+    el.classList.toggle('active', r === step.round);
+    el.classList.toggle('done', r < step.round);
+  });
+}
+function renderChoices(step){
+  $('choices').innerHTML = step.choices.map((c, i) => {
+    const cls = ['choice'];
+    if(wrong.has(c.id)) cls.push('wrong');
+    if(solved && pickedId === c.id) cls.push(c.verdict === 'best' ? 'good' : 'okay');
+    if(solved && pickedId !== c.id) cls.push('dim');
+    return `<button class="${cls.join(' ')}" data-id="${esc(c.id)}">
+      <span class="letter">${'ABCD'[i] || '?'}</span>
+      <span class="main"><b>${esc(c.ru)}</b><small class="zh">${esc(c.zh)}</small></span>
+    </button>`;
+  }).join('');
+}
+function renderFeedback(step){
+  const box = $('feedback');
+  if(!pickedId){ box.className = 'feedback'; box.innerHTML = ''; return; }
+  const c = step.choices.find(x => x.id === pickedId);
+  if(!c){ box.className = 'feedback'; box.innerHTML = ''; return; }
+  if(solved){
+    const kind = c.verdict === 'best' ? 'good' : 'okay';
+    const title = c.verdict === 'best' ? '✓ Отли́чно' : '△ Поня́тно';
+    box.className = 'feedback show ' + kind;
+    box.innerHTML = `<div class="fb-title">${title}</div>
+      <div class="fb-why">${esc(c.why)}</div>
+      ${c.key ? `<div class="key"><div class="key-label">关键表达</div><div class="key-it">${esc(c.key)} <button class="speak" data-speak="${esc(strip(c.key))}">♪</button></div><div class="key-zh zh">${esc(c.keyZh || '')}</div></div>` : ''}
+      ${c.tip ? `<div class="fb-tip">${esc(c.tip)}</div>` : ''}
+      <button class="continue" data-continue>继续 →</button>`;
+  } else {
+    box.className = 'feedback show bad';
+    box.innerHTML = `<div class="fb-title">✗ Ещё раз</div><div class="fb-why">${esc(c.why)}</div><div class="retry">换一个回答试试</div>`;
+  }
+}
+function renderVocab(step){
+  $('vocabList').innerHTML = step.vocab.map(key => {
+    const v = VOCAB[key];
+    if(!v) return '';
+    return `<div class="vrow"><div class="vmain"><b>${esc(key)}</b><small>${esc(v.zh)} · ${esc(v.pos)}</small></div><span class="vtag ${v.src}">${v.src === 'base' ? '基础' : '场景'}</span></div>`;
+  }).join('');
+}
+function render(){
+  currentStep = materialize(STEPS[idx]);
+  const step = currentStep;
+  $('doneTotal').textContent = STEPS.length;
+  $('roundLabel').textContent = `第 ${step.round} 轮 · ${step.level} · ${step.title}` + (step.stepsInRound > 1 ? ` · ${step.stepNo}/${step.stepsInRound}` : '');
+  $('whoRu').textContent = step.whoRu || 'Персонаж';
+  $('whoZh').textContent = step.whoZh ? ` · ${step.whoZh}` : '';
+  $('avatar').textContent = step.avatar || '🧳';
+  $('waiterRu').textContent = step.waiter.ru;
+  $('waiterZh').textContent = step.waiter.zh;
+  $('waiterSpeak').dataset.speak = strip(step.waiter.ru);
+  $('prompt').textContent = step.prompt || '你会怎么回答？';
+  renderRounds(step);
+  renderChoices(step);
+  renderFeedback(step);
+  renderVocab(step);
+}
+function scrollToCard(){
+  if(window.innerWidth < 860) document.querySelector('.scene-card').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function choose(id){
+  if(solved) return;
+  const step = currentStep;
+  const c = step.choices.find(x => x.id === id);
+  if(!c || wrong.has(id)) return;
+  if(c.verdict === 'wrong'){
+    wrong.add(id); hadWrong = true; pickedId = id; solved = false;
+  } else {
+    pickedId = id; solved = true;
+    if(c.set) Object.assign(state, c.set);
+    if(!hadWrong) firstTry++;
+    recapLog.push({it:c.key || c.ru, zh:c.keyZh || c.zh});
+  }
+  renderChoices(step); renderFeedback(step);
+  if(window.innerWidth < 860) $('feedback').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function nextStep(){
+  if(!solved) return;
+  if(idx < STEPS.length - 1){
+    idx++; pickedId = null; solved = false; wrong = new Set(); hadWrong = false; render(); scrollToCard();
+  } else {
+    showDone();
+  }
+}
+function showDone(){
+  $('playView').hidden = true; $('doneView').hidden = false;
+  $('doneScore').textContent = firstTry; $('doneTotal').textContent = STEPS.length;
+  const bag = state.bagColor === 'black' ? 'чёрный' : (state.bagColor === 'grey' ? 'се́рый' : '—');
+  const bagZh = state.bagColor === 'black' ? '黑色' : (state.bagColor === 'grey' ? '灰色' : '—');
+  const tag = state.tag === 'yes' ? 'есть' : (state.tag === 'no' ? 'нет' : '—');
+  const tagZh = state.tag === 'yes' ? '有' : (state.tag === 'no' ? '没有' : '—');
+  const sim = state.sim === 'yes' ? 'да' : 'нет';
+  const simZh = state.sim === 'yes' ? '有' : '没有';
+  const tr = state.transport === 'taxi' ? 'такси́' : 'авто́бус';
+  const trZh = state.transport === 'taxi' ? '出租车' : '公交';
+  const pay = state.payment === 'card' ? 'ка́рта' : (state.payment === 'cash' ? 'нали́чные' : '—');
+  const payZh = state.payment === 'card' ? '卡' : (state.payment === 'cash' ? '现金' : '—');
+  const end = state.end === 'dorm' ? 'общежи́тие' : 'метро́';
+  const endZh = state.end === 'dorm' ? '宿舍' : '地铁';
+  $('doneOrder').innerHTML = esc(`Багаж: ${bag} · Бирка: ${tag} · SIM: ${sim} · Транспорт: ${tr} · Оплата: ${pay} · Финиш: ${end}`) +
+    `<span class="zh"> · 行李：${esc(bagZh)} · 行李牌：${esc(tagZh)} · SIM：${esc(simZh)} · 交通：${esc(trZh)} · 付款：${esc(payZh)} · 终点：${esc(endZh)}</span>`;
+  document.querySelectorAll('.round').forEach(el => { el.classList.remove('active'); el.classList.add('done'); });
+  $('recap').innerHTML = recapLog.map(r => `<div class="recap-row"><div><b>${esc(r.it)}</b><small class="zh">${esc(r.zh)}</small></div><button class="speak" data-speak="${esc(strip(r.it))}">♪</button></div>`).join('');
+}
+function restart(){
+  idx = 0; pickedId = null; solved = false; wrong = new Set(); hadWrong = false; firstTry = 0; state = {}; currentStep = null; recapLog = [];
+  $('doneScore').textContent = '0'; $('doneOrder').textContent = ''; $('recap').innerHTML = '';
+  $('doneView').hidden = true; $('playView').hidden = false; render(); scrollToCard();
+}
+document.addEventListener('click', e => {
+  const sp = e.target.closest('[data-speak]');
+  if(sp){ e.preventDefault(); e.stopPropagation(); speak(sp.dataset.speak); return; }
+  if(e.target.closest('[data-continue]')){ nextStep(); return; }
+  const ch = e.target.closest('.choice');
+  if(ch) choose(ch.dataset.id);
+});
+$('againBtn').addEventListener('click', restart);
+
+const zhBtn = $('zhToggle');
+function setZhVisible(show){
+  document.body.classList.toggle('hide-zh', !show);
+  zhBtn.textContent = show ? '隐藏中文' : '显示中文';
+  zhBtn.setAttribute('aria-pressed', String(show));
+}
+setZhVisible(false);
+zhBtn.addEventListener('click', () => setZhVisible(document.body.classList.contains('hide-zh')));
+
+const synth = window.speechSynthesis || null;
+let ruVoice = null;
+function refreshVoice(){
+  if(!synth) return;
+  const vs = synth.getVoices() || [];
+  ruVoice = vs.find(v => /^ru([-_]|$)/i.test(v.lang)) || null;
+}
+if(synth){ refreshVoice(); if(typeof synth.addEventListener === 'function') synth.addEventListener('voiceschanged', refreshVoice); else synth.onvoiceschanged = refreshVoice; }
+function speak(text){
+  if(!synth || !text) return;
+  try{
+    if(synth.speaking || synth.pending) synth.cancel();
+    const u = new SpeechSynthesisUtterance(strip(text));
+    u.lang = 'ru-RU'; if(ruVoice) u.voice = ruVoice; u.rate = .84; u.pitch = 1; synth.speak(u);
+  }catch(e){}
+}
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>00 · Алфавит, ударение и первые слова · 俄语情景对话</title>
+<style>
+  :root{
+    --bg:#F4FAFD;
+    --bg-2:#EAF5FA;
+    --panel:#FFFFFF;
+    --ink:#22313A;
+    --muted:#6C7E89;
+    --line:#D9E7EE;
+    --ice:#EDF7FB;
+    --ice-2:#F7FCFE;
+    --blue:#4C7E9B;
+    --blue-deep:#2E5E78;
+    --blue-soft:#E7F3F9;
+    --red:#D4514A;
+    --red-deep:#B93B36;
+    --red-soft:#FCEEED;
+    --green:#2F7D5B;
+    --green-soft:#E9F5EF;
+    --shadow:0 16px 40px rgba(43,87,108,.08);
+    --shadow-soft:0 8px 22px rgba(43,87,108,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:
+      radial-gradient(900px 520px at 4% -12%, #FFFFFF 0%, rgba(255,255,255,0) 64%),
+      radial-gradient(760px 480px at 102% 0%, #E3F2F9 0%, rgba(227,242,249,0) 62%),
+      radial-gradient(620px 420px at 70% 46%, rgba(255,255,255,.8) 0%, rgba(255,255,255,0) 68%),
+      linear-gradient(180deg,#F8FCFE 0%,var(--bg) 42%,#F1F9FC 100%);
+    min-height:100vh;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+    background-image:radial-gradient(rgba(116,165,190,.18) 1px, transparent 1.2px);
+    background-size:30px 30px;
+    mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.45) 35%,transparent 72%);
+  }
+  button,a{font:inherit}
+  button{cursor:pointer}
+  a{color:inherit;text-decoration:none}
+  .ru, .serif{font-family:"Iowan Old Style","Palatino Linotype",Georgia,"Times New Roman",serif}
+  code{font-family:"Iowan Old Style","Palatino Linotype",Georgia,"Times New Roman",serif;background:#F1F8FB;border:1px solid #DCEBF2;border-radius:4px;padding:1px 4px;font-size:.96em;color:var(--blue-deep);font-weight:600}
+  .page{max-width:1180px;margin:0 auto;padding:0 24px 70px}
+  .topbar{
+    display:flex;align-items:center;gap:16px;padding:18px 2px 14px;
+    border-bottom:1px solid rgba(217,231,238,.8);
+  }
+  .brand{display:flex;align-items:center;gap:10px;min-width:0}
+  .brand-mark{
+    width:34px;height:34px;border-radius:10px;background:var(--red);color:#fff;
+    display:inline-flex;align-items:center;justify-content:center;font-family:Georgia,serif;
+    font-size:19px;font-weight:700;box-shadow:0 8px 16px rgba(212,81,74,.22);
+  }
+  .brand b{display:block;font-size:14px;letter-spacing:.12em;color:var(--ink)}
+  .brand small{display:block;font-size:12px;color:var(--muted);letter-spacing:.08em;margin-top:2px}
+  .controls{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .switch{
+    display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);
+    background:rgba(255,255,255,.82);color:var(--muted);border-radius:999px;
+    padding:6px 10px;font-size:12.5px;font-weight:700;transition:.18s ease;
+  }
+  .switch .knob{
+    width:23px;height:13px;border-radius:999px;background:#D3E2EA;position:relative;transition:.18s ease;
+  }
+  .switch .knob:after{
+    content:"";position:absolute;top:2px;left:2px;width:9px;height:9px;border-radius:50%;
+    background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.16);transition:.18s ease;
+  }
+  .switch[aria-pressed="true"]{color:var(--blue-deep);border-color:#BFDDE9;background:#F2FAFD}
+  .switch[aria-pressed="true"] .knob{background:var(--blue)}
+  .switch[aria-pressed="true"] .knob:after{transform:translateX(10px)}
+  .hero{
+    display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);
+    gap:44px;align-items:center;padding:54px 0 38px;
+  }
+  .eyebrow{font-size:12.5px;letter-spacing:.22em;font-weight:800;color:var(--blue);display:flex;align-items:center;gap:8px;margin-bottom:13px}
+  .eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--red);display:inline-block}
+  h1{
+    margin:0;font-family:Georgia,"Times New Roman",serif;
+    font-size:66px;line-height:.98;letter-spacing:-.025em;font-weight:700;
+  }
+  h1 .red{color:var(--red)}
+  h1 small{display:block;font-size:.43em;line-height:1.35;color:var(--blue);font-weight:700;letter-spacing:-.01em;margin-top:10px}
+  .zh-title{font-size:19px;font-weight:700;color:var(--ink);margin:18px 0 0;letter-spacing:.03em}
+  .lead{font-size:15px;line-height:1.8;color:var(--muted);max-width:590px;margin:10px 0 0}
+  .hero-meta{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:20px}
+  .free-tag{font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--green);background:var(--green-soft);border:1px solid #C8E3D6;border-radius:999px;padding:6px 10px}
+  .mini-tag{font-size:12px;font-weight:700;color:var(--blue-deep);background:var(--blue-soft);border:1px solid #C9E3EF;border-radius:999px;padding:6px 10px}
+  .hero-actions{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-top:24px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;
+    padding:11px 18px;font-size:13.5px;font-weight:800;transition:.18s ease;
+  }
+  .btn.primary{background:var(--red);color:#fff;box-shadow:0 12px 24px rgba(212,81,74,.22)}
+  .btn.primary:hover{background:var(--red-deep);transform:translateY(-1px)}
+  .btn.ghost{background:#fff;color:var(--blue-deep);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:#BBD9E7;background:var(--ice-2)}
+  .hero-note{font-size:12.5px;color:var(--muted);line-height:1.5}
+  .hero-art{
+    position:relative;height:390px;border-radius:28px;overflow:hidden;
+    background:
+      radial-gradient(260px 250px at 52% 44%, rgba(255,255,255,.95) 0%, rgba(255,255,255,0) 68%),
+      linear-gradient(145deg,#E9F6FB 0%,#F9FDFE 50%,#EAF4F9 100%);
+    border:1px solid #D8EAF2;box-shadow:var(--shadow);
+  }
+  .hero-art::before{
+    content:"";position:absolute;width:330px;height:330px;border-radius:50%;
+    left:50%;top:48%;transform:translate(-50%,-50%);
+    background:radial-gradient(circle at 36% 32%,#FFFFFF 0%,#DDF1F8 42%,#CBE7F2 100%);
+    box-shadow:inset 0 0 0 1px rgba(111,164,189,.18);
+  }
+  .hero-art::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:radial-gradient(rgba(85,145,174,.18) 1px, transparent 1.4px);
+    background-size:22px 22px;
+    mask-image:radial-gradient(circle at 50% 48%,#000 0%,transparent 68%);
+  }
+  .feature-letter{
+    position:absolute;z-index:2;width:206px;height:252px;left:50%;top:50%;
+    transform:translate(-50%,-50%) rotate(-6deg);background:#fff;border-radius:20px;
+    border:1px solid #D7E8F0;box-shadow:0 24px 46px rgba(53,103,126,.18);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+  }
+  .feature-letter .up{font-family:Georgia,serif;font-size:84px;line-height:.9;color:var(--ink);font-weight:700}
+  .feature-letter .low{font-family:Georgia,serif;font-size:34px;line-height:1;color:var(--red);margin-top:7px}
+  .feature-letter .sound{font-size:12.5px;font-weight:800;color:var(--blue);margin-top:15px;letter-spacing:.08em}
+  .feature-letter .ex{font-family:Georgia,serif;font-size:14px;color:var(--muted);margin-top:7px}
+  .mini-letter{
+    position:absolute;z-index:3;width:62px;height:70px;border-radius:14px;background:#fff;
+    border:1px solid #D7E8F0;box-shadow:0 12px 24px rgba(53,103,126,.12);
+    display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:29px;
+  }
+  .ml1{left:30px;top:48px;color:var(--blue);transform:rotate(-8deg)}
+  .ml2{right:28px;top:82px;color:var(--red);transform:rotate(7deg)}
+  .ml3{right:44px;bottom:42px;color:var(--blue-deep);transform:rotate(-4deg)}
+  .badge-33{
+    position:absolute;z-index:4;left:30px;bottom:30px;width:76px;height:76px;border-radius:50%;
+    background:var(--red);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    box-shadow:0 14px 26px rgba(212,81,74,.24);transform:rotate(-7deg);
+  }
+  .badge-33 b{font-family:Georgia,serif;font-size:29px;line-height:.9}
+  .badge-33 span{font-size:9.5px;font-weight:800;letter-spacing:.1em;margin-top:4px}
+  .badge-snow{
+    position:absolute;z-index:4;right:24px;bottom:24px;font-size:11px;font-weight:800;letter-spacing:.12em;
+    color:var(--blue);background:rgba(255,255,255,.72);border:1px solid #D5E9F2;border-radius:999px;padding:6px 9px;
+  }
+  .nav-wrap{
+    position:sticky;top:0;z-index:30;
+    background:rgba(247,252,254,.88);backdrop-filter:blur(14px);
+    border-top:1px solid rgba(217,231,238,.65);border-bottom:1px solid rgba(217,231,238,.9);
+  }
+  .nav{max-width:1180px;margin:0 auto;padding:9px 24px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{
+    white-space:nowrap;font-size:12.5px;font-weight:700;color:var(--muted);
+    border-radius:999px;padding:6px 10px;transition:.16s ease;
+  }
+  .nav a:hover{color:var(--blue-deep);background:#EDF7FB}
+  .nav a.active{color:#fff;background:var(--blue-deep);box-shadow:0 5px 12px rgba(46,94,120,.18)}
+  section{scroll-margin-top:72px}
+  .section{padding:46px 0 4px}
+  .section-head{display:flex;align-items:flex-start;gap:13px;margin-bottom:20px}
+  .section-no{
+    width:34px;height:34px;flex:0 0 auto;border-radius:50%;background:var(--red);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800;
+    box-shadow:0 7px 14px rgba(212,81,74,.18);margin-top:2px;
+  }
+  .section-kicker{font-size:11.5px;letter-spacing:.2em;color:var(--blue);font-weight:800;margin-bottom:4px}
+  .section-title{font-size:30px;line-height:1.2;margin:0;font-weight:800;letter-spacing:.01em}
+  .section-title span{font-size:13.5px;color:var(--muted);font-weight:500;margin-left:9px}
+  .section-note{margin-left:auto;font-size:12px;color:var(--muted);text-align:right;line-height:1.5;max-width:210px;padding-top:4px}
+  .card{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-soft)}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:0 0 12px;font-size:11.5px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:5px}
+  .legend i{width:8px;height:8px;border-radius:2px;display:inline-block}
+  .legend .lg-vowel{background:#E3F4FB;border:1px solid #BFE2F0}
+  .legend .lg-cons{background:#FFF;border:1px solid var(--line)}
+  .legend .lg-sign{background:#F2F6F8;border:1px solid #D6E4EA}
+  .legend .lg-tricky{background:var(--red);border-radius:50%}
+  .letter-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px}
+  .letter{
+    position:relative;text-align:left;background:#fff;border:1px solid var(--line);border-radius:13px;
+    padding:10px 9px 9px;min-height:110px;color:var(--ink);transition:.16s ease;box-shadow:0 4px 10px rgba(43,87,108,.035);
+  }
+  .letter:hover{transform:translateY(-2px);border-color:#BFDCE8;box-shadow:0 10px 20px rgba(43,87,108,.08)}
+  .letter.vowel{background:linear-gradient(180deg,#F5FCFF 0%,#EAF6FB 100%);border-color:#CFE7F1}
+  .letter.sign{background:#F5F9FA;border-color:#D8E6EC}
+  .letter.tricky{border-color:#EACAC6}
+  .letter .tricky-dot{position:absolute;right:8px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--red)}
+  .letter-top{display:flex;align-items:baseline;gap:5px;padding-right:13px}
+  .letter-top b{font-family:Georgia,serif;font-size:29px;line-height:1;font-weight:700}
+  .letter-top span{font-family:Georgia,serif;font-size:18px;color:var(--blue);line-height:1}
+  .letter-name{display:block;font-size:11.5px;color:var(--muted);margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .letter-sound{display:block;font-size:11.5px;color:var(--blue-deep);font-weight:700;margin-top:4px}
+  .letter-ex{display:block;font-family:Georgia,serif;font-size:12px;color:#8A9AA3;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .letter-play{position:absolute;right:8px;bottom:8px;font-size:12px;color:#A9C6D5}
+  .false-wrap{margin-top:14px;padding:14px 15px;background:linear-gradient(90deg,#FFF8F7 0%,#FFFDFC 65%,#FFFFFF 100%);border:1px solid #F0D8D5;border-radius:14px}
+  .false-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+  .false-head b{font-size:13.5px;color:var(--red-deep)}
+  .false-head span{font-size:11.5px;color:var(--muted)}
+  .false-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+  .false-letter{
+    display:flex;align-items:center;gap:7px;background:#fff;border:1px solid #EEDCD9;border-radius:10px;
+    padding:7px 8px;text-align:left;color:var(--ink);transition:.15s ease;
+  }
+  .false-letter:hover{background:#FFF7F6;border-color:#E7BEB9}
+  .false-letter b{font-family:Georgia,serif;font-size:20px;color:var(--ink);min-width:24px}
+  .false-letter span{font-size:11.5px;color:var(--muted);line-height:1.25}
+  .false-letter em{font-style:normal;color:var(--red);font-weight:800}
+  .rules{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+  .rule{background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow-soft);overflow:hidden}
+  .rule[open]{border-color:#C9E1EC;box-shadow:0 12px 26px rgba(43,87,108,.08)}
+  .rule summary{
+    list-style:none;display:flex;align-items:center;gap:10px;padding:13px 14px;cursor:pointer;
+    font-size:13.5px;font-weight:800;color:var(--ink);
+  }
+  .rule summary::-webkit-details-marker{display:none}
+  .rule summary::after{content:"+";margin-left:auto;color:var(--blue);font-size:18px;font-weight:400;transition:.16s ease}
+  .rule[open] summary::after{content:"−";color:var(--red)}
+  .rule-num{width:22px;height:22px;border-radius:50%;background:var(--blue-soft);color:var(--blue-deep);display:inline-flex;align-items:center;justify-content:center;font-size:11px;flex:0 0 auto}
+  .rule-body{padding:0 14px 14px;border-top:1px solid #EEF5F8;color:var(--muted);font-size:13px;line-height:1.7}
+  .rule-body p{margin:10px 0}
+  .ex-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .ex-chip{display:inline-flex;align-items:center;gap:6px;background:#F7FBFD;border:1px solid #E3EFF4;border-radius:999px;padding:4px 5px 4px 9px;font-size:12.5px;color:var(--ink)}
+  .ex-chip .ru{font-size:13.5px}
+  .mini-sound{border:0;background:transparent;color:var(--blue);font-size:12.5px;padding:2px 3px;line-height:1}
+  .stress-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:16px;align-items:start}
+  .stress-copy{background:linear-gradient(145deg,#F4FBFE 0%,#FFFFFF 65%);border:1px solid #D6EAF2;border-radius:16px;padding:20px;box-shadow:var(--shadow-soft)}
+  .stress-copy .big{font-family:Georgia,serif;font-size:38px;line-height:1;color:var(--red);margin:0 0 8px}
+  .stress-copy h3{margin:0;font-size:18px}
+  .stress-copy p{font-size:13px;line-height:1.75;color:var(--muted);margin:9px 0 0}
+  .stress-copy .tip{font-size:12.5px;color:var(--blue-deep);background:var(--blue-soft);border-radius:9px;padding:8px 9px;margin-top:13px}
+  .pairs{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .pair{background:#fff;border:1px solid var(--line);border-radius:13px;padding:11px 12px;box-shadow:var(--shadow-soft)}
+  .pair .word{display:flex;align-items:center;justify-content:space-between;gap:5px}
+  .pair button{background:transparent;border:0;text-align:left;padding:0;color:var(--ink)}
+  .pair .w1,.pair .w2{font-family:Georgia,serif;font-size:19px;line-height:1.3}
+  .pair .w2{color:var(--brown,#8B5D3B)}
+  .pair small{display:block;font-size:11px;color:var(--muted);margin-top:3px}
+  .pair .pair-label{font-size:10.5px;font-weight:800;letter-spacing:.1em;color:var(--blue);margin-bottom:7px}
+  .words-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:13px}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap}
+  .tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 11px;font-size:12.5px;font-weight:800;color:var(--muted);transition:.15s ease}
+  .tab:hover{border-color:#BFDDE9;color:var(--blue-deep)}
+  .tab.active{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 7px 14px rgba(212,81,74,.16)}
+  .words-count{margin-left:auto;font-size:11.5px;color:var(--muted)}
+  .word-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+  .word-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 12px 10px;box-shadow:0 4px 12px rgba(43,87,108,.04);min-height:94px}
+  .word-card .word-top{display:flex;align-items:center;gap:6px;margin-bottom:5px;min-height:17px}
+  .word-note{font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--blue);background:var(--blue-soft);border-radius:999px;padding:3px 6px;white-space:nowrap}
+  .word-card .sound{margin-left:auto;border:1px solid #D8EAF2;background:#F7FBFD;color:var(--blue);border-radius:50%;width:23px;height:23px;font-size:12px;line-height:1}
+  .word-card .ru{font-size:22px;line-height:1.3;color:var(--ink);word-break:break-word}
+  .word-card .zh{font-size:12.5px;line-height:1.45;color:var(--muted);margin-top:3px}
+  .word-card .zh:before{content:"· ";color:var(--red)}
+  .dialogue-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .dialogue{background:#fff;border:1px solid var(--line);border-left:3px solid var(--red);border-radius:13px;padding:13px 14px;box-shadow:var(--shadow-soft)}
+  .dialogue-head{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+  .dialogue-head b{font-size:13.5px}
+  .dialogue-head span{font-size:11px;color:var(--muted)}
+  .dialogue-head button{margin-left:auto;border:1px solid #D8EAF2;background:#F7FBFD;color:var(--blue);border-radius:999px;padding:4px 8px;font-size:11px;font-weight:700}
+  .line{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-top:1px dashed #EDF4F7}
+  .who{width:19px;height:19px;flex:0 0 auto;border-radius:50%;background:var(--blue-soft);color:var(--blue-deep);font-size:10.5px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;margin-top:2px}
+  .line .say{flex:1;min-width:0}
+  .line .ru{font-size:16.5px;line-height:1.35;color:var(--ink)}
+  .line .zh{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .line .sound{border:0;background:transparent;color:var(--blue);font-size:12px;padding:2px 0 0;flex:0 0 auto}
+  .quiz-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 19px;box-shadow:var(--shadow);max-width:820px}
+  .quiz-top{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+  .quiz-progress{height:6px;flex:1;background:#EAF4F8;border-radius:999px;overflow:hidden}
+  .quiz-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--red));border-radius:999px;transition:width .2s ease}
+  .quiz-count{font-size:11.5px;color:var(--muted);white-space:nowrap}
+  .quiz-q{font-size:18px;font-weight:800;line-height:1.5;margin:0 0 13px}
+  .quiz-opts{display:grid;gap:7px}
+  .quiz-opt{
+    display:flex;align-items:center;gap:8px;text-align:left;background:#F8FCFE;border:1px solid #DDEBF2;
+    border-radius:10px;padding:9px 11px;font-size:13px;color:var(--ink);transition:.15s ease;
+  }
+  .quiz-opt:hover{border-color:#BADBE8;background:#F1FAFD}
+  .quiz-opt .q-letter{width:19px;height:19px;border-radius:50%;background:#E5F3F9;color:var(--blue-deep);font-size:10px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .quiz-opt.correct{background:var(--green-soft);border-color:#B8DCCB;color:#1F5C45}
+  .quiz-opt.correct .q-letter{background:#CDEBDD;color:#1F5C45}
+  .quiz-opt.wrong{background:var(--red-soft);border-color:#E8BDB8;color:var(--red-deep)}
+  .quiz-opt.wrong .q-letter{background:#F6D4D0;color:var(--red-deep)}
+  .quiz-feedback{margin-top:10px;font-size:12.5px;line-height:1.6;color:var(--muted);min-height:17px}
+  .quiz-feedback b{color:var(--ink)}
+  .quiz-hint{color:#9AAAB3;font-weight:600}
+  .quiz-next{display:flex;justify-content:flex-end;margin-top:10px}
+  .quiz-result{text-align:center;padding:8px 0 3px}
+  .quiz-result .score{font-family:Georgia,serif;font-size:42px;line-height:1;color:var(--red)}
+  .quiz-result h3{margin:6px 0 4px;font-size:17px}
+  .quiz-result p{font-size:12.5px;color:var(--muted);margin:0 0 13px}
+  .complete{
+    margin-top:44px;background:linear-gradient(120deg,#F7FCFE 0%,#FFFFFF 44%,#FFF8F7 100%);
+    border:1px solid #D8EAF2;border-radius:20px;padding:22px 24px;display:flex;align-items:center;gap:20px;
+    box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .complete:after{content:"";position:absolute;right:-40px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,#FAD7D3 0%,rgba(250,215,211,0) 70%)}
+  .complete-main{position:relative;z-index:1}
+  .complete .kicker{font-size:11px;letter-spacing:.18em;color:var(--red);font-weight:800;margin-bottom:4px}
+  .complete h2{font-size:21px;margin:0}
+  .complete p{font-size:12.5px;color:var(--muted);line-height:1.6;margin:6px 0 0}
+  .complete-stats{display:flex;gap:18px;margin-left:auto;position:relative;z-index:1}
+  .complete-stat b{display:block;font-family:Georgia,serif;font-size:24px;line-height:1;color:var(--blue-deep)}
+  .complete-stat span{display:block;font-size:10px;color:var(--muted);margin-top:4px}
+  .complete-actions{display:flex;gap:6px;margin-top:11px;flex-wrap:wrap}
+  .complete-actions .btn{padding:8px 12px;font-size:12px}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+  .foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:34px;padding-top:14px;font-size:11px;color:var(--muted);letter-spacing:.08em}
+  .foot b{color:var(--blue-deep);font-weight:800}
+  .toast{
+    position:fixed;left:50%;bottom:24px;z-index:60;transform:translate(-50%,12px);
+    background:var(--ink);color:#fff;border-radius:999px;padding:8px 14px;font-size:12.5px;
+    opacity:0;pointer-events:none;transition:.2s ease;box-shadow:0 12px 24px rgba(34,49,58,.2);
+  }
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+  body.hide-zh .zh{display:none!important}
+  @media (max-width:980px){
+    .hero{grid-template-columns:1fr;gap:26px;padding-top:40px}
+    .hero-art{height:300px;max-width:520px;width:100%;justify-self:center}
+    .hero-copy{max-width:720px}
+    .letter-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+    .false-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .word-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media (max-width:720px){
+    .page{padding-left:14px;padding-right:14px}
+    .topbar{align-items:flex-start;flex-wrap:wrap;gap:10px}
+    .controls{margin-left:0;width:100%}
+    .controls .switch{flex:1;justify-content:space-between}
+    .hero{padding-top:30px}
+    h1{font-size:46px}
+    h1 small{font-size:.46em}
+    .zh-title{font-size:19px}
+    .lead{font-size:14px}
+    .hero-art{height:250px;border-radius:20px}
+    .feature-letter{width:150px;height:184px}
+    .feature-letter .up{font-size:60px}
+    .feature-letter .low{font-size:25px}
+    .feature-letter .sound{margin-top:10px}
+    .feature-letter .ex{font-size:12.5px}
+    .mini-letter{width:44px;height:50px;font-size:21px}
+    .ml1{left:18px;top:26px}.ml2{right:16px;top:40px}.ml3{right:20px;bottom:24px}
+    .badge-33{left:18px;bottom:18px;width:58px;height:58px}
+    .badge-33 b{font-size:22px}
+    .badge-33 span{font-size:8px}
+    .badge-snow{right:14px;bottom:14px;font-size:9.5px;padding:5px 7px}
+    .section{padding-top:34px}
+    .section-head{flex-wrap:wrap}
+    .section-note{margin-left:47px;max-width:none;text-align:left;width:100%;padding-top:0}
+    .section-title{font-size:25px}
+    .letter-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+    .letter{min-height:102px;padding:8px 7px}
+    .letter-top b{font-size:25px}
+    .letter-top span{font-size:14px}
+    .letter-name{font-size:10.5px}
+    .letter-ex{font-size:10.5px}
+    .false-grid{grid-template-columns:1fr 1fr}
+    .rules{grid-template-columns:1fr}
+    .stress-layout{grid-template-columns:1fr}
+    .pairs{grid-template-columns:1fr 1fr}
+    .word-grid{grid-template-columns:1fr}
+    .word-card{min-height:0}
+    .dialogue-grid{grid-template-columns:1fr}
+    .complete{align-items:flex-start;flex-wrap:wrap;padding:18px}
+    .complete-stats{margin-left:0;width:100%;gap:22px}
+    .foot{font-size:10px}
+  }
+  @media (max-width:420px){
+    h1{font-size:40px}
+    .hero-art{height:220px}
+    .feature-letter{width:132px;height:164px}
+    .feature-letter .up{font-size:52px}
+    .letter-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .letter{min-height:96px;padding:7px 6px}
+    .letter-top b{font-size:23px}
+    .letter-name{font-size:10px}
+    .letter-sound{font-size:10.5px}
+    .letter-ex{font-size:10px}
+    .pairs{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">Я</span>
+      <div><b>РУССКИЙ</b><small>俄语情景对话</small></div>
+    </div>
+    <a href="index.html" style="font-size:10.5px;font-weight:800;color:#6C7E89;text-decoration:none">← 大厅</a>
+    <div class="controls">
+      <button class="switch" id="stressToggle" type="button" aria-pressed="true"><span>重音</span><i class="knob"></i></button>
+      <button class="switch" id="zhToggle" type="button" aria-pressed="true"><span>中文对照</span><i class="knob"></i></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><i></i> ПОДГОТОВКА · 00</div>
+        <h1>Алфавит,<br><span class="red">ударение</span><br><small>и первые слова</small></h1>
+        <div class="zh-title">字母、重音与第一批词</div>
+        <p class="lead">先认识西里尔字母，再学会“重音落在哪里”，最后用第一批生存短语开口。免费预备课，不计入 20 幕主线。</p>
+        <div class="hero-meta">
+          <span class="free-tag">БЕСПЛАТНО · 免费</span>
+          <span class="mini-tag">A0–A1 · 30–40 мин</span>
+          <span class="mini-tag">33 буквы · 54 карточки</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn primary" href="#alphabet">Начнём <span>→</span></a>
+          <span class="hero-note">建议按“字母 → 读音 → 重音 → 词卡”顺序走。</span>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="mini-letter ml1">Ё</div>
+        <div class="mini-letter ml2">Ж</div>
+        <div class="mini-letter ml3">Я</div>
+        <div class="feature-letter">
+          <span class="up">А</span>
+          <span class="low">а</span>
+          <span class="sound">[a]</span>
+          <span class="ex">арбу́з</span>
+        </div>
+        <div class="badge-33"><b>33</b><span>БУКВЫ</span></div>
+        <div class="badge-snow">ЗИМА · A0–A1</div>
+      </div>
+    </section>
+
+    <div class="nav-wrap">
+      <nav class="nav" aria-label="预备课目录">
+        <a href="#alphabet" class="active">Алфавит 字母</a>
+        <a href="#reading">Чтение 读音</a>
+        <a href="#stress">Ударение 重音</a>
+        <a href="#words">Слова 词卡</a>
+        <a href="#dialogues">Диалоги 对话</a>
+        <a href="#quiz">Практика 练习</a>
+      </nav>
+    </div>
+
+    <section class="section" id="alphabet">
+      <div class="section-head">
+        <div class="section-no">01</div>
+        <div>
+          <div class="section-kicker">АЛФАВИТ · 33 БУКВЫ</div>
+          <h2 class="section-title">先认识字母 <span>不按英语读</span></h2>
+        </div>
+        <div class="section-note">点字母卡听名称和例词。<br>红色小点是容易读错的“假朋友”。</div>
+      </div>
+
+      <div class="legend">
+        <span><i class="lg-vowel"></i>元音</span>
+        <span><i class="lg-cons"></i>辅音</span>
+        <span><i class="lg-sign"></i>符号</span>
+        <span><i class="lg-tricky"></i>容易读错</span>
+      </div>
+
+      <div class="letter-grid" id="letterGrid"></div>
+
+      <div class="false-wrap">
+        <div class="false-head"><b>最容易读错的“假朋友”</b><span>看见形状，不要直接套英语读音。</span></div>
+        <div class="false-grid" id="falseGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="reading">
+      <div class="section-head">
+        <div class="section-no">02</div>
+        <div>
+          <div class="section-kicker">ЧТЕНИЕ · 7 ПРАВИЛ</div>
+          <h2 class="section-title">先记 7 条读音规则 <span>能读就先走</span></h2>
+        </div>
+        <div class="section-note">A1 阶段先记常用的；<br>例外后面再补。</div>
+      </div>
+
+      <div class="rules">
+        <details class="rule" open>
+          <summary><span class="rule-num">01</span>重音要标出来</summary>
+          <div class="rule-body">
+            <p>俄语重音自由、会移动。学习材料里在重读元音上加重音符号，例如 <code>а́</code>：</p>
+            <div class="ex-row">
+              <span class="ex-chip"><span class="ru">спаси́бо</span><button class="mini-sound" data-say="спасибо" aria-label="朗读 спасибо">♪</button></span>
+              <span class="ex-chip"><span class="ru">Москва́</span><button class="mini-sound" data-say="Москва" aria-label="朗读 Москва">♪</button></span>
+            </div>
+            <p>重音符号不是正式俄语书写的一部分，是给学习者的提示。</p>
+          </div>
+        </details>
+
+        <details class="rule">
+          <summary><span class="rule-num">02</span>非重读的 о 常弱化</summary>
+          <div class="rule-body">
+            <p>先记一个近似：非重读的 <code>о</code> 听起来接近 <code>[a]/[ə]</code>。</p>
+            <div class="ex-row">
+              <span class="ex-chip"><span class="ru">Москва́</span><button class="mini-sound" data-say="Москва" aria-label="朗读 Москва">♪</button></span>
+              <span class="ex-chip"><span class="ru">хорошо́</span><button class="mini-sound" data-say="хорошо" aria-label="朗读 хорошо">♪</button></span>
+              <span class="ex-chip"><span class="ru">спаси́бо</span><button class="mini-sound" data-say="спасибо" aria-label="朗读 спасибо">♪</button></span>
+            </div>
+          </div>
+        </details>
+
+        <details class="rule">
+          <summary><span class="rule-num">03</span>词尾浊辅音要清化</summary>
+          <div class="rule-body">
+            <p>词尾的浊辅音会读得更轻、更清：</p>
+            <div class="ex-row">
+              <span class="ex-chip"><span class="ru">друг</span><button class="mini-sound" data-say="друг" aria-label="朗读 друг">♪</button></span>
+              <span class="ex-chip"><span class="ru">хлеб</span><button class="mini-sound" data-say="хлеб" aria-label="朗读 хлеб">♪</button></span>
+              <span class="ex-chip"><span class="ru">нож</span><button class="mini-sound" data-say="нож" aria-label="朗读 нож">♪</button></span>
+              <span class="ex-chip"><span class="ru">са́д</span><button class="mini-sound" data-say="сад" aria-label="朗读 сад">♪</button></span>
+            </div>
+          </div>
+        </details>
+
+        <details class="rule">
+          <summary><span class="rule-num">04</span><code>ё</code> 永远重读</summary>
+          <div class="rule-body">
+            <p><code>ё</code> 自带重音，学习材料里建议统一写 <code>ё</code>，不要让它和 <code>е</code> 混在一起。</p>
+            <div class="ex-row">
+              <span class="ex-chip"><span class="ru">всё</span><button class="mini-sound" data-say="всё" aria-label="朗读 всё">♪</button></span>
+              <span class="ex-chip"><span class="ru">ещё</span><button class="mini-sound" data-say="ещё" aria-label="朗读 ещё">♪</button></span>
+              <span class="ex-chip"><span class="ru">тёплый</span><button class="mini-sound" data-say="тёплый" aria-label="朗读 тёплый">♪</button></span>
+            </div>
+          </div>
+        </details>
+
+        <details class="rule">
+          <summary><span class="rule-num">05</span><code>ь</code> 和 <code>ъ</code> 本身不发音</summary>
+          <div class="rule-body">
+            <p><code>ь</code> 让前面的辅音变软；<code>ъ</code> 起分隔作用。</p>
+            <div class="ex-row">
+              <span class="ex-chip"><span class="ru">день</span><button class="mini-sound" data-say="день" aria-label="朗读 день">♪</button></span>
+              <span class="ex-chip"><span class="ru">пять</span><button class="mini-sound" data-say="пять" aria-label="朗读 пять">♪</button></span>
+              <span class="ex-chip"><span class="ru">подъе́зд</span><button class="mini-sound" data-say="подъезд" aria-label="朗读 подъезд">♪</button></span>
+              <span class="ex-chip"><span class="ru">объявле́ние</span><button class="mini-sound" data-say="объявление" aria-label="朗读 объявление">♪</button></span>
+            </div>
+          </div>
+        </details>
+
+        <details class="rule">
+          <summary><span class="rule-num">06</span><code>ж/ш/ц</code> 偏硬，<code>ч/щ</code> 偏软</summary>
+          <div class="rule-body">
+            <p>这是给初学者的粗略规则；遇到例外再单独记。</p>
+            <div class="ex-row">
+              <span class="ex-chip"><span class="ru">журна́л</span><button class="mini-sound" data-say="журнал" aria-label="朗读 журнал">♪</button></span>
+              <span class="ex-chip"><span class="ru">шко́ла</span><button class="mini-sound" data-say="школа" aria-label="朗读 школа">♪</button></span>
+              <span class="ex-chip"><span class="ru">цена́</span><button class="mini-sound" data-say="цена" aria-label="朗读 цена">♪</button></span>
+              <span class="ex-chip"><span class="ru">чай</span><button class="mini-sound" data-say="чай" aria-label="朗读 чай">♪</button></span>
+              <span class="ex-chip"><span class="ru">щи</span><button class="mini-sound" data-say="щи" aria-label="朗读 щи">♪</button></span>
+            </div>
+          </div>
+        </details>
+
+        <details class="rule">
+          <summary><span class="rule-num">07</span>几个高频词有固定读法</summary>
+          <div class="rule-body">
+            <p>先记这几个“看见就会读”的词：</p>
+            <div class="ex-row">
+              <span class="ex-chip"><span class="ru">что</span><button class="mini-sound" data-say="что" aria-label="朗读 что">♪</button></span>
+              <span class="ex-chip"><span class="ru">коне́чно</span><button class="mini-sound" data-say="конечно" aria-label="朗读 конечно">♪</button></span>
+              <span class="ex-chip"><span class="ru">здра́вствуйте</span><button class="mini-sound" data-say="здравствуйте" aria-label="朗读 здравствуйте">♪</button></span>
+              <span class="ex-chip"><span class="ru">ничего́</span><button class="mini-sound" data-say="ничего" aria-label="朗读 ничего">♪</button></span>
+            </div>
+            <p><code>что</code> 读作 [што]；<code>коне́чно</code> 读作 [кане́шна]；<code>здра́вствуйте</code> 的第一个 <code>в</code> 不发音。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="section" id="stress">
+      <div class="section-head">
+        <div class="section-no">03</div>
+        <div>
+          <div class="section-kicker">УДАРЕНИЕ · СМЫСЛ</div>
+          <h2 class="section-title">重音会改变词义 <span>别只看字母</span></h2>
+        </div>
+        <div class="section-note">点词听对比；<br>红色重音是重点。</div>
+      </div>
+
+      <div class="stress-layout">
+        <div class="stress-copy">
+          <div class="big">́</div>
+          <h3>俄语重音不是装饰</h3>
+          <p>同一个词，重音换了，意思可能也换了。学习时每个新词都标重音，听 TTS 时先听重音落在哪个音节。</p>
+          <div class="tip">小技巧：先记“重音位置”，再记拼写。词卡上的重音开关可以帮你做对照。</div>
+        </div>
+        <div class="pairs">
+          <div class="pair"><div class="pair-label">城堡 / 锁</div><div class="word"><button data-say="за́мок"><span class="w1">за́мок</span><small>城堡</small></button><button data-say="замо́к"><span class="w2">замо́к</span><small>锁</small></button></div></div>
+          <div class="pair"><div class="pair-label">痛苦 / 面粉</div><div class="word"><button data-say="му́ка"><span class="w1">му́ка</span><small>痛苦</small></button><button data-say="мука́"><span class="w2">мука́</span><small>面粉</small></button></div></div>
+          <div class="pair"><div class="pair-label">值钱 / 站着</div><div class="word"><button data-say="сто́ит"><span class="w1">сто́ит</span><small>值……钱</small></button><button data-say="стои́т"><span class="w2">стои́т</span><small>站着</small></button></div></div>
+          <div class="pair"><div class="pair-label">更窄 / 已经</div><div class="word"><button data-say="у́же"><span class="w1">у́же</span><small>更窄</small></button><button data-say="уже́"><span class="w2">уже́</span><small>已经</small></button></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="words">
+      <div class="section-head">
+        <div class="section-no">04</div>
+        <div>
+          <div class="section-kicker">ПЕРВЫЕ СЛОВА · 54 КАРТОЧКИ</div>
+          <h2 class="section-title">第一批生存词 <span>先能开口</span></h2>
+        </div>
+        <div class="section-note">点 ♪ 听俄语；<br>顶部可关闭中文或重音。</div>
+      </div>
+
+      <div class="words-top">
+        <div class="tabs" id="wordTabs">
+          <button class="tab active" data-group="greeting" type="button">问候 16</button>
+          <button class="tab" data-group="emergency" type="button">救急 17</button>
+          <button class="tab" data-group="question" type="button">疑问 10</button>
+          <button class="tab" data-group="numbers" type="button">数字 11</button>
+        </div>
+        <div class="words-count" id="wordsCount">54 张词卡</div>
+      </div>
+
+      <div class="word-grid" id="wordGrid"></div>
+    </section>
+
+    <section class="section" id="dialogues">
+      <div class="section-head">
+        <div class="section-no">05</div>
+        <div>
+          <div class="section-kicker">ДИАЛОГИ · 4 СЦЕНКИ</div>
+          <h2 class="section-title">把词放进对话 <span>先听，再读</span></h2>
+        </div>
+        <div class="section-note">点 ♪ 听单句；<br>“朗读整段”按顺序播放。</div>
+      </div>
+
+      <div class="dialogue-grid" id="dialogueGrid"></div>
+    </section>
+
+    <section class="section" id="quiz">
+      <div class="section-head">
+        <div class="section-no">06</div>
+        <div>
+          <div class="section-kicker">ПРАКТИКА · 8 ВОПРОСОВ</div>
+          <h2 class="section-title">小练习 <span>看看记住了多少</span></h2>
+        </div>
+        <div class="section-note">答错会解释；<br>可以重新开始。</div>
+      </div>
+
+      <div class="quiz-card" id="quizCard"></div>
+    </section>
+
+    <section class="complete" id="complete">
+      <div class="complete-main">
+        <div class="kicker">ПОДГОТОВКА ЗАВЕРШЕНА · 00</div>
+        <h2>预备课完成</h2>
+        <p>你已经认识 33 个字母，知道重音会改变词义，也拿到了第一批生存词。下一步去 01 机场，把它们放进真实场景。</p>
+        <div class="complete-actions">
+          <button class="btn ghost" id="restartQuiz" type="button">再练一次</button>
+          <a class="btn primary" href="01-机场.html">去 01 机场 →</a>
+        </div>
+      </div>
+      <div class="complete-stats">
+        <div class="complete-stat"><b>33</b><span>字母</span></div>
+        <div class="complete-stat"><b>7</b><span>读音规则</span></div>
+        <div class="complete-stat"><b>54</b><span>词卡</span></div>
+        <div class="complete-stat"><b>4</b><span>迷你对话</span></div>
+      </div>
+    </section>
+
+    <div class="foot">
+      <span><b>РУССКИЙ · 00</b> · 免费预备课 · 不计入 20 幕</span>
+      <span>单文件 HTML · 离线可开 · 无排行榜</span>
+    </div>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const strip = s => String(s || '').normalize('NFC').replace(/́/g, '').replace(/̀/g, '');
+
+/* ---------- speech ---------- */
+const synth = window.speechSynthesis || null;
+let ruVoice = null;
+function pickVoice(){
+  if(!synth) return;
+  const voices = synth.getVoices();
+  ruVoice = voices.find(v => (v.lang || '').toLowerCase().startsWith('ru')) || null;
+}
+if(synth){ pickVoice(); synth.onvoiceschanged = pickVoice; }
+function speak(text){
+  if(!synth){ toast('这个浏览器不支持语音朗读。'); return; }
+  const clean = strip(text);
+  if(!clean) return;
+  synth.cancel();
+  const u = new SpeechSynthesisUtterance(clean);
+  u.lang = 'ru-RU';
+  u.rate = .82;
+  if(ruVoice) u.voice = ruVoice;
+  synth.speak(u);
+}
+function speakSequence(lines){
+  if(!synth){ toast('这个浏览器不支持语音朗读。'); return; }
+  synth.cancel();
+  lines.forEach(line => {
+    const u = new SpeechSynthesisUtterance(strip(line.ru));
+    u.lang = 'ru-RU';
+    u.rate = .8;
+    if(ruVoice) u.voice = ruVoice;
+    synth.speak(u);
+  });
+}
+let toastTimer = null;
+function toast(msg){
+  const el = $('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+/* ---------- data ---------- */
+const LETTERS = [
+  {u:'А',l:'а',name:'а',sound:'[a]',ex:'арбу́з',type:'vowel'},
+  {u:'Б',l:'б',name:'бэ',sound:'[b]',ex:'банк',type:'cons'},
+  {u:'В',l:'в',name:'вэ',sound:'[v]',ex:'вода́',type:'cons',tricky:true},
+  {u:'Г',l:'г',name:'гэ',sound:'[g]',ex:'го́род',type:'cons'},
+  {u:'Д',l:'д',name:'дэ',sound:'[d]',ex:'дом',type:'cons'},
+  {u:'Е',l:'е',name:'е',sound:'[je] / [e]',ex:'еда́',type:'vowel',tricky:true},
+  {u:'Ё',l:'ё',name:'ё',sound:'[jo]',ex:'ёлка',type:'vowel'},
+  {u:'Ж',l:'ж',name:'жэ',sound:'[zh]',ex:'журна́л',type:'cons'},
+  {u:'З',l:'з',name:'зэ',sound:'[z]',ex:'зима́',type:'cons'},
+  {u:'И',l:'и',name:'и',sound:'[i]',ex:'игра́',type:'vowel'},
+  {u:'Й',l:'й',name:'и кра́ткое',sound:'[j]',ex:'йо́гурт',type:'cons',tricky:true},
+  {u:'К',l:'к',name:'ка',sound:'[k]',ex:'кот',type:'cons'},
+  {u:'Л',l:'л',name:'эль',sound:'[l]',ex:'ла́мпа',type:'cons'},
+  {u:'М',l:'м',name:'эм',sound:'[m]',ex:'ма́ма',type:'cons'},
+  {u:'Н',l:'н',name:'эн',sound:'[n]',ex:'нос',type:'cons',tricky:true},
+  {u:'О',l:'о',name:'о',sound:'[o]',ex:'окно́',type:'vowel'},
+  {u:'П',l:'п',name:'пэ',sound:'[p]',ex:'парк',type:'cons'},
+  {u:'Р',l:'р',name:'эр',sound:'[r]',ex:'ры́ба',type:'cons',tricky:true},
+  {u:'С',l:'с',name:'эс',sound:'[s]',ex:'сад',type:'cons',tricky:true},
+  {u:'Т',l:'т',name:'тэ',sound:'[t]',ex:'торт',type:'cons'},
+  {u:'У',l:'у',name:'у',sound:'[u]',ex:'у́лица',type:'vowel',tricky:true},
+  {u:'Ф',l:'ф',name:'эф',sound:'[f]',ex:'фо́то',type:'cons'},
+  {u:'Х',l:'х',name:'ха',sound:'[kh]',ex:'хлеб',type:'cons',tricky:true},
+  {u:'Ц',l:'ц',name:'цэ',sound:'[ts]',ex:'цена́',type:'cons'},
+  {u:'Ч',l:'ч',name:'че',sound:'[ch]',ex:'чай',type:'cons'},
+  {u:'Ш',l:'ш',name:'ша',sound:'[sh]',ex:'шко́ла',type:'cons'},
+  {u:'Щ',l:'щ',name:'ща',sound:'[shch]',ex:'щи',type:'cons'},
+  {u:'Ъ',l:'ъ',name:'твёрдый знак',sound:'—',ex:'подъе́зд',type:'sign'},
+  {u:'Ы',l:'ы',name:'ы',sound:'[y]',ex:'сыр',type:'vowel'},
+  {u:'Ь',l:'ь',name:'мя́гкий знак',sound:'—',ex:'день',type:'sign'},
+  {u:'Э',l:'э',name:'э',sound:'[e]',ex:'э́то',type:'vowel'},
+  {u:'Ю',l:'ю',name:'ю',sound:'[ju]',ex:'юг',type:'vowel'},
+  {u:'Я',l:'я',name:'я',sound:'[ja]',ex:'я́блоко',type:'vowel'}
+];
+
+const FALSE_FRIENDS = [
+  {letter:'В в', wrong:'不是 B', sound:'[v]', ex:'вода́'},
+  {letter:'Н н', wrong:'不是 H', sound:'[n]', ex:'нос'},
+  {letter:'Р р', wrong:'不是 P', sound:'[r]', ex:'ры́ба'},
+  {letter:'С с', wrong:'不是 C', sound:'[s]', ex:'сад'},
+  {letter:'У у', wrong:'不是 Y', sound:'[u]', ex:'у́лица'},
+  {letter:'Х х', wrong:'不是 X', sound:'[kh]', ex:'хлеб'},
+  {letter:'Е е', wrong:'不是英语 E', sound:'[je] / [e]', ex:'еда́'},
+  {letter:'Й й', wrong:'不是英语 I', sound:'[j]', ex:'йо́гурт'}
+];
+
+const WORD_GROUPS = {
+  greeting: {label:'问候', items:[
+    {ru:'Здра́вствуйте!',zh:'您好！',note:'正式'},
+    {ru:'Приве́т!',zh:'嗨！',note:'非正式'},
+    {ru:'До́брое у́тро!',zh:'早上好！',note:'上午'},
+    {ru:'До́брый де́нь!',zh:'白天好 / 下午好',note:'白天'},
+    {ru:'До́брый ве́чер!',zh:'晚上好！',note:'傍晚'},
+    {ru:'Споко́йной но́чи!',zh:'晚安！',note:'睡前'},
+    {ru:'До свида́ния!',zh:'再见！',note:'正式'},
+    {ru:'Пока́!',zh:'拜拜！',note:'非正式'},
+    {ru:'Как дела́?',zh:'你好吗？',note:'熟人'},
+    {ru:'Хорошо́, спаси́бо.',zh:'很好，谢谢。',note:'回答'},
+    {ru:'А у вас?',zh:'您呢？',note:'正式'},
+    {ru:'А у тебя́?',zh:'你呢？',note:'非正式'},
+    {ru:'О́чень прия́тно.',zh:'很高兴认识您。',note:'初见'},
+    {ru:'Меня́ зову́т …',zh:'我叫……',note:'介绍'},
+    {ru:'Как вас зову́т?',zh:'您叫什么名字？',note:'正式'},
+    {ru:'Как тебя́ зову́т?',zh:'你叫什么名字？',note:'非正式'}
+  ]},
+  emergency: {label:'救急', items:[
+    {ru:'Спаси́бо.',zh:'谢谢。',note:'最常用'},
+    {ru:'Большо́е спаси́бо.',zh:'非常感谢。',note:'更客气'},
+    {ru:'Пожа́луйста.',zh:'请 / 不客气。',note:'多用途'},
+    {ru:'Извини́те.',zh:'对不起 / 打扰一下。',note:'正式'},
+    {ru:'Прости́те.',zh:'对不起 / 请原谅。',note:'稍重'},
+    {ru:'Да.',zh:'是。',note:'肯定'},
+    {ru:'Нет.',zh:'不。',note:'否定'},
+    {ru:'Хорошо́.',zh:'好。',note:'同意'},
+    {ru:'Я не понима́ю.',zh:'我不明白。',note:'救急'},
+    {ru:'Повтори́те, пожа́луйста.',zh:'请再说一遍。',note:'重复'},
+    {ru:'Говори́те ме́дленнее, пожа́луйста.',zh:'请说慢一点。',note:'放慢'},
+    {ru:'Я немно́го говорю́ по-ру́сски.',zh:'我会说一点俄语。',note:'降低预期'},
+    {ru:'Вы говори́те по-англи́йски?',zh:'您会说英语吗？',note:'备用'},
+    {ru:'Мне нужна́ по́мощь.',zh:'我需要帮助。',note:'求助'},
+    {ru:'Где туале́т?',zh:'洗手间在哪里？',note:'高频'},
+    {ru:'Ско́лько э́то сто́ит?',zh:'这个多少钱？',note:'购物'},
+    {ru:'Мо́жно оплати́ть ка́ртой?',zh:'可以刷卡吗？',note:'付款'}
+  ]},
+  question: {label:'疑问', items:[
+    {ru:'кто',zh:'谁',note:'疑问词'},
+    {ru:'что',zh:'什么',note:'疑问词'},
+    {ru:'где',zh:'在哪里',note:'疑问词'},
+    {ru:'куда́',zh:'去哪里',note:'疑问词'},
+    {ru:'отку́да',zh:'从哪里',note:'疑问词'},
+    {ru:'когда́',zh:'什么时候',note:'疑问词'},
+    {ru:'почему́',zh:'为什么',note:'疑问词'},
+    {ru:'ско́лько',zh:'多少',note:'疑问词'},
+    {ru:'как',zh:'怎么',note:'疑问词'},
+    {ru:'како́й',zh:'什么样的',note:'疑问词'}
+  ]},
+  numbers: {label:'数字', items:[
+    {ru:'но́ль',zh:'零',note:'0'},
+    {ru:'оди́н',zh:'一',note:'1'},
+    {ru:'два',zh:'二',note:'2'},
+    {ru:'три',zh:'三',note:'3'},
+    {ru:'четы́ре',zh:'四',note:'4'},
+    {ru:'пять',zh:'五',note:'5'},
+    {ru:'шесть',zh:'六',note:'6'},
+    {ru:'семь',zh:'七',note:'7'},
+    {ru:'во́семь',zh:'八',note:'8'},
+    {ru:'де́вять',zh:'九',note:'9'},
+    {ru:'де́сять',zh:'十',note:'10'}
+  ]}
+};
+
+const DIALOGUES = [
+  {title:'正式认识', sub:'Знакомство', lines:[
+    {who:'A',ru:'Здра́вствуйте!',zh:'您好！'},
+    {who:'B',ru:'Здра́вствуйте! Как вас зову́т?',zh:'您好！您叫什么名字？'},
+    {who:'A',ru:'Меня́ зову́т Ли Мин. А вас?',zh:'我叫李明。您呢？'},
+    {who:'B',ru:'Меня́ зову́т Аня. О́чень прия́тно.',zh:'我叫阿尼亚。很高兴认识您。'}
+  ]},
+  {title:'听不懂', sub:'Я не понимаю', lines:[
+    {who:'A',ru:'Извини́те, я не понима́ю.',zh:'对不起，我不明白。'},
+    {who:'B',ru:'Хорошо́, я бу́ду говори́ть ме́дленнее.',zh:'好，我会说慢一点。'},
+    {who:'A',ru:'Спаси́бо. Повтори́те, пожа́луйста.',zh:'谢谢。请再说一遍。'}
+  ]},
+  {title:'问价与付款', sub:'Сколько стоит?', lines:[
+    {who:'A',ru:'Здра́вствуйте! Ско́лько э́то сто́ит?',zh:'您好！这个多少钱？'},
+    {who:'B',ru:'Э́то сто́ит три́ста рубле́й.',zh:'这个 300 卢布。'},
+    {who:'A',ru:'Мо́жно оплати́ть ка́ртой?',zh:'可以刷卡吗？'},
+    {who:'B',ru:'Да, коне́чно.',zh:'可以，当然。'}
+  ]},
+  {title:'找洗手间', sub:'Где туалет?', lines:[
+    {who:'A',ru:'Извини́те, где туале́т?',zh:'打扰一下，洗手间在哪里？'},
+    {who:'B',ru:'Там, спра́ва.',zh:'那边，右边。'},
+    {who:'A',ru:'Спаси́бо!',zh:'谢谢！'}
+  ]}
+];
+
+const QUIZ = [
+  {q:'哪个字母读 [v]？', options:['Б','В','Н'], answer:1, why:'В 读 [v]；Б 是 [b]，Н 是 [n]。'},
+  {q:'哪个字母永远重读？', options:['е','ё','э'], answer:1, why:'ё 永远带重音；е 和 э 不带这个规则。'},
+  {q:'“谢谢”是哪一个？', options:['Пожа́луйста.','Спаси́бо.','До свида́ния.'], answer:1, why:'Спаси́бо = 谢谢；Пожа́луйста = 请/不客气；До свида́ния = 再见。'},
+  {q:'Как вас зову́т? 应该怎么回答？', options:['Три́ста рубле́й.','Меня́ зову́т Ли Мин.','Где туале́т?'], answer:1, why:'“您叫什么名字？”回答“我叫李明”。'},
+  {q:'“城堡”是哪一个？', options:['замо́к','за́мок'], answer:1, why:'за́мок = 城堡；замо́к = 锁。'},
+  {q:'“我不明白”是哪一个？', options:['Я немно́го говорю́ по-ру́сски.','Ско́лько э́то сто́ит?','Я не понима́ю.'], answer:2, why:'Я не понима́ю = 我不明白。'},
+  {q:'哪个字母读 [n]？', options:['Р','Н','С'], answer:1, why:'Н 读 [n]；Р 是大舌颤音；С 是 [s]。'},
+  {q:'正式告别用哪一个？', options:['Приве́т!','Пока́!','До свида́ния!'], answer:2, why:'До свида́ния 最正式；Приве́т / Пока́ 更适合熟人。'}
+];
+
+/* ---------- render alphabet ---------- */
+$('letterGrid').innerHTML = LETTERS.map(x => `
+  <button class="letter ${x.type} ${x.tricky ? 'tricky' : ''}" data-say="${esc(x.name + ', ' + x.ex)}" aria-label="听 ${esc(x.u)}，例词 ${esc(x.ex)}">
+    ${x.tricky ? '<i class="tricky-dot"></i>' : ''}
+    <span class="letter-top"><b>${x.u}</b><span>${x.l}</span></span>
+    <span class="letter-name">${esc(x.name)}</span>
+    <span class="letter-sound">${esc(x.sound)}</span>
+    <span class="letter-ex">${esc(x.ex)}</span>
+    <span class="letter-play">♪</span>
+  </button>
+`).join('');
+
+$('falseGrid').innerHTML = FALSE_FRIENDS.map(x => `
+  <button class="false-letter" data-say="${esc(x.ex)}" aria-label="听 ${esc(x.ex)}">
+    <b>${x.letter}</b>
+    <span>${x.wrong}<br><em>${x.sound}</em></span>
+  </button>
+`).join('');
+
+/* ---------- first words ---------- */
+let currentGroup = 'greeting';
+function renderWords(group){
+  currentGroup = group;
+  const data = WORD_GROUPS[group];
+  $('wordGrid').innerHTML = data.items.map(x => {
+    const plain = strip(x.ru);
+    return `<article class="word-card">
+      <div class="word-top"><span class="word-note">${esc(x.note)}</span><button class="sound" data-say="${esc(plain)}" aria-label="朗读 ${esc(plain)}">♪</button></div>
+      <div class="ru" data-stressed="${esc(x.ru)}" data-plain="${esc(plain)}">${esc(x.ru)}</div>
+      <div class="zh">${esc(x.zh)}</div>
+    </article>`;
+  }).join('');
+  $('wordsCount').textContent = data.items.length + ' 张词卡';
+  document.querySelectorAll('#wordTabs .tab').forEach(t => t.classList.toggle('active', t.dataset.group === group));
+  applyStress();
+}
+document.querySelectorAll('#wordTabs .tab').forEach(tab => {
+  tab.addEventListener('click', () => renderWords(tab.dataset.group));
+});
+
+/* ---------- dialogues ---------- */
+$('dialogueGrid').innerHTML = DIALOGUES.map((d, di) => `
+  <article class="dialogue">
+    <div class="dialogue-head"><b>${esc(d.title)}</b><span>${esc(d.sub)}</span><button data-dialogue="${di}">朗读整段</button></div>
+    ${d.lines.map(line => {
+      const plain = strip(line.ru);
+      return `<div class="line">
+        <span class="who">${line.who}</span>
+        <div class="say">
+          <div class="ru" data-stressed="${esc(line.ru)}" data-plain="${esc(plain)}">${esc(line.ru)}</div>
+          <div class="zh">${esc(line.zh)}</div>
+        </div>
+        <button class="sound" data-say="${esc(plain)}" aria-label="朗读 ${esc(plain)}">♪</button>
+      </div>`;
+    }).join('')}
+  </article>
+`).join('');
+
+/* ---------- stress / zh toggles ---------- */
+let stressOn = true;
+function applyStress(){
+  document.querySelectorAll('.ru[data-stressed]').forEach(el => {
+    el.textContent = stressOn ? el.dataset.stressed : el.dataset.plain;
+  });
+}
+$('stressToggle').addEventListener('click', () => {
+  stressOn = !stressOn;
+  $('stressToggle').setAttribute('aria-pressed', String(stressOn));
+  applyStress();
+});
+$('zhToggle').addEventListener('click', () => {
+  const on = document.body.classList.toggle('hide-zh') === false;
+  $('zhToggle').setAttribute('aria-pressed', String(on));
+});
+
+/* ---------- quiz ---------- */
+let quizIndex = 0, quizScore = 0, quizAnswered = false;
+function renderQuiz(){
+  const q = QUIZ[quizIndex];
+  const pct = ((quizIndex + 1) / QUIZ.length) * 100;
+  $('quizCard').innerHTML = `
+    <div class="quiz-top">
+      <div class="quiz-progress"><i style="width:${pct}%"></i></div>
+      <div class="quiz-count">${quizIndex + 1} / ${QUIZ.length}</div>
+    </div>
+    <p class="quiz-q">${esc(q.q)}</p>
+    <div class="quiz-opts">
+      ${q.options.map((opt, i) => `<button class="quiz-opt" data-opt="${i}"><span class="q-letter">${'ABC'[i]}</span><span>${esc(opt)}</span></button>`).join('')}
+    </div>
+    <div class="quiz-feedback" id="quizFeedback" aria-live="polite"><span class="quiz-hint">选择一个答案，看看对不对。</span></div>
+    <div class="quiz-next" id="quizNext"></div>
+  `;
+  quizAnswered = false;
+}
+function answerQuiz(i){
+  if(quizAnswered) return;
+  quizAnswered = true;
+  const q = QUIZ[quizIndex];
+  const opts = [...document.querySelectorAll('#quizCard .quiz-opt')];
+  opts.forEach((el, idx) => {
+    el.disabled = true;
+    if(idx === q.answer) el.classList.add('correct');
+    if(idx === i && i !== q.answer) el.classList.add('wrong');
+  });
+  if(i === q.answer) quizScore++;
+  $('quizFeedback').innerHTML = `<b>${i === q.answer ? 'Верно!' : 'Почти!'}</b> ${esc(q.why)}`;
+  $('quizNext').innerHTML = `<button class="btn primary" id="nextQuiz" type="button">${quizIndex === QUIZ.length - 1 ? '看结果' : '下一题'} →</button>`;
+  $('nextQuiz').addEventListener('click', nextQuiz);
+}
+function nextQuiz(){
+  if(quizIndex < QUIZ.length - 1){ quizIndex++; renderQuiz(); return; }
+  showQuizResult();
+}
+function showQuizResult(){
+  const total = QUIZ.length;
+  const msg = quizScore === total ? 'Отлично! 全对。' : quizScore >= 6 ? 'Хорошо! 已经不错了。' : 'Ещё разок? 再走一遍会更稳。';
+  $('quizCard').innerHTML = `
+    <div class="quiz-result">
+      <div class="score">${quizScore} / ${total}</div>
+      <h3>${esc(msg)}</h3>
+      <p>答错的题可以回到对应小节再看一遍；预备课不扣分，只帮助记忆。</p>
+      <button class="btn primary" id="quizAgain" type="button">再练一次 →</button>
+    </div>
+  `;
+  $('quizAgain').addEventListener('click', restartQuiz);
+}
+function restartQuiz(){
+  quizIndex = 0; quizScore = 0; quizAnswered = false; renderQuiz();
+}
+document.addEventListener('click', e => {
+  const opt = e.target.closest('.quiz-opt');
+  if(opt) answerQuiz(Number(opt.dataset.opt));
+});
+$('restartQuiz').addEventListener('click', () => {
+  restartQuiz();
+  document.getElementById('quiz').scrollIntoView({behavior:'smooth'});
+});
+
+/* ---------- audio delegation ---------- */
+document.addEventListener('click', e => {
+  const seq = e.target.closest('[data-dialogue]');
+  if(seq){
+    const d = DIALOGUES[Number(seq.dataset.dialogue)];
+    if(d) speakSequence(d.lines);
+    return;
+  }
+  const sp = e.target.closest('[data-say]');
+  if(sp){
+    speak(sp.dataset.say || sp.textContent);
+  }
+});
+
+/* ---------- nav active ---------- */
+const navLinks = [...document.querySelectorAll('.nav a')];
+const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+function updateNav(){
+  const y = window.scrollY + 220;
+  let current = sections[0];
+  for(const s of sections){ if(s.offsetTop <= y) current = s; }
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
+}
+window.addEventListener('scroll', updateNav, {passive:true});
+navLinks.forEach(a => a.addEventListener('click', () => {
+  navLinks.forEach(x => x.classList.remove('active'));
+  a.classList.add('active');
+}));
+
+/* ---------- init ---------- */
+renderWords('greeting');
+renderQuiz();
+applyStress();
+updateNav();
+</script>
+</body>
+</html>

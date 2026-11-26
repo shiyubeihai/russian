@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>РУССКИЙ · 俄语情景对话 · 免费试玩 00–04</title>
+<style>
+  :root{
+    --bg:#F4FAFD; --panel:#FFFFFF; --ink:#22313A; --muted:#6C7E89;
+    --line:#D9E7EE; --ice:#EAF4F9; --ice-2:#F7FCFE;
+    --blue:#1F4E79; --blue-2:#4C7E9B; --blue-soft:#E7F3F9;
+    --red:#D4514A; --red-deep:#B93B36; --red-soft:#FCEEED;
+    --green:#2F7D5B; --green-soft:#E9F5EF;
+    --gold:#C89B4A; --gold-soft:#FBF4E3;
+    --cafe:#C56B3E; --cafe-soft:#FBEFE6;
+    --hotel:#5B8A7A; --hotel-soft:#EAF4EF;
+    --market:#B28A3D; --market-soft:#FBF5E5;
+    --shadow:0 16px 40px rgba(43,87,108,.08);
+    --shadow-soft:0 8px 22px rgba(43,87,108,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:
+      radial-gradient(900px 540px at 4% -12%, #FFFFFF 0%, rgba(255,255,255,0) 64%),
+      radial-gradient(760px 480px at 102% 0%, #E3F2F9 0%, rgba(227,242,249,0) 62%),
+      radial-gradient(620px 420px at 70% 46%, rgba(255,255,255,.8) 0%, rgba(255,255,255,0) 68%),
+      linear-gradient(180deg,#F8FCFE 0%,var(--bg) 46%,#F1F9FC 100%);
+    min-height:100vh;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.45;
+    background-image:radial-gradient(rgba(116,165,190,.16) 1px, transparent 1.2px);
+    background-size:30px 30px;
+    mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.4) 35%,transparent 72%);
+  }
+  a{color:inherit;text-decoration:none}
+  .page{max-width:1120px;margin:0 auto;padding:0 22px 64px}
+  .topbar{display:flex;align-items:center;gap:12px;padding:18px 0 14px;border-bottom:1px solid rgba(217,231,238,.8)}
+  .brand{display:flex;align-items:center;gap:9px}
+  .brand-mark{width:34px;height:34px;border-radius:10px;background:var(--red);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:19px;font-weight:700;box-shadow:0 8px 16px rgba(212,81,74,.2)}
+  .brand b{display:block;font-size:14px;letter-spacing:.12em}
+  .brand small{display:block;font-size:10.5px;color:var(--muted);letter-spacing:.08em;margin-top:2px}
+  .top-cta{margin-left:auto;font-size:10.5px;font-weight:900;color:var(--green);background:var(--green-soft);border:1px solid #C8E2D6;border-radius:999px;padding:6px 11px;letter-spacing:.04em}
+  .hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);gap:38px;align-items:center;padding:46px 0 28px}
+  .kicker{font-size:10.5px;letter-spacing:.22em;font-weight:900;color:var(--blue-2);display:flex;align-items:center;gap:8px;margin-bottom:12px}
+  .kicker i{width:7px;height:7px;border-radius:50%;background:var(--red)}
+  h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:58px;line-height:.98;letter-spacing:-.025em;font-weight:700}
+  h1 span{display:block;font-family:"PingFang SC","Hiragino Sans GB",sans-serif;font-size:17px;font-weight:600;line-height:1.5;color:var(--muted);letter-spacing:.02em;margin-top:12px}
+  .lead{font-size:13.5px;line-height:1.75;color:var(--muted);max-width:590px;margin:12px 0 0}
+  .hero-badges{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:19px}
+  .free-badge{display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:900;color:var(--green);background:var(--green-soft);border:1px solid #C8E2D6;border-radius:999px;padding:6px 10px}
+  .free-badge i{width:6px;height:6px;border-radius:50%;background:#2E8B57}
+  .mini-tag{font-size:10.5px;font-weight:700;color:var(--blue);background:var(--blue-soft);border:1px solid #CFE5EE;border-radius:999px;padding:6px 10px}
+  .hero-art{position:relative;height:310px;border-radius:24px;overflow:hidden;border:1px solid #D8EAF2;box-shadow:var(--shadow);background:linear-gradient(145deg,#E7F4FA 0%,#F9FDFE 55%,#EAF4F9 100%)}
+  .hero-art::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;left:50%;top:48%;transform:translate(-50%,-50%);background:radial-gradient(circle at 35% 30%,#FFFFFF 0%,#DDF1F8 45%,#CBE7F2 100%);box-shadow:inset 0 0 0 1px rgba(111,164,189,.18)}
+  .hero-art::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(85,145,174,.18) 1px, transparent 1.4px);background-size:22px 22px;mask-image:radial-gradient(circle at 50% 48%,#000 0%,transparent 68%)}
+  .letter-card{position:absolute;z-index:3;left:50%;top:50%;width:176px;height:212px;transform:translate(-50%,-50%) rotate(-6deg);background:#fff;border:1px solid #D7E8F0;border-radius:18px;box-shadow:0 22px 42px rgba(53,103,126,.17);display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .letter-card .up{font-family:Georgia,serif;font-size:70px;line-height:.9;font-weight:700}
+  .letter-card .low{font-family:Georgia,serif;font-size:28px;line-height:1;color:var(--red);margin-top:6px}
+  .letter-card .sound{font-size:10px;font-weight:900;color:var(--blue);margin-top:12px}
+  .letter-card .ex{font-family:Georgia,serif;font-size:12px;color:var(--muted);margin-top:5px}
+  .mini-letter{position:absolute;z-index:4;width:52px;height:60px;border-radius:12px;background:#fff;border:1px solid #D7E8F0;box-shadow:0 10px 20px rgba(53,103,126,.11);display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:24px}
+  .ml1{left:26px;top:32px;color:var(--blue);transform:rotate(-8deg)}
+  .ml2{right:24px;top:54px;color:var(--red);transform:rotate(7deg)}
+  .ml3{right:40px;bottom:32px;color:var(--blue);transform:rotate(-4deg)}
+  .badge-33{position:absolute;z-index:5;left:24px;bottom:22px;width:64px;height:64px;border-radius:50%;background:var(--red);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 12px 24px rgba(212,81,74,.22);transform:rotate(-7deg)}
+  .badge-33 b{font-family:Georgia,serif;font-size:24px;line-height:.9}
+  .badge-33 span{font-size:6.5px;font-weight:900;letter-spacing:.1em;margin-top:4px}
+  .snow-tag{position:absolute;z-index:5;right:18px;bottom:18px;font-size:8px;font-weight:900;letter-spacing:.12em;color:var(--blue);background:rgba(255,255,255,.75);border:1px solid #D5E9F2;border-radius:999px;padding:5px 8px}
+  .prologue{display:flex;align-items:center;gap:15px;background:linear-gradient(90deg,#E7F4FA 0%,#FFFDF8 72%);border:1px solid #D8EAF2;border-radius:17px;padding:15px 18px;box-shadow:var(--shadow-soft);transition:.16s ease}
+  .prologue:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(43,87,108,.1)}
+  .prologue-num{width:47px;height:47px;border-radius:13px;flex:none;background:var(--blue);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:19px;font-weight:700}
+  .prologue-num small{font-family:"PingFang SC",sans-serif;font-size:7px;font-weight:800;letter-spacing:.08em;margin-top:2px}
+  .prologue-main{min-width:0}
+  .prologue-kicker{font-size:9px;letter-spacing:.16em;color:var(--blue-2);font-weight:900;margin-bottom:3px}
+  .prologue h2{font-size:19px;line-height:1.2;margin:0}
+  .prologue h2 span{font-size:12px;font-weight:500;color:var(--muted);margin-left:7px}
+  .prologue p{font-size:11px;line-height:1.5;color:var(--muted);margin:4px 0 0}
+  .prologue-stats{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .prologue-stats span{font-size:8.5px;font-weight:800;color:var(--blue);background:var(--ice-2);border:1px solid #D9EAF2;border-radius:999px;padding:3px 6px}
+  .prologue .go{margin-left:auto;font-size:11px;font-weight:900;color:var(--blue);white-space:nowrap}
+  .prologue .go:after{content:" →"}
+  .section{margin-top:28px}
+  .section-head{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;border-bottom:1px dashed var(--line);padding-bottom:10px;margin-bottom:14px}
+  .section-dot{width:9px;height:9px;border-radius:50%;background:var(--red);margin-bottom:8px}
+  .section-kicker{font-size:9.5px;letter-spacing:.16em;color:var(--red);font-weight:900;margin-bottom:4px}
+  .section-title{font-size:22px;line-height:1.2;margin:0;letter-spacing:.01em}
+  .section-title span{font-size:12px;color:var(--muted);font-weight:500;margin-left:8px}
+  .section-meta{margin-left:auto;font-size:10px;color:var(--muted);padding-bottom:3px}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+  .scene{position:relative;display:flex;flex-direction:column;min-height:202px;background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:15px 15px 13px;overflow:hidden;box-shadow:var(--shadow-soft);transition:.16s ease}
+  .scene:before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--accent)}
+  .scene:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(43,87,108,.1);border-color:var(--accent)}
+  .scene.air{--accent:var(--blue);--soft:var(--blue-soft)}
+  .scene.cafe{--accent:var(--cafe);--soft:var(--cafe-soft)}
+  .scene.hotel{--accent:var(--hotel);--soft:var(--hotel-soft)}
+  .scene.market{--accent:var(--market);--soft:var(--market-soft)}
+  .scene.locked{opacity:.72;filter:saturate(.65);cursor:default}
+  .scene.locked:hover{transform:none;box-shadow:var(--shadow-soft);border-color:var(--line)}
+  .scene-top{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+  .num{width:27px;height:27px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px;font-weight:900;display:inline-flex;align-items:center;justify-content:center}
+  .level{font-size:8.5px;font-weight:900;letter-spacing:.08em;color:var(--accent);background:var(--soft);border:1px solid color-mix(in srgb,var(--accent) 28%,#fff);border-radius:999px;padding:4px 7px}
+  .arrow{margin-left:auto;font-size:15px;color:var(--accent);font-weight:900}
+  .icon{font-size:22px;line-height:1;margin-bottom:7px}
+  .scene h3{font-size:23px;line-height:1.1;margin:0;letter-spacing:.01em}
+  .scene .zh{font-size:11.5px;color:var(--accent);font-weight:800;margin:2px 0 6px}
+  .desc{font-size:11.5px;line-height:1.55;color:var(--muted);margin:0;max-width:430px}
+  .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:12px}
+  .meta span{font-size:8.5px;color:var(--muted);background:var(--soft);border:1px solid color-mix(in srgb,var(--accent) 18%,#fff);border-radius:999px;padding:4px 6px}
+  .go{font-size:11px;font-weight:900;color:var(--accent);margin-top:9px}
+  .go:after{content:" →"}
+  .locked .go{color:var(--muted)}
+  .locked .go:after{content:""}
+  .foot{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;border-top:1px solid var(--line);margin-top:30px;padding-top:13px;font-size:9px;color:var(--muted);letter-spacing:.08em}
+  .foot b{color:var(--blue);font-weight:900}
+  @media (max-width:820px){
+    .page{padding:0 14px 46px}
+    .hero{grid-template-columns:1fr;gap:24px;padding-top:34px}
+    .hero-art{height:260px;max-width:500px;width:100%;justify-self:center}
+    h1{font-size:46px}
+    .prologue{align-items:flex-start;flex-wrap:wrap;gap:10px}
+    .prologue .go{margin-left:0}
+    .grid{grid-template-columns:1fr}
+    .scene{min-height:0;padding:15px}
+    .section-meta{margin-left:0;width:100%;padding-bottom:0}
+  }
+  @media (max-width:420px){
+    h1{font-size:40px}
+    .hero-art{height:230px}
+    .letter-card{width:145px;height:178px}
+    .letter-card .up{font-size:58px}
+    .letter-card .low{font-size:24px}
+    .mini-letter{width:43px;height:50px;font-size:20px}
+    .ml1{left:18px;top:24px}.ml2{right:18px;top:40px}.ml3{right:24px;bottom:24px}
+    .badge-33{left:18px;bottom:18px;width:54px;height:54px}
+    .badge-33 b{font-size:20px}
+    .snow-tag{right:12px;bottom:12px;font-size:7px}
+    .prologue-num{width:42px;height:42px;font-size:17px}
+    .prologue h2{font-size:17px}
+    .prologue h2 span{display:block;margin:3px 0 0}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">Я</span>
+      <div><b>РУССКИЙ</b><small>俄语情景对话</small></div>
+    </div>
+    <a class="top-cta" href="#scenes">БЕСПЛАТНО · 00–04</a>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="kicker"><i></i> БЕСПЛАТНЫЙ СТАРТ · 00–04</div>
+      <h1>Начни здесь<span>免费试玩 · 圣彼得堡生存篇</span></h1>
+      <p class="lead">从字母和重音开始，走进普尔科沃机场、面包房、酒店和超市。先学会在圣彼得堡开口，再慢慢把这座城市走熟。</p>
+      <div class="hero-badges">
+        <span class="free-badge"><i></i>5 个单元免费</span>
+        <span class="mini-tag">00 预备课</span>
+        <span class="mini-tag">01–04 场景</span>
+        <span class="mini-tag">A0–A2</span>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <div class="mini-letter ml1">Ё</div>
+      <div class="mini-letter ml2">Ж</div>
+      <div class="mini-letter ml3">Я</div>
+      <div class="letter-card">
+        <span class="up">А</span>
+        <span class="low">а</span>
+        <span class="sound">[a]</span>
+        <span class="ex">арбу́з</span>
+      </div>
+      <div class="badge-33"><b>00</b><span>СТАРТ</span></div>
+      <div class="snow-tag">ПУЛКОВО · LED</div>
+    </div>
+  </section>
+
+  <a class="prologue" href="00-预备课.html">
+    <div class="prologue-num">00<small>СТАРТ</small></div>
+    <div class="prologue-main">
+      <div class="prologue-kicker">ПРЕЖДЕ ЧЕМ ГОВОРИТЬ</div>
+      <h2>Алфавит, ударение <span>字母、重音与第一批词</span></h2>
+      <p>33 个字母、7 条读音规则、重音练习和第一批生存词卡；第一次开口前，先把“看得懂、读得出”练起来。</p>
+      <div class="prologue-stats">
+        <span>33 буквы</span><span>7 правил</span><span>54 карточки</span><span>4 диалога</span>
+      </div>
+    </div>
+    <div class="go">开始预备课</div>
+  </a>
+
+  <section class="section" id="scenes">
+    <div class="section-head">
+      <span class="section-dot"></span>
+      <div>
+        <div class="section-kicker">ПЕРВЫЕ ШАГИ · 01–04</div>
+        <h2 class="section-title">从机场开始 <span>圣彼得堡生存篇</span></h2>
+      </div>
+      <div class="section-meta">2 已上线 · 2 即将上线</div>
+    </div>
+
+    <div class="grid">
+      <a class="scene air" href="01-机场.html">
+        <div class="scene-top"><span class="num">01</span><span class="level">A0–A1</span><span class="arrow">↗</span></div>
+        <div class="icon">🛂</div>
+        <h3>В аэропорту</h3>
+        <div class="zh">在机场（圣彼得堡）</div>
+        <p class="desc">普尔科沃机场：边检、行李转盘、行李丢失、SIM 卡、出租车或公交，最后到宿舍或地铁。</p>
+        <div class="meta"><span>7 轮</span><span>9 决策</span><span>70 词条</span><span>Пулково</span></div>
+        <div class="go">开始</div>
+      </a>
+
+      <a class="scene cafe" href="02-面包房.html">
+        <div class="scene-top"><span class="num">02</span><span class="level">A1</span><span class="arrow">↗</span></div>
+        <div class="icon">🥐</div>
+        <h3>В пекарне</h3>
+        <div class="zh">在面包房</div>
+        <p class="desc">面包、пирожки、слойки，配茶或咖啡；柜台点单，带走或坐下。把“怎么切、喝茶还是咖啡、这里还是带走”练顺。</p>
+        <div class="meta"><span>7 轮</span><span>9 决策</span><span>70 词条</span><span>Пекарня</span></div>
+        <div class="go">开始</div>
+      </a>
+
+      <div class="scene hotel locked">
+        <div class="scene-top"><span class="num">03</span><span class="level">A1–A2</span><span class="arrow">·</span></div>
+        <div class="icon">🛎️</div>
+        <h3>В гостинице</h3>
+        <div class="zh">在酒店</div>
+        <p class="desc">入住、房型、早餐、Wi-Fi、房间问题、退房；把“有/没有、可以/不可以”放进前台对话。</p>
+        <div class="meta"><span>即将上线</span></div>
+        <div class="go">准备中</div>
+      </div>
+
+      <div class="scene market locked">
+        <div class="scene-top"><span class="num">04</span><span class="level">A1–A2</span><span class="arrow">·</span></div>
+        <div class="icon">🛒</div>
+        <h3>В супермаркете</h3>
+        <div class="zh">在超市</div>
+        <p class="desc">水果、面包、牛奶、称重、袋子和收银台；练习数量、价格和付款方式。</p>
+        <div class="meta"><span>即将上线</span></div>
+        <div class="go">准备中</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot">
+    <span><b>РУССКИЙ · 00–04</b> · 免费试玩 · 圣彼得堡</span>
+    <span>单文件 HTML · 在线试玩 · 无排行榜</span>
+  </div>
+</div>
+</body>
+</html>

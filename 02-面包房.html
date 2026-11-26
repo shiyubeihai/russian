@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>02 · В пекарне · 俄语情景对话</title>
+<link rel="icon" href="data:,">
+<style>
+  :root{
+    --bg:#FBF7EF; --panel:#FFFFFF; --ink:#2B211B; --muted:#7B6A5D;
+    --line:#E7D9C8; --ice:#FBF3E2; --ice-2:#FFFDF8;
+    --brown:#6B4A32; --brown-2:#A06A3B; --brown-soft:#F6E8D5;
+    --red:#C94C43; --red-deep:#A93A33; --red-soft:#FBECE9;
+    --green:#2F5D4A; --green-soft:#EAF3EE;
+    --gold:#D9A441; --gold-soft:#FBF0D7;
+    --shadow:0 16px 40px rgba(107,74,50,.10);
+    --shadow-soft:0 8px 22px rgba(107,74,50,.07);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:
+      radial-gradient(900px 540px at 4% -12%, #FFFFFF 0%, rgba(255,255,255,0) 64%),
+      radial-gradient(760px 480px at 102% 0%, #F7E9D4 0%, rgba(247,233,212,0) 62%),
+      radial-gradient(620px 420px at 70% 46%, rgba(255,255,255,.82) 0%, rgba(255,255,255,0) 68%),
+      linear-gradient(180deg,#FFFDF8 0%,var(--bg) 46%,#F7EFE2 100%);
+    min-height:100vh;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.38;
+    background-image:radial-gradient(rgba(160,106,59,.18) 1px, transparent 1.2px);
+    background-size:30px 30px;
+    mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.4) 35%,transparent 72%);
+  }
+  button{font-family:inherit;cursor:pointer}
+  .page{max-width:1120px;margin:0 auto;padding:0 22px 92px}
+  .topbar{display:flex;align-items:center;gap:12px;padding:18px 0 14px;border-bottom:1px solid rgba(231,217,200,.9)}
+  .brand{display:flex;align-items:center;gap:9px}
+  .brand-mark{width:33px;height:33px;border-radius:10px;background:var(--red);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:18px;font-weight:700;box-shadow:0 8px 16px rgba(201,76,67,.2)}
+  .brand b{display:block;font-size:14px;letter-spacing:.12em}
+  .brand small{display:block;font-size:10.5px;color:var(--muted);letter-spacing:.08em;margin-top:2px}
+  .top-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+  .scene-badge{font-size:10px;font-weight:900;color:#fff;background:var(--brown);border-radius:999px;padding:6px 10px;letter-spacing:.08em}
+  .zh-btn{border:1px solid var(--line);background:#fff;color:var(--brown);border-radius:999px;padding:6px 11px;font-size:11px;font-weight:800}
+  .zh-btn:hover{background:var(--ice-2);border-color:#D9C5AE}
+  .zh-btn[aria-pressed="true"]{background:var(--brown);border-color:var(--brown);color:#fff}
+  .hero{padding:36px 0 20px}
+  .back-link{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:800;color:var(--muted);text-decoration:none;margin-bottom:11px}
+  .back-link:hover{color:var(--brown)}
+  .kicker{font-size:10.5px;letter-spacing:.22em;font-weight:900;color:var(--brown-2);display:flex;align-items:center;gap:8px;margin-bottom:9px}
+  .kicker i{width:7px;height:7px;border-radius:50%;background:var(--red)}
+  h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:48px;line-height:1.02;letter-spacing:-.02em;font-weight:700}
+  h1 span{font-size:18px;font-family:"PingFang SC","Hiragino Sans GB",sans-serif;font-weight:600;color:var(--muted);margin-left:12px;letter-spacing:.02em}
+  .lead{font-size:13px;line-height:1.7;color:var(--muted);max-width:790px;margin:10px 0 0}
+  .rounds{display:flex;gap:7px;flex-wrap:wrap;margin-top:17px}
+  .round{display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 10px 6px 6px;font-size:10.5px;color:var(--muted);transition:.15s}
+  .round b{width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--ice);color:var(--brown-2);font-size:9.5px}
+  .round.active{border-color:var(--brown);background:var(--brown);color:#fff;box-shadow:0 6px 14px rgba(107,74,50,.18)}
+  .round.active b{background:rgba(255,255,255,.2);color:#fff}
+  .round.done{border-color:#C8E2D6;background:var(--green-soft);color:var(--green)}
+  .round.done b{background:var(--green);color:#fff}
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 292px;gap:18px;align-items:start;margin-top:6px}
+  .main{min-width:0}
+  .scene-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+  .scene-visual{position:relative;height:190px;overflow:hidden;background:linear-gradient(180deg,#FBF3E2 0%,#F8EBD7 58%,#F0DCC2 100%);border-bottom:1px solid #E0CBB0}
+  .scene-visual:after{content:"";position:absolute;left:0;right:0;bottom:0;height:38px;background:#E8D2B2;border-top:3px solid #D3B58C;background-image:linear-gradient(90deg,rgba(255,255,255,.4) 1px,transparent 1px);background-size:34px 34px}
+  .sign{position:absolute;z-index:5;left:24px;top:18px;background:var(--brown);color:#FFF8EA;border:3px solid #4E3524;border-radius:5px;padding:7px 12px 6px;font-size:10px;font-weight:900;letter-spacing:.12em;box-shadow:0 7px 14px rgba(78,53,36,.16)}
+  .sign small{display:block;font-size:6.5px;letter-spacing:.14em;color:#F2D8B6;margin-top:2px}
+  .window{position:absolute;z-index:1;right:22px;top:18px;width:186px;height:112px;border:4px solid #C9A77F;border-radius:5px;background:linear-gradient(160deg,#DDF1F8 0%,#BFDDEA 62%,#A8CDDD 100%);box-shadow:inset 0 0 0 2px rgba(255,255,255,.35),0 6px 14px rgba(107,74,50,.08);overflow:hidden}
+  .window:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;background:#C9A77F;transform:translateX(-50%)}
+  .window:after{content:"";position:absolute;left:0;right:0;top:50%;height:3px;background:#C9A77F;transform:translateY(-50%)}
+  .rain{position:absolute;inset:0;background:repeating-linear-gradient(105deg,rgba(255,255,255,.55) 0 1px,transparent 1px 15px);opacity:.7}
+  .shelf{position:absolute;z-index:3;left:24px;bottom:58px;width:326px;height:78px;border:3px solid #9C744C;border-radius:8px;background:linear-gradient(180deg,#D0A573,#B98250);box-shadow:0 7px 14px rgba(107,74,50,.12)}
+  .shelf:before{content:"";position:absolute;left:8px;right:8px;top:38px;height:3px;background:#8E633D;box-shadow:0 -38px 0 #9C744C}
+  .loaf{position:absolute;bottom:44px;width:44px;height:22px;border:2px solid #A97942;border-radius:50% 50% 8px 8px;background:linear-gradient(180deg,#E8B86D,#C98B45);box-shadow:inset 0 3px 0 rgba(255,255,255,.24);transform:rotate(-2deg)}
+  .loaf:after{content:"";position:absolute;left:8px;right:8px;top:7px;height:2px;border-radius:2px;background:#A96D31;box-shadow:0 5px 0 #A96D31;transform:rotate(-12deg)}
+  .loaf.l1{left:14px}.loaf.l2{left:72px;transform:rotate(2deg)}.loaf.l3{left:130px}.loaf.l4{left:188px;transform:rotate(-1deg)}
+  .loaf.l5{left:246px;width:54px;bottom:8px;border-radius:12px 18px 8px 8px;transform:rotate(3deg)}
+  .display{position:absolute;z-index:4;left:24px;bottom:8px;width:210px;height:42px;border:3px solid #D6C0A2;border-radius:7px 7px 5px 5px;background:rgba(255,253,248,.72);box-shadow:inset 0 3px 0 rgba(255,255,255,.6),0 4px 8px rgba(107,74,50,.08)}
+  .display:before{content:"";position:absolute;left:6px;right:6px;bottom:5px;height:3px;background:#D6C0A2;border-radius:2px}
+  .pastry{position:absolute;bottom:10px;width:27px;height:17px;border-radius:50% 50% 6px 6px;border:2px solid #B98250;background:linear-gradient(180deg,#E9B96C,#D59A4C);box-shadow:inset 0 2px 0 rgba(255,255,255,.3)}
+  .pastry.p1{left:18px;transform:rotate(-5deg)}.pastry.p2{left:70px;background:linear-gradient(180deg,#F0C47A,#DDA553);transform:rotate(4deg)}.pastry.p3{left:122px;transform:rotate(-3deg)}.pastry.p4{left:168px;width:24px;background:linear-gradient(180deg,#E7AE62,#C98B45);transform:rotate(5deg)}
+  .machine{position:absolute;z-index:3;right:214px;bottom:12px;width:54px;height:74px;border:3px solid #3E2B1F;border-radius:7px;background:linear-gradient(180deg,#6B4A32,#4A3325);box-shadow:0 5px 10px rgba(62,43,31,.16)}
+  .machine:before{content:"";position:absolute;left:9px;right:9px;top:9px;height:20px;border-radius:3px;background:#2F2118;box-shadow:inset 0 0 0 2px #8B6548}
+  .machine:after{content:"";position:absolute;left:15px;right:15px;bottom:10px;height:5px;border-radius:3px;background:#C9A77F}
+  .machine .cup{position:absolute;left:20px;bottom:-7px;width:15px;height:12px;border:2px solid #FFF8EA;border-top:0;border-radius:0 0 5px 5px;background:#FFF8EA}
+  .table{position:absolute;z-index:2;right:22px;bottom:10px;width:92px;height:48px;border-top:5px solid #B98250;border-radius:4px 4px 0 0;box-shadow:0 4px 8px rgba(107,74,50,.08)}
+  .table:before{content:"";position:absolute;left:15px;top:5px;width:4px;height:38px;background:#9C744C;box-shadow:56px 0 0 #9C744C}
+  .table .cup{position:absolute;right:12px;top:-24px;width:22px;height:18px;border:2px solid #A97942;border-top:0;border-radius:0 0 8px 8px;background:#FFF8EA}
+  .table .cup:before{content:"";position:absolute;right:-8px;top:4px;width:7px;height:8px;border:2px solid #A97942;border-left:0;border-radius:0 6px 6px 0}
+  .tag{position:absolute;z-index:6;left:24px;top:78px;background:var(--red);color:#fff;font-size:6.5px;font-weight:900;letter-spacing:.1em;padding:4px 6px;border-radius:3px;transform:rotate(-3deg);box-shadow:0 3px 7px rgba(201,76,67,.18)}
+  .scene-body{padding:16px 18px 18px}
+  .round-label{font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--brown-2);margin-bottom:9px}
+  .waiter{display:flex;gap:10px;align-items:flex-start}
+  .avatar{width:42px;height:42px;border-radius:50%;flex:none;background:var(--ice);border:1px solid #E5D2B9;display:flex;align-items:center;justify-content:center;font-size:19px}
+  .bubble{position:relative;flex:1;min-width:0;background:#FFFDF8;border:1px solid #E6D6C2;border-radius:14px;padding:10px 12px}
+  .bubble:before{content:"";position:absolute;left:-6px;top:15px;width:10px;height:10px;background:#FFFDF8;border-left:1px solid #E6D6C2;border-bottom:1px solid #E6D6C2;transform:rotate(45deg)}
+  .bubble-top{display:flex;align-items:center;gap:7px;margin-bottom:3px}
+  .who{font-size:10px;color:var(--muted);font-weight:800;letter-spacing:.04em}
+  .speak{margin-left:auto;border:1px solid var(--line);background:#fff;color:var(--brown);border-radius:999px;padding:3px 8px;font-size:10px;font-weight:800}
+  .speak:hover{background:var(--brown-soft);border-color:#D9C5AE}
+  .ru{font-family:"Iowan Old Style","Palatino Linotype",Georgia,"Times New Roman",serif}
+  .itt{font-size:17px;font-weight:700;line-height:1.35;color:var(--ink)}
+  .zh{font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:3px}
+  .prompt{font-size:12px;color:var(--muted);margin:16px 0 8px;font-weight:700}
+  .choices{display:flex;flex-direction:column;gap:8px}
+  .choice{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:11px;padding:10px 11px;color:var(--ink);transition:.13s}
+  .choice:hover{border-color:#D9BFA0;background:#FFFDF8;transform:translateY(-1px)}
+  .choice .letter{width:25px;height:25px;border-radius:50%;flex:none;background:var(--ice);color:var(--brown);font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .choice .main{min-width:0;display:flex;flex-direction:column;gap:1px}
+  .choice b{font-size:14px;line-height:1.35;font-weight:700}
+  .choice small{font-size:11px;color:var(--muted);line-height:1.4}
+  .choice.good{border-color:#9CCDB8;background:var(--green-soft);box-shadow:0 0 0 2px rgba(47,93,74,.09)}
+  .choice.good .letter{background:var(--green);color:#fff}
+  .choice.okay{border-color:#E1C887;background:var(--gold-soft)}
+  .choice.okay .letter{background:var(--gold);color:#fff}
+  .choice.wrong{border-color:#E5B3AE;background:var(--red-soft);opacity:.78}
+  .choice.wrong .letter{background:var(--red);color:#fff}
+  .choice.dim{opacity:.45}
+  .feedback{display:none;margin-top:12px;border:1px solid var(--line);border-radius:12px;padding:12px 13px;background:#fff}
+  .feedback.show{display:block}
+  .feedback.good{border-color:#B8DCCB;background:var(--green-soft)}
+  .feedback.bad{border-color:#E5B3AE;background:var(--red-soft)}
+  .feedback.okay{border-color:#E1C887;background:var(--gold-soft)}
+  .fb-title{font-size:12.5px;font-weight:900;margin-bottom:5px}
+  .feedback.good .fb-title{color:var(--green)}
+  .feedback.bad .fb-title{color:var(--red-deep)}
+  .feedback.okay .fb-title{color:#8A6628}
+  .fb-why{font-size:12px;line-height:1.65;color:#665648}
+  .fb-tip{font-size:11px;line-height:1.6;color:#806F5F;margin-top:7px;padding-top:7px;border-top:1px dashed rgba(128,111,95,.22)}
+  .retry{font-size:11px;color:var(--red-deep);font-weight:800;margin-top:7px}
+  .key{margin-top:9px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 10px}
+  .key-label{font-size:9px;letter-spacing:.12em;color:var(--muted);font-weight:900;margin-bottom:3px}
+  .key-it{font-size:13px;font-weight:700;display:flex;align-items:center;gap:7px;line-height:1.4}
+  .key-zh{font-size:10.5px;color:var(--muted);margin-top:2px}
+  .continue{margin-top:10px;border:0;border-radius:9px;background:var(--red);color:#fff;padding:9px 16px;font-size:12px;font-weight:800;box-shadow:0 5px 12px rgba(201,76,67,.18)}
+  .continue:hover{background:var(--red-deep)}
+  .side{display:flex;flex-direction:column;gap:12px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px;box-shadow:var(--shadow-soft)}
+  .card-title{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:900;margin-bottom:9px}
+  .chip{margin-left:auto;font-size:8.5px;font-weight:800;color:var(--brown);background:var(--brown-soft);border:1px solid #E5D2B9;border-radius:999px;padding:3px 6px;white-space:nowrap}
+  .vrow{display:flex;align-items:flex-start;gap:7px;padding:7px 0;border-top:1px dashed var(--line)}
+  .vrow:first-child{border-top:0;padding-top:0}
+  .vmain{min-width:0;flex:1}
+  .vmain b{font-size:12px;font-weight:700}
+  .vmain small{display:block;font-size:10px;color:var(--muted);margin-top:1px}
+  .vtag{flex:none;font-size:8px;font-weight:800;border-radius:999px;padding:3px 6px;margin-top:1px;white-space:nowrap}
+  .vtag.base{color:var(--green);background:var(--green-soft);border:1px solid #C8E2D6}
+  .vtag.scene{color:var(--red-deep);background:var(--red-soft);border:1px solid #EBC7C2}
+  .side-note{font-size:10.5px;line-height:1.55;color:var(--muted);margin-top:9px;border-top:1px dashed var(--line);padding-top:8px}
+  .mini-menu{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+  .mini-menu span{font-size:9.5px;color:#665648;background:#FFFDF8;border:1px solid #E6D6C2;border-radius:7px;padding:5px 6px;line-height:1.35}
+  .mini-menu b{display:block;font-size:10px;color:var(--brown);line-height:1.3}
+  .steps{display:flex;flex-direction:column;gap:7px;font-size:11px;color:#665648;line-height:1.5}
+  .steps span{display:flex;gap:7px}
+  .steps b{color:var(--red);font-weight:900}
+  .done-view{padding:34px 22px 28px;text-align:center}
+  .done-badge{width:48px;height:48px;border-radius:50%;margin:0 auto 12px;background:var(--green-soft);border:1px solid #C8E2D6;color:var(--green);display:flex;align-items:center;justify-content:center;font-size:23px;font-weight:900}
+  .done-view h2{font-size:24px;margin:0 0 6px}
+  .done-view p{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
+  .done-trip{font-size:14px!important;color:var(--brown)!important;font-weight:800;margin-top:7px!important}
+  .done-stats{font-size:12px;color:var(--brown);font-weight:800;margin:12px 0 5px}
+  .done-stats b{font-size:24px;color:var(--red);margin-right:3px}
+  .done-order{font-size:11.5px;color:var(--muted);margin:0 0 14px!important;min-height:17px;line-height:1.65}
+  .recap{display:flex;flex-direction:column;gap:7px;text-align:left;max-width:560px;margin:0 auto}
+  .recap-row{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 10px}
+  .recap-row div{min-width:0;flex:1}
+  .recap-row b{display:block;font-size:12.5px;line-height:1.35}
+  .recap-row small{display:block;font-size:10.5px;color:var(--muted);margin-top:1px}
+  .again{margin-top:15px;border:1px solid var(--red);background:var(--red);color:#fff;border-radius:9px;padding:9px 18px;font-size:12px;font-weight:800}
+  .again:hover{background:var(--red-deep)}
+  .done-note{font-size:10.5px;color:var(--muted);margin-top:10px}
+  .hide-zh .zh,.hide-zh .fb-why,.hide-zh .fb-tip,.hide-zh .retry,.hide-zh .side-note,.hide-zh .done-note,.hide-zh .vmain small,.hide-zh .mini-zh{display:none!important}
+  @media (max-width:860px){
+    .page{padding:0 14px 84px}
+    .topbar{flex-wrap:wrap}
+    .top-right{margin-left:auto}
+    .hero{padding-top:28px}
+    h1{font-size:38px}
+    h1 span{display:block;margin:6px 0 0;font-size:16px}
+    .lead{font-size:12.5px}
+    .layout{grid-template-columns:1fr}
+    .side{order:2}
+    .scene-visual{height:150px}
+    .sign{left:10px;top:10px;font-size:8px;padding:5px 7px 4px;border-width:2px}
+    .sign small{font-size:5.5px}
+    .window{right:10px;top:10px;width:124px;height:88px;border-width:3px}
+    .shelf{left:10px;bottom:42px;transform:scale(.72);transform-origin:left bottom}
+    .display{left:10px;bottom:6px;transform:scale(.78);transform-origin:left bottom}
+    .machine{right:10px;bottom:8px;transform:scale(.8);transform-origin:right bottom}
+    .table{display:none}
+    .tag{left:10px;top:57px;font-size:5.5px;padding:3px 5px}
+    .scene-body{padding:14px}
+    .top-right .scene-badge{display:none}
+    .side{width:100%}
+    .done-view{padding:28px 16px 24px}
+  }
+  @media (max-width:420px){
+    h1{font-size:34px}
+    .scene-visual{height:136px}
+    .window{display:none}
+    .shelf{left:8px;bottom:38px;transform:scale(.66)}
+    .display{left:8px;bottom:5px;transform:scale(.72)}
+    .machine{right:8px;bottom:7px;transform:scale(.74)}
+    .tag{display:none}
+    .choice b{font-size:13px}
+    .choice small{font-size:10.5px}
+  }
+</style>
+</head>
+<body class="hide-zh">
+<div class="page">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">Я</span>
+      <div><b>РУССКИЙ</b><small>俄语情景对话</small></div>
+    </div>
+    <div class="top-right">
+      <span class="scene-badge">02 · ПЕКАРНЯ</span>
+      <button class="zh-btn" id="zhToggle" type="button" aria-pressed="false">显示中文</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <a class="back-link" href="01-机场.html">← 01 机场</a>
+    <a class="back-link" href="index.html" style="margin-left:12px">大厅</a>
+    <div class="kicker"><i></i> СЦЕНА 02 · ПЕКАРНЯ · ХЛЕБ</div>
+    <h1>В пекарне <span>在面包房</span></h1>
+    <p class="lead">第二天早上，你走进瓦西里岛的一家小面包房。面包、пирожки、слойки 和茶/咖啡都在柜台后面；7 轮 9 个决策。</p>
+    <div class="rounds">
+      <div class="round active" data-round="1"><b>1</b><span>面包 · 易</span></div>
+      <div class="round" data-round="2"><b>2</b><span>数量/切 · 易</span></div>
+      <div class="round" data-round="3"><b>3</b><span>点心 · 易</span></div>
+      <div class="round" data-round="4"><b>4</b><span>茶/咖啡 · 易</span></div>
+      <div class="round" data-round="5"><b>5</b><span>加料/糖 · 中</span></div>
+      <div class="round" data-round="6"><b>6</b><span>这里/带走 · 中</span></div>
+      <div class="round" data-round="7"><b>7</b><span>付款 · 易</span></div>
+    </div>
+  </section>
+
+  <div class="layout">
+    <main class="main">
+      <section class="scene-card">
+        <div class="scene-visual" aria-hidden="true">
+          <div class="window"><span class="rain"></span></div>
+          <div class="sign">ПЕКАРНЯ<small>ХЛЕБ · ВЫПЕЧКА</small></div>
+          <div class="shelf">
+            <span class="loaf l1"></span><span class="loaf l2"></span><span class="loaf l3"></span><span class="loaf l4"></span><span class="loaf l5"></span>
+          </div>
+          <div class="tag">СВЕЖИЙ ХЛЕБ</div>
+          <div class="display">
+            <span class="pastry p1"></span><span class="pastry p2"></span><span class="pastry p3"></span><span class="pastry p4"></span>
+          </div>
+          <div class="machine"><span class="cup"></span></div>
+          <div class="table"><span class="cup"></span></div>
+        </div>
+
+        <div id="playView">
+          <div class="scene-body">
+            <div class="round-label" id="roundLabel">第 1 轮 · 易 · 选面包</div>
+            <div class="waiter">
+              <div class="avatar" id="avatar">🥐</div>
+              <div class="bubble">
+                <div class="bubble-top">
+                  <span class="who"><span id="whoRu">Продаве́ц</span><span class="zh" id="whoZh"> · 面包房店员</span></span>
+                  <button class="speak" id="waiterSpeak" data-speak="">♪ 听</button>
+                </div>
+                <div class="itt ru" id="waiterRu"></div>
+                <div class="zh" id="waiterZh"></div>
+              </div>
+            </div>
+            <div class="prompt" id="prompt">你要哪一种面包？</div>
+            <div class="choices" id="choices"></div>
+            <div class="feedback" id="feedback" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="done-view" id="doneView" hidden>
+          <div class="done-badge">✓</div>
+          <h2>02 面包房完成</h2>
+          <p>你买了面包，挑了点心，也用茶或咖啡把自己暖过来了。圣彼得堡的早上，开始得像本地人一样。</p>
+          <p class="done-trip" id="doneTrip">Све́жий хлеб и тёплый чай — до́брое у́тро!<span class="zh"> · 新鲜面包和热茶，早上好</span></p>
+          <div class="done-stats"><b id="doneScore">0</b> / <span id="doneTotal">9</span> 次第一次就选对</div>
+          <p class="done-order" id="doneOrder"></p>
+          <div class="recap" id="recap"></div>
+          <button class="again" id="againBtn">再练一次</button>
+          <p class="done-note">没有分数和排行榜，只看自己这一次的选择。</p>
+        </div>
+      </section>
+    </main>
+
+    <aside class="side">
+      <div class="card">
+        <div class="card-title">本场景词汇 <span class="chip">СЛОВА</span></div>
+        <div id="vocabList"></div>
+        <div class="side-note">标「基础」的是 00 预备课学过的词；标「场景」的是面包房里新增的固定说法。</div>
+      </div>
+      <div class="card">
+        <div class="card-title">面包房小抄 <span class="chip">8 ФРАЗ</span></div>
+        <div class="mini-menu">
+          <span><b>Здра́вствуйте</b><i class="mini-zh">您好</i></span>
+          <span><b>Что бу́дете?</b><i class="mini-zh">您要什么？</i></span>
+          <span><b>Ско́лько вам?</b><i class="mini-zh">要多少？</i></span>
+          <span><b>Нареза́ть?</b><i class="mini-zh">要切吗？</i></span>
+          <span><b>С собо́й</b><i class="mini-zh">带走</i></span>
+          <span><b>Све́жий?</b><i class="mini-zh">新鲜吗？</i></span>
+          <span><b>Мо́жно ка́ртой?</b><i class="mini-zh">可以刷卡吗？</i></span>
+          <span><b>Спаси́бо</b><i class="mini-zh">谢谢</i></span>
+        </div>
+        <div class="side-note"><b style="color:var(--brown)">Повтори́те, пожа́луйста.</b> 请再说一遍。<br><b style="color:var(--brown)">Говори́те ме́дленнее.</b> 请说慢一点。<br><b style="color:var(--brown)">Я не понима́ю.</b> 我不明白。</div>
+      </div>
+      <div class="card">
+        <div class="card-title">怎么练</div>
+        <div class="steps">
+          <span><b>1</b>先听店员说什么</span>
+          <span><b>2</b>选一个回答；很多步不止一个答案成立</span>
+          <span><b>3</b>看解释，再继续</span>
+        </div>
+        <div class="side-note">同一个决定可以换一种选法。点「再练一次」可以换面包、点心、饮品和付款方式。♪ 点「听」可朗读。</div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const strip = s => String(s || '').normalize('NFC').replace(/́/g, '');
+
+const VOCAB = {
+  'пека́рня':{zh:'面包房；烘焙店',pos:'名词',src:'scene'},
+  'пека́рня-кафе́':{zh:'面包房兼小咖啡座',pos:'场景店型',src:'scene'},
+  'бу́лочная':{zh:'面包店（多为柜台/外带）',pos:'名词',src:'scene'},
+  'продаве́ц':{zh:'售货员',pos:'名词',src:'scene'},
+  'хлеб':{zh:'面包',pos:'名词',src:'scene'},
+  'чёрный':{zh:'黑的（指黑麦面包）',pos:'形容词',src:'scene'},
+  'белый':{zh:'白的（指白面包）',pos:'形容词',src:'scene'},
+  'бато́н':{zh:'长条白面包',pos:'名词',src:'scene'},
+  'бороди́нский':{zh:'波罗金诺面包',pos:'形容词/名词化',src:'scene'},
+  'буха́нка':{zh:'一个（整）面包',pos:'名词',src:'scene'},
+  'полбуха́нки':{zh:'半个面包',pos:'固定搭配',src:'scene'},
+  'полбато́на':{zh:'半条长面包',pos:'固定搭配',src:'scene'},
+  'кирпи́чик':{zh:'小砖形面包',pos:'名词',src:'scene'},
+  'нареза́ть':{zh:'切（片）',pos:'动词',src:'scene'},
+  'наре́жьте':{zh:'请切一下',pos:'祈使句',src:'scene'},
+  'це́лый':{zh:'整的；完整的',pos:'形容词',src:'scene'},
+  'то́нко':{zh:'薄薄地',pos:'副词',src:'scene'},
+  'све́жий':{zh:'新鲜的',pos:'形容词',src:'scene'},
+  'сего́дняшний':{zh:'今天的',pos:'形容词',src:'scene'},
+  'тёплый':{zh:'温的',pos:'形容词',src:'scene'},
+  'пирожо́к':{zh:'小馅饼',pos:'名词',src:'scene'},
+  'капу́ста':{zh:'白菜；卷心菜',pos:'名词',src:'scene'},
+  'сло́йка':{zh:'酥皮点心',pos:'名词',src:'scene'},
+  'я́блоко':{zh:'苹果',pos:'名词',src:'scene'},
+  'ва́трушка':{zh:'奶渣小圆面包',pos:'名词',src:'scene'},
+  'тво́рог':{zh:'奶渣',pos:'名词',src:'scene'},
+  'круасса́н':{zh:'可颂',pos:'名词',src:'scene'},
+  'вы́печка':{zh:'烘焙点心',pos:'名词',src:'scene'},
+  'чай':{zh:'茶',pos:'名词',src:'scene'},
+  'ко́фе':{zh:'咖啡',pos:'不变名词',src:'scene'},
+  'молоко́':{zh:'牛奶',pos:'名词',src:'scene'},
+  'лимо́н':{zh:'柠檬',pos:'名词',src:'scene'},
+  'са́хар':{zh:'糖',pos:'名词',src:'scene'},
+  'отде́льно':{zh:'单独地',pos:'副词',src:'scene'},
+  'здесь':{zh:'在这里',pos:'副词',src:'base'},
+  'с собо́й':{zh:'带走',pos:'固定搭配',src:'scene'},
+  'паке́т':{zh:'袋子',pos:'名词',src:'scene'},
+  'ка́рта':{zh:'银行卡',pos:'名词',src:'scene'},
+  'нали́чные':{zh:'现金',pos:'名词复数',src:'scene'},
+  'оплати́ть':{zh:'支付',pos:'动词',src:'scene'},
+  'термина́л':{zh:'刷卡机',pos:'名词',src:'scene'},
+  'чек':{zh:'收据',pos:'名词',src:'scene'},
+  'сда́ча':{zh:'找零',pos:'名词',src:'scene'},
+  'рубль':{zh:'卢布',pos:'名词',src:'scene'},
+  'рубле́й':{zh:'卢布（复数二格）',pos:'名词',src:'scene'},
+  'хлеб всему́ голова́':{zh:'面包是万物之首',pos:'谚语',src:'scene'},
+  'хлеб-соль':{zh:'面包和盐（迎客礼）',pos:'固定说法',src:'scene'},
+  'блока́дный хлеб':{zh:'围城时期的面包',pos:'固定说法',src:'scene'},
+  'сухари́':{zh:'面包干',pos:'名词复数',src:'scene'},
+  'гре́нки':{zh:'煎/烤面包块',pos:'名词复数',src:'scene'},
+  'бутербро́д':{zh:'开放式三明治',pos:'名词',src:'scene'},
+  'хле́бница':{zh:'面包盒',pos:'名词',src:'scene'},
+  'ржано́й':{zh:'黑麦的',pos:'形容词',src:'scene'},
+  'пшени́чный':{zh:'小麦的',pos:'形容词',src:'scene'},
+  'бездрожжево́й':{zh:'无酵母的',pos:'形容词',src:'scene'},
+  'на заква́ске':{zh:'用酸面团/酵种',pos:'固定搭配',src:'scene'},
+  'цельнозерново́й':{zh:'全谷物的',pos:'形容词',src:'scene'},
+  'бара́нки':{zh:'小面包圈',pos:'名词复数',src:'scene'},
+  'су́шки':{zh:'小干面包圈',pos:'名词复数',src:'scene'},
+  'пря́ники':{zh:'蜜糖饼',pos:'名词复数',src:'scene'},
+  'пиро́жное':{zh:'蛋糕；甜点',pos:'名词',src:'scene'},
+  'посове́туете':{zh:'您建议',pos:'动词变位',src:'scene'},
+  'возьми́те':{zh:'请拿；请试试',pos:'祈使句',src:'scene'},
+  'приходи́те ещё':{zh:'欢迎再来',pos:'固定说法',src:'scene'},
+  'здра́вствуйте':{zh:'您好',pos:'礼貌用语',src:'base'},
+  'спаси́бо':{zh:'谢谢',pos:'礼貌用语',src:'base'},
+  'пожа́луйста':{zh:'请 / 不客气',pos:'礼貌用语',src:'base'},
+  'до свида́ния':{zh:'再见',pos:'告别',src:'base'},
+  'мо́жно':{zh:'可以',pos:'情态词',src:'base'},
+  'есть':{zh:'有；是',pos:'动词',src:'base'},
+  'то́лько':{zh:'只',pos:'副词',src:'base'},
+  'хорошо́':{zh:'好',pos:'副词 / 感叹',src:'base'},
+  'коне́чно':{zh:'当然',pos:'副词',src:'base'},
+  'вот':{zh:'这是；给您',pos:'指示词',src:'base'},
+  'и́ли':{zh:'或者',pos:'连词',src:'base'},
+  'без':{zh:'没有；不带',pos:'介词',src:'base'},
+  'с':{zh:'和；带着',pos:'介词',src:'base'},
+  'о́чень':{zh:'很',pos:'副词',src:'base'},
+  'всё':{zh:'一切；都',pos:'代词',src:'base'},
+  'бы́ло':{zh:'曾是；当时是',pos:'动词过去时',src:'base'},
+  'вку́сно':{zh:'好吃',pos:'副词',src:'base'},
+  'сейча́с':{zh:'现在；马上',pos:'副词',src:'base'}
+};
+
+function breadBase(){
+  return ({black:80, white:75, baton:60, borodinsky:90})[state.bread] || 0;
+}
+function breadPrice(){
+  const base = breadBase();
+  if(state.amount === 'half') return 45;
+  if(state.amount === 'two') return base * 2;
+  return base;
+}
+function pastryPrice(){
+  return ({pirozhok:60, sloyka:80, vatrushka:70, none:0})[state.pastry] || 0;
+}
+function drinkPrice(){
+  return state.drink === 'coffee' ? 150 : state.drink === 'tea' ? 100 : 0;
+}
+function total(){
+  return breadPrice() + pastryPrice() + drinkPrice() + 5;
+}
+
+const STEPS = [
+  {
+    round:1, level:'易', title:'选面包', stepNo:1, stepsInRound:1,
+    whoRu:'Продаве́ц', whoZh:'面包房店员', avatar:'🥐',
+    waiter:{ru:'Здра́вствуйте! Что бу́дете?',zh:'您好！您要什么？'},
+    prompt:'你要哪一种面包？',
+    choices:[
+      {id:'a', ru:'Чёрный, пожа́луйста.', zh:'黑麦面包，谢谢。', verdict:'best', set:{bread:'black'},
+       why:'最常见的选择；чёрный 指黑麦/深色面包。', key:'Чёрный, пожа́луйста.', keyZh:'黑麦面包，谢谢。',
+       tip:'在面包房可以直接说形容词，店员知道你要的是 хлеб。'},
+      {id:'b', ru:'Белый, пожа́луйста.', zh:'白面包，谢谢。', verdict:'best', set:{bread:'white'},
+       why:'白面包更软，适合做三明治或 toast。', key:'Белый, пожа́луйста.', keyZh:'白面包，谢谢。'},
+      {id:'c', ru:'Бато́н, пожа́луйста.', zh:'长条白面包，谢谢。', verdict:'best', set:{bread:'baton'},
+       why:'батон 是长条白面包，常用来做三明治。', key:'Бато́н, пожа́луйста.', keyZh:'长条白面包，谢谢。',
+       tip:'батон 是阳性，后面数量词用 один / два。'},
+      {id:'d', ru:'Бороди́нский, пожа́луйста.', zh:'波罗金诺面包，谢谢。', verdict:'best', set:{bread:'borodinsky'},
+       why:'бородинский 是带香菜籽的黑麦面包，很有俄罗斯特色。', key:'Бороди́нский, пожа́луйста.', keyZh:'波罗金诺面包，谢谢。',
+       tip:'第一次吃可以把它当成“俄罗斯黑面包”的代表。'}
+    ],
+    vocab:['пека́рня','хлеб','чёрный','белый','бато́н','бороди́нский']
+  },
+  {
+    round:2, level:'易', title:'数量', stepNo:1, stepsInRound:2,
+    whoRu:'Продаве́ц', whoZh:'面包房店员', avatar:'🥐',
+    waiter:{ru:'Ско́лько вам?',zh:'您要多少？'},
+    prompt:'你要多少？',
+    choices:() => {
+      const masculine = state.bread === 'baton' || state.bread === 'borodinsky';
+      const one = masculine ? 'Оди́н, пожа́луйста.' : 'Одну́, пожа́луйста.';
+      const two = masculine ? 'Два, пожа́луйста.' : 'Две, пожа́луйста.';
+      const half = state.bread === 'baton' ? 'Полбато́на, пожа́луйста.' : 'Полбуха́нки, пожа́луйста.';
+      return [
+        {id:'a', ru:one, zh:'一个，谢谢。', verdict:'best', set:{amount:'one'},
+         why:'最直接；数量词按面包的性别变化。', key:one, keyZh:'一个，谢谢。',
+         tip:state.bread === 'baton' ? 'батон 是阳性：один батон。' : 'буханка 是阴性：одну буханку。'},
+        {id:'b', ru:half, zh:'半个，谢谢。', verdict:'best', set:{amount:'half'},
+         why:'一个人吃不完整条时很常用。', key:half, keyZh:'半个，谢谢。',
+         tip:'батон 说 полбатона；буханка 说 полбуханки。'},
+        {id:'c', ru:two, zh:'两个，谢谢。', verdict:'best', set:{amount:'two'},
+         why:'可以带回家；数量词同样按面包性别变化。', key:two, keyZh:'两个，谢谢。'},
+        {id:'d', ru:'Ничего́, спаси́бо.', zh:'不用了，谢谢。', verdict:'wrong',
+         why:'这一场是来买面包的，不能空手走。'}
+      ];
+    },
+    vocab:['ско́лько','буха́нка','полбуха́нки','полбато́на','бато́н','пожа́луйста']
+  },
+  {
+    round:2, level:'易', title:'切不切', stepNo:2, stepsInRound:2,
+    whoRu:'Продаве́ц', whoZh:'面包房店员', avatar:'🥐',
+    waiter:{ru:'Нареза́ть?',zh:'要切吗？'},
+    prompt:'你要不要切片？',
+    choices:[
+      {id:'a', ru:'Да, наре́жьте, пожа́луйста.', zh:'要，请切一下。', verdict:'best', set:{sliced:'yes'},
+       why:'最常用；面包房可以帮你切片。', key:'Да, наре́жьте, пожа́луйста.', keyZh:'要，请切一下。'},
+      {id:'b', ru:'Нет, це́лый, пожа́луйста.', zh:'不用，整条就好。', verdict:'best', set:{sliced:'no'},
+       why:'整条更好保存；回家自己切也行。', key:'Нет, це́лый, пожа́луйста.', keyZh:'不用，整条就好。'},
+      {id:'c', ru:'То́нко, пожа́луйста.', zh:'请切薄一点。', verdict:'best', set:{sliced:'yes'},
+       why:'更具体；то́нко = 薄薄地。', key:'То́нко, пожа́луйста.', keyZh:'请切薄一点。'},
+      {id:'d', ru:'В паке́т.', zh:'装袋。', verdict:'wrong',
+       why:'这是装袋，不是回答“切不切”。'}
+    ],
+    vocab:['нареза́ть','наре́жьте','це́лый','то́нко','паке́т']
+  },
+  {
+    round:3, level:'易', title:'点心', stepNo:1, stepsInRound:1,
+    whoRu:'Продаве́ц', whoZh:'面包房店员', avatar:'🥐',
+    waiter:{ru:'Что-нибу́дь ещё?',zh:'还要点什么吗？'},
+    prompt:'要配点点心吗？',
+    choices:[
+      {id:'a', ru:'Пирожо́к с капу́стой, пожа́луйста.', zh:'请给我一个白菜馅饼。', verdict:'best', set:{pastry:'pirozhok'},
+       why:'传统、便宜，配茶或咖啡都合适。', key:'Пирожо́к с капу́стой, пожа́луйста.', keyZh:'请给我一个白菜馅饼。',
+       tip:'пирожок 是单个小馅饼；пирожки 是复数。'},
+      {id:'b', ru:'Сло́йку с я́блоком, пожа́луйста.', zh:'请给我一个苹果酥皮点心。', verdict:'best', set:{pastry:'sloyka'},
+       why:'甜口酥皮点心，配咖啡也很常见。', key:'Сло́йку с я́блоком, пожа́луйста.', keyZh:'请给我一个苹果酥皮点心。'},
+      {id:'c', ru:'Ва́трушку, пожа́луйста.', zh:'请给我一个奶渣小圆面包。', verdict:'best', set:{pastry:'vatrushka'},
+       why:'ватрушка 通常是奶渣馅的小圆面包，偏甜。', key:'Ва́трушку, пожа́луйста.', keyZh:'请给我一个奶渣小圆面包。'},
+      {id:'d', ru:'Ничего́, спаси́бо.', zh:'不用，谢谢。', verdict:'best', set:{pastry:'none'},
+       why:'只买面包也完全成立。', key:'Ничего́, спаси́бо.', keyZh:'不用，谢谢。'}
+    ],
+    vocab:['пирожо́к','капу́ста','сло́йка','я́блоко','ва́трушка','тво́рог','вы́печка']
+  },
+  {
+    round:4, level:'易', title:'茶/咖啡', stepNo:1, stepsInRound:1,
+    whoRu:'Продаве́ц', whoZh:'面包房店员', avatar:'☕',
+    waiter:{ru:'Чай и́ли ко́фе?',zh:'茶还是咖啡？'},
+    prompt:'你想喝茶还是咖啡？',
+    choices:[
+      {id:'a', ru:'Чай, пожа́луйста.', zh:'茶，谢谢。', verdict:'best', set:{drink:'tea'},
+       why:'俄罗斯日常首选；配面包和点心很自然。', key:'Чай, пожа́луйста.', keyZh:'茶，谢谢。',
+       tip:'茶可以加柠檬、牛奶或糖。'},
+      {id:'b', ru:'Ко́фе, пожа́луйста.', zh:'咖啡，谢谢。', verdict:'best', set:{drink:'coffee'},
+       why:'面包房通常也有咖啡；城市里很常见。', key:'Ко́фе, пожа́луйста.', keyZh:'咖啡，谢谢。'},
+      {id:'c', ru:'Что вы посове́туете?', zh:'您推荐什么？', verdict:'best', set:{drink:'tea'},
+       why:'让店员推荐；面包房通常会推荐茶配 выпечка。', key:'Возьми́те чай — он хорошо́ идёт с вы́печкой.', keyZh:'试试茶，配点心很合适。',
+       tip:'也可以说 Что вы рекоменду́ете? 但这一句更常用、更好记。'},
+      {id:'d', ru:'Молоко́, пожа́луйста.', zh:'牛奶，谢谢。', verdict:'wrong',
+       why:'牛奶可以加在茶/咖啡里，但不是这一轮的饮品。'}
+    ],
+    vocab:['чай','ко́фе','вы́печка','посове́туете','возьми́те']
+  },
+  {
+    round:5, level:'中', title:'加奶/柠檬', stepNo:1, stepsInRound:2,
+    whoRu:'Продаве́ц', whoZh:'面包房店员', avatar:'☕',
+    waiter:() => state.drink === 'coffee'
+      ? {ru:'С молоко́м?',zh:'加牛奶吗？'}
+      : {ru:'С молоко́м и́ли с лимо́ном?',zh:'加牛奶还是柠檬？'},
+    prompt:'你想加什么？',
+    choices:() => state.drink === 'coffee' ? [
+      {id:'a', ru:'С молоко́м, пожа́луйста.', zh:'加牛奶，谢谢。', verdict:'best', set:{add:'milk'},
+       why:'咖啡加牛奶很常见。', key:'С молоко́м, пожа́луйста.', keyZh:'加牛奶，谢谢。'},
+      {id:'b', ru:'Без молока́, пожа́луйста.', zh:'不加牛奶，谢谢。', verdict:'best', set:{add:'none'},
+       why:'黑咖啡也完全成立。', key:'Без молока́, пожа́луйста.', keyZh:'不加牛奶，谢谢。'},
+      {id:'c', ru:'С кетчу́пом.', zh:'加番茄酱。', verdict:'wrong',
+       why:'咖啡里不加番茄酱。'}
+    ] : [
+      {id:'a', ru:'С молоко́м, пожа́луйста.', zh:'加牛奶，谢谢。', verdict:'best', set:{add:'milk'},
+       why:'茶加牛奶也常见。', key:'С молоко́м, пожа́луйста.', keyZh:'加牛奶，谢谢。'},
+      {id:'b', ru:'С лимо́ном, пожа́луйста.', zh:'加柠檬，谢谢。', verdict:'best', set:{add:'lemon'},
+       why:'茶加柠檬非常常见。', key:'С лимо́ном, пожа́луйста.', keyZh:'加柠檬，谢谢。'},
+      {id:'c', ru:'Без всего́, пожа́луйста.', zh:'什么都不加，谢谢。', verdict:'best', set:{add:'none'},
+       why:'清茶也完全成立。', key:'Без всего́, пожа́луйста.', keyZh:'什么都不加，谢谢。'},
+      {id:'d', ru:'С кетчу́пом.', zh:'加番茄酱。', verdict:'wrong',
+       why:'茶里不加番茄酱。'}
+    ],
+    vocab:['молоко́','лимо́н','без','с','пожа́луйста']
+  },
+  {
+    round:5, level:'中', title:'糖', stepNo:2, stepsInRound:2,
+    whoRu:'Продаве́ц', whoZh:'面包房店员', avatar:'☕',
+    waiter:{ru:'С са́харом?',zh:'加糖吗？'},
+    prompt:'你要加糖吗？',
+    choices:[
+      {id:'a', ru:'Без са́хара, пожа́луйста.', zh:'不加糖，谢谢。', verdict:'best', set:{sugar:'no'},
+       why:'最直接；不想甜就这样说。', key:'Без са́хара, пожа́луйста.', keyZh:'不加糖，谢谢。'},
+      {id:'b', ru:'С са́харом, пожа́луйста.', zh:'加糖，谢谢。', verdict:'best', set:{sugar:'yes'},
+       why:'也完全成立。', key:'С са́харом, пожа́луйста.', keyZh:'加糖，谢谢。'},
+      {id:'c', ru:'Са́хар отде́льно, пожа́луйста.', zh:'糖单独放，谢谢。', verdict:'best', set:{sugar:'separate'},
+       why:'很实用；自己控制甜度。', key:'Са́хар отде́льно, пожа́луйста.', keyZh:'糖单独放，谢谢。'},
+      {id:'d', ru:'С молоко́м.', zh:'加牛奶。', verdict:'wrong',
+       why:'又答成牛奶了；这一轮问的是糖。'}
+    ],
+    vocab:['са́хар','отде́льно','без','с']
+  },
+  {
+    round:6, level:'中', title:'这里/带走', stepNo:1, stepsInRound:1,
+    whoRu:'Продаве́ц', whoZh:'面包房店员', avatar:'🥐',
+    waiter:{ru:'Здесь и́ли с собо́й?',zh:'在这里吃还是带走？'},
+    prompt:'你要在这里吃，还是全部带走？',
+    choices:() => {
+      const drinkWord = state.drink === 'coffee' ? 'ко́фе' : 'чай';
+      return [
+        {id:'a', ru:'Здесь, пожа́луйста.', zh:'在这里吃，谢谢。', verdict:'best', set:{place:'here'},
+         why:'找个小桌子坐下；面包仍会装袋。', key:'Здесь, пожа́луйста.', keyZh:'在这里吃，谢谢。'},
+        {id:'b', ru:'С собо́й, пожа́луйста.', zh:'带走，谢谢。', verdict:'best', set:{place:'takeaway'},
+         why:'全部装袋/纸杯带走。', key:'С собо́й, пожа́луйста.', keyZh:'带走，谢谢。'},
+        {id:'c', ru:`Хлеб с собо́й, а ${drinkWord} здесь.`, zh:`面包带走，${state.drink === 'coffee' ? '咖啡' : '茶'}在这里喝。`, verdict:'best', set:{place:'here',mixed:true},
+         why:'很真实：面包带走，饮料在这里喝。', key:`Хлеб с собо́й, а ${drinkWord} здесь.`, keyZh:`面包带走，${state.drink === 'coffee' ? '咖啡' : '茶'}在这里喝。`},
+        {id:'d', ru:'В паке́т.', zh:'装袋。', verdict:'wrong',
+         why:'装袋不是回答“在这里还是带走”。'}
+      ];
+    },
+    vocab:['здесь','с собо́й','паке́т','чай','ко́фе']
+  },
+  {
+    round:7, level:'易', title:'付款', stepNo:1, stepsInRound:1,
+    whoRu:'Продаве́ц', whoZh:'面包房店员', avatar:'💳',
+    waiter:() => ({ru:`С вас ${total()} рубле́й.`,zh:`一共 ${total()} 卢布。`}),
+    prompt:'你怎么付款？',
+    choices:[
+      {id:'a', ru:'Мо́жно ка́ртой?', zh:'可以刷卡吗？', verdict:'best', set:{payment:'card'},
+       why:'最方便；大城市面包房通常有刷卡机。', key:'Мо́жно ка́ртой?', keyZh:'可以刷卡吗？'},
+      {id:'b', ru:'На́личными, пожа́луйста.', zh:'现金，谢谢。', verdict:'best', set:{payment:'cash'},
+       why:'备现金更稳。', key:'На́личными, пожа́луйста.', keyZh:'现金，谢谢。'},
+      {id:'c', ru:'Ка́ртой, пожа́луйста. Да́йте, пожа́луйста, чек.', zh:'刷卡，谢谢。请给我收据。', verdict:'okay', set:{payment:'card'},
+       why:'刷卡 + 收据；比 A 多一步。', key:'Да́йте, пожа́луйста, чек.', keyZh:'请给我收据。'},
+      {id:'d', ru:'У меня́ нет де́нег.', zh:'我没钱。', verdict:'wrong',
+       why:'不能解决付款。'}
+    ],
+    vocab:['рубль','рубле́й','ка́рта','нали́чные','оплати́ть','термина́л','чек','сда́ча']
+  }
+];
+
+let idx = 0, pickedId = null, solved = false, wrong = new Set(), hadWrong = false, firstTry = 0;
+let state = {};
+let currentStep = null;
+let recapLog = [];
+
+function materialize(base){
+  return {
+    ...base,
+    waiter: typeof base.waiter === 'function' ? base.waiter() : base.waiter,
+    choices: typeof base.choices === 'function' ? base.choices() : base.choices,
+    vocab: typeof base.vocab === 'function' ? base.vocab() : base.vocab
+  };
+}
+function renderRounds(step){
+  document.querySelectorAll('.round').forEach(el => {
+    const r = +el.dataset.round;
+    el.classList.toggle('active', r === step.round);
+    el.classList.toggle('done', r < step.round);
+  });
+}
+function renderChoices(step){
+  $('choices').innerHTML = step.choices.map((c, i) => {
+    const cls = ['choice'];
+    if(wrong.has(c.id)) cls.push('wrong');
+    if(solved && pickedId === c.id) cls.push(c.verdict === 'best' ? 'good' : 'okay');
+    if(solved && pickedId !== c.id) cls.push('dim');
+    return `<button class="${cls.join(' ')}" data-id="${esc(c.id)}">
+      <span class="letter">${'ABCD'[i] || '?'}</span>
+      <span class="main"><b>${esc(c.ru)}</b><small class="zh">${esc(c.zh)}</small></span>
+    </button>`;
+  }).join('');
+}
+function renderFeedback(step){
+  const box = $('feedback');
+  if(!pickedId){ box.className = 'feedback'; box.innerHTML = ''; return; }
+  const c = step.choices.find(x => x.id === pickedId);
+  if(!c){ box.className = 'feedback'; box.innerHTML = ''; return; }
+  if(solved){
+    const kind = c.verdict === 'best' ? 'good' : 'okay';
+    const title = c.verdict === 'best' ? '✓ Отли́чно' : '△ Поня́тно';
+    box.className = 'feedback show ' + kind;
+    box.innerHTML = `<div class="fb-title">${title}</div>
+      <div class="fb-why">${esc(c.why)}</div>
+      ${c.key ? `<div class="key"><div class="key-label">关键表达</div><div class="key-it">${esc(c.key)} <button class="speak" data-speak="${esc(strip(c.key))}">♪</button></div><div class="key-zh zh">${esc(c.keyZh || '')}</div></div>` : ''}
+      ${c.tip ? `<div class="fb-tip">${esc(c.tip)}</div>` : ''}
+      <button class="continue" data-continue>继续 →</button>`;
+  } else {
+    box.className = 'feedback show bad';
+    box.innerHTML = `<div class="fb-title">✗ Ещё раз</div><div class="fb-why">${esc(c.why)}</div><div class="retry">换一个回答试试</div>`;
+  }
+}
+function renderVocab(step){
+  $('vocabList').innerHTML = step.vocab.map(key => {
+    const v = VOCAB[key];
+    if(!v) return '';
+    return `<div class="vrow"><div class="vmain"><b>${esc(key)}</b><small>${esc(v.zh)} · ${esc(v.pos)}</small></div><span class="vtag ${v.src}">${v.src === 'base' ? '基础' : '场景'}</span></div>`;
+  }).join('');
+}
+function render(){
+  currentStep = materialize(STEPS[idx]);
+  const step = currentStep;
+  $('doneTotal').textContent = STEPS.length;
+  $('roundLabel').textContent = `第 ${step.round} 轮 · ${step.level} · ${step.title}` + (step.stepsInRound > 1 ? ` · ${step.stepNo}/${step.stepsInRound}` : '');
+  $('whoRu').textContent = step.whoRu || 'Продаве́ц';
+  $('whoZh').textContent = step.whoZh ? ` · ${step.whoZh}` : '';
+  $('avatar').textContent = step.avatar || '🥐';
+  $('waiterRu').textContent = step.waiter.ru;
+  $('waiterZh').textContent = step.waiter.zh;
+  $('waiterSpeak').dataset.speak = strip(step.waiter.ru);
+  $('prompt').textContent = step.prompt || '你会怎么回答？';
+  renderRounds(step);
+  renderChoices(step);
+  renderFeedback(step);
+  renderVocab(step);
+}
+function scrollToCard(){
+  if(window.innerWidth < 860) document.querySelector('.scene-card').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function choose(id){
+  if(solved) return;
+  const step = currentStep;
+  const c = step.choices.find(x => x.id === id);
+  if(!c || wrong.has(id)) return;
+  if(c.verdict === 'wrong'){
+    wrong.add(id); hadWrong = true; pickedId = id; solved = false;
+  } else {
+    pickedId = id; solved = true;
+    if(c.set) Object.assign(state, c.set);
+    if(!hadWrong) firstTry++;
+    recapLog.push({it:c.key || c.ru, zh:c.keyZh || c.zh});
+  }
+  renderChoices(step); renderFeedback(step);
+  if(window.innerWidth < 860) $('feedback').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function nextStep(){
+  if(!solved) return;
+  if(idx < STEPS.length - 1){
+    idx++; pickedId = null; solved = false; wrong = new Set(); hadWrong = false; render(); scrollToCard();
+  } else {
+    showDone();
+  }
+}
+function showDone(){
+  $('playView').hidden = true; $('doneView').hidden = false;
+  $('doneScore').textContent = firstTry; $('doneTotal').textContent = STEPS.length;
+  const breadMap = {black:'чёрный', white:'белый', baton:'бато́н', borodinsky:'бороди́нский'};
+  const breadZhMap = {black:'黑麦', white:'白面包', baton:'长条白面包', borodinsky:'波罗金诺'};
+  const amountMap = {one:'1', half:'полбуха́нки', two:'2'};
+  const amountZhMap = {one:'1 个', half:'半个', two:'2 个'};
+  const pastryMap = {pirozhok:'пирожо́к', sloyka:'сло́йка', vatrushka:'ва́трушка', none:'—'};
+  const pastryZhMap = {pirozhok:'白菜馅饼', sloyka:'苹果酥皮', vatrushka:'奶渣小圆面包', none:'不点'};
+  const addMap = {milk:'с молоко́м', lemon:'с лимо́ном', none:'без всего́'};
+  const addZhMap = {milk:'加牛奶', lemon:'加柠檬', none:'什么都不加'};
+  const sugarMap = {yes:'с са́харом', no:'без са́хара', separate:'са́хар отде́льно'};
+  const sugarZhMap = {yes:'加糖', no:'不加糖', separate:'糖单独放'};
+  const payMap = {card:'ка́рта', cash:'нали́чные'};
+  const payZhMap = {card:'刷卡', cash:'现金'};
+  const bread = breadMap[state.bread] || '—';
+  const breadZh = breadZhMap[state.bread] || '—';
+  const amount = amountMap[state.amount] || '—';
+  const amountZh = amountZhMap[state.amount] || '—';
+  const sliced = state.sliced === 'no' ? 'це́лый' : 'наре́зали';
+  const slicedZh = state.sliced === 'no' ? '整条' : '切片';
+  const pastry = pastryMap[state.pastry] || '—';
+  const pastryZh = pastryZhMap[state.pastry] || '—';
+  const drink = state.drink === 'coffee' ? 'ко́фе' : 'чай';
+  const drinkZh = state.drink === 'coffee' ? '咖啡' : '茶';
+  const add = addMap[state.add] || '—';
+  const addZh = addZhMap[state.add] || '—';
+  const sugar = sugarMap[state.sugar] || '—';
+  const sugarZh = sugarZhMap[state.sugar] || '—';
+  const place = state.mixed ? 'здесь (хлеб с собо́й)' : state.place === 'takeaway' ? 'с собо́й' : 'здесь';
+  const placeZh = state.mixed ? '这里（面包带走）' : state.place === 'takeaway' ? '带走' : '这里吃';
+  const pay = payMap[state.payment] || '—';
+  const payZh = payZhMap[state.payment] || '—';
+  const sum = total();
+  $('doneOrder').innerHTML = esc(`Хлеб: ${bread} · ${amount} · ${sliced} · ${pastry} · ${drink} · ${add} · ${sugar} · ${place} · ${pay} · ${sum} ₽`) +
+    `<span class="zh"> · 面包：${esc(breadZh)} · ${esc(amountZh)} · ${esc(slicedZh)} · ${esc(pastryZh)} · ${esc(drinkZh)} · ${esc(addZh)} · ${esc(sugarZh)} · ${esc(placeZh)} · ${esc(payZh)} · ${sum} 卢布</span>`;
+  $('doneTrip').innerHTML = esc(`Све́жий хлеб и тёплый ${drink} — до́брое у́тро!`) +
+    `<span class="zh"> · 新鲜面包和热${esc(drinkZh)}，早上好</span>`;
+  document.querySelectorAll('.round').forEach(el => { el.classList.remove('active'); el.classList.add('done'); });
+  $('recap').innerHTML = recapLog.map(r => `<div class="recap-row"><div><b>${esc(r.it)}</b><small class="zh">${esc(r.zh)}</small></div><button class="speak" data-speak="${esc(strip(r.it))}">♪</button></div>`).join('');
+}
+function restart(){
+  idx = 0; pickedId = null; solved = false; wrong = new Set(); hadWrong = false; firstTry = 0; state = {}; currentStep = null; recapLog = [];
+  $('doneScore').textContent = '0'; $('doneOrder').textContent = ''; $('recap').innerHTML = '';
+  $('doneView').hidden = true; $('playView').hidden = false; render(); scrollToCard();
+}
+document.addEventListener('click', e => {
+  const sp = e.target.closest('[data-speak]');
+  if(sp){ e.preventDefault(); e.stopPropagation(); speak(sp.dataset.speak); return; }
+  if(e.target.closest('[data-continue]')){ nextStep(); return; }
+  const ch = e.target.closest('.choice');
+  if(ch) choose(ch.dataset.id);
+});
+$('againBtn').addEventListener('click', restart);
+
+const zhBtn = $('zhToggle');
+function setZhVisible(show){
+  document.body.classList.toggle('hide-zh', !show);
+  zhBtn.textContent = show ? '隐藏中文' : '显示中文';
+  zhBtn.setAttribute('aria-pressed', String(show));
+}
+setZhVisible(false);
+zhBtn.addEventListener('click', () => setZhVisible(document.body.classList.contains('hide-zh')));
+
+const synth = window.speechSynthesis || null;
+let ruVoice = null;
+function refreshVoice(){
+  if(!synth) return;
+  const vs = synth.getVoices() || [];
+  ruVoice = vs.find(v => /^ru([-_]|$)/i.test(v.lang)) || null;
+}
+if(synth){ refreshVoice(); if(typeof synth.addEventListener === 'function') synth.addEventListener('voiceschanged', refreshVoice); else synth.onvoiceschanged = refreshVoice; }
+function speak(text){
+  if(!synth || !text) return;
+  try{
+    if(synth.speaking || synth.pending) synth.cancel();
+    const u = new SpeechSynthesisUtterance(strip(text));
+    u.lang = 'ru-RU'; if(ruVoice) u.voice = ruVoice; u.rate = .84; u.pitch = 1; synth.speak(u);
+  }catch(e){}
+}
+render();
+</script>
+</body>
+</html>
