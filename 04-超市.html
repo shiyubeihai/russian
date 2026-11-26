@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04 · В супермаркете · 俄语情景对话</title>
+<link rel="icon" href="data:,">
+<style>
+  :root{
+    --bg:#F4FAFD; --panel:#FFFDF8; --ink:#22313A; --muted:#6B7E89;
+    --line:#D7E7EF; --ice:#EAF4F9; --ice-2:#F7FCFE; --cream:#FBF7EF;
+    --blue:#1F4E79; --blue-2:#4C7E9B; --blue-soft:#E7F3F9;
+    --orange:#D9772A; --orange-deep:#B65E18; --orange-soft:#FDF1E4;
+    --green:#4F8A5B; --green-deep:#2F6B45; --green-soft:#EAF3EC;
+    --red:#C94C43; --red-deep:#A93A33; --red-soft:#FBECE9;
+    --gold:#C89B4A; --gold-soft:#FBF4E3;
+    --shadow:0 16px 40px rgba(43,87,108,.09);
+    --shadow-soft:0 8px 22px rgba(43,87,108,.07);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:
+      radial-gradient(900px 540px at 4% -12%, #FFFFFF 0%, rgba(255,255,255,0) 64%),
+      radial-gradient(760px 480px at 102% 0%, #FBE5D2 0%, rgba(251,229,210,0) 62%),
+      radial-gradient(620px 420px at 70% 46%, rgba(255,255,255,.82) 0%, rgba(255,255,255,0) 68%),
+      linear-gradient(180deg,#F8FCFE 0%,var(--bg) 48%,#FDF7EF 100%);
+    min-height:100vh;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.38;
+    background-image:radial-gradient(rgba(76,126,155,.17) 1px, transparent 1.2px);
+    background-size:30px 30px;
+    mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.4) 35%,transparent 72%);
+  }
+  button{font-family:inherit;cursor:pointer}
+  .page{max-width:1120px;margin:0 auto;padding:0 22px 92px}
+  .topbar{display:flex;align-items:center;gap:12px;padding:18px 0 14px;border-bottom:1px solid rgba(215,231,239,.9)}
+  .brand{display:flex;align-items:center;gap:9px}
+  .brand-mark{width:33px;height:33px;border-radius:10px;background:var(--orange);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:18px;font-weight:700;box-shadow:0 8px 16px rgba(217,119,42,.2)}
+  .brand b{display:block;font-size:14px;letter-spacing:.12em}
+  .brand small{display:block;font-size:10.5px;color:var(--muted);letter-spacing:.08em;margin-top:2px}
+  .top-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+  .scene-badge{font-size:10px;font-weight:900;color:#fff;background:var(--blue);border-radius:999px;padding:6px 10px;letter-spacing:.08em}
+  .zh-btn{border:1px solid var(--line);background:#fff;color:var(--blue);border-radius:999px;padding:6px 11px;font-size:11px;font-weight:800}
+  .zh-btn:hover{background:var(--ice-2);border-color:#BFDDE9}
+  .zh-btn[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+  .hero{padding:36px 0 20px}
+  .back-link{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:800;color:var(--muted);text-decoration:none;margin-bottom:11px}
+  .back-link:hover{color:var(--blue)}
+  .kicker{font-size:10.5px;letter-spacing:.22em;font-weight:900;color:var(--green-deep);display:flex;align-items:center;gap:8px;margin-bottom:9px}
+  .kicker i{width:7px;height:7px;border-radius:50%;background:var(--green)}
+  h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:48px;line-height:1.02;letter-spacing:-.02em;font-weight:700;color:var(--blue)}
+  h1 span{font-size:18px;font-family:"PingFang SC","Hiragino Sans GB",sans-serif;font-weight:600;color:var(--muted);margin-left:12px;letter-spacing:.02em}
+  .lead{font-size:13px;line-height:1.7;color:var(--muted);max-width:790px;margin:10px 0 0}
+  .rounds{display:flex;gap:7px;flex-wrap:wrap;margin-top:17px}
+  .round{display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 10px 6px 6px;font-size:10.5px;color:var(--muted);transition:.15s}
+  .round b{width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--ice);color:var(--blue-2);font-size:9.5px}
+  .round.active{border-color:var(--orange);background:var(--orange);color:#fff;box-shadow:0 6px 14px rgba(217,119,42,.18)}
+  .round.active b{background:rgba(255,255,255,.22);color:#fff}
+  .round.done{border-color:#C8E2D6;background:var(--green-soft);color:var(--green-deep)}
+  .round.done b{background:var(--green);color:#fff}
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 292px;gap:18px;align-items:start;margin-top:6px}
+  .main{min-width:0}
+  .scene-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+  .scene-visual{position:relative;height:190px;overflow:hidden;background:linear-gradient(180deg,#EAF4F9 0%,#F7FCFE 56%,#FBF7EF 100%);border-bottom:1px solid #D7E7EF}
+  .scene-visual:after{content:"";position:absolute;left:0;right:0;bottom:0;height:36px;background:#DCEBF2;border-top:3px solid #C6DDE8;background-image:linear-gradient(90deg,rgba(255,255,255,.45) 1px,transparent 1px);background-size:34px 34px}
+  .sign{position:absolute;z-index:5;left:24px;top:18px;background:var(--blue);color:#FFFDF8;border:3px solid #173E60;border-radius:5px;padding:7px 12px 6px;font-size:9px;font-weight:900;letter-spacing:.12em;box-shadow:0 7px 14px rgba(31,78,121,.16)}
+  .sign small{display:block;font-size:6.5px;letter-spacing:.1em;color:#F3B56C;margin-top:2px}
+  .shelf{position:absolute;z-index:3;left:24px;bottom:50px;width:360px;height:90px;border:3px solid #173E60;border-radius:8px;background:linear-gradient(180deg,#2D648D,#1F4E79);box-shadow:0 7px 14px rgba(31,78,121,.12)}
+  .shelf:before{content:"";position:absolute;left:9px;right:9px;top:42px;height:3px;background:#173E60;box-shadow:0 -31px 0 #173E60}
+  .prod{position:absolute;width:32px;height:27px;border:2px solid #BFDDE9;border-radius:4px;background:linear-gradient(180deg,#FFFDF8,#E7F3F9);box-shadow:0 2px 0 rgba(23,62,96,.15)}
+  .prod:after{content:"";position:absolute;left:5px;right:5px;top:8px;height:3px;border-radius:2px;background:rgba(31,78,121,.28)}
+  .prod.milk{background:linear-gradient(180deg,#FFFDF8,#DDEFF6);border-color:#BFDDE9}
+  .prod.tea{background:linear-gradient(180deg,#F5C26A,#D9772A);border-color:#B65E18}
+  .prod.sugar{background:linear-gradient(180deg,#FFFDF8,#FBF0D7);border-color:#D9A441}
+  .prod.cereal{background:linear-gradient(180deg,#A9D3B7,#4F8A5B);border-color:#2F6B45}
+  .prod.p1{left:14px;bottom:55px}.prod.p2{left:58px;bottom:55px}.prod.p3{left:102px;bottom:55px}.prod.p4{left:146px;bottom:55px}
+  .prod.p5{left:190px;bottom:55px}.prod.p6{left:234px;bottom:55px}.prod.p7{left:278px;bottom:55px}.prod.p8{left:322px;bottom:55px}
+  .prod.p9{left:14px;bottom:18px}.prod.p10{left:58px;bottom:18px}.prod.p11{left:102px;bottom:18px}.prod.p12{left:146px;bottom:18px}
+  .crate{position:absolute;z-index:4;right:198px;bottom:50px;width:122px;height:66px;border:3px solid #2F6B45;border-radius:6px;background:linear-gradient(180deg,#7FB08C,#4F8A5B);box-shadow:0 5px 10px rgba(47,107,69,.14)}
+  .crate:before{content:"";position:absolute;left:7px;right:7px;top:7px;height:3px;background:#2F6B45;box-shadow:0 20px 0 #2F6B45,0 40px 0 #2F6B45}
+  .apple{position:absolute;width:17px;height:17px;border-radius:50%;background:linear-gradient(180deg,#F5C26A,#D9772A);border:1px solid #B65E18}
+  .apple.a1{left:14px;top:14px}.apple.a2{left:39px;top:12px}.apple.a3{left:65px;top:15px}.apple.a4{left:90px;top:12px}
+  .apple.a5{left:25px;top:39px}.apple.a6{left:53px;top:38px}.apple.a7{left:80px;top:40px}
+  .checkout{position:absolute;z-index:5;right:24px;bottom:44px;width:92px;height:98px;border:3px solid #173E60;border-radius:7px;background:linear-gradient(180deg,#2D648D,#1F4E79);box-shadow:0 6px 12px rgba(31,78,121,.14)}
+  .screen{position:absolute;left:9px;right:9px;top:9px;height:40px;border-radius:4px;background:linear-gradient(180deg,#DDF3E8,#8FC8A5);border:2px solid #2F6B45;box-shadow:inset 0 0 0 2px rgba(255,255,255,.35)}
+  .screen:before{content:"";position:absolute;left:8px;right:8px;top:10px;height:2px;background:#2F6B45;box-shadow:0 7px 0 rgba(47,107,69,.55),0 14px 0 rgba(47,107,69,.35)}
+  .screen:after{content:"";position:absolute;left:8px;right:8px;bottom:8px;height:3px;border-radius:2px;background:var(--orange)}
+  .checkout .bag{position:absolute;left:12px;bottom:10px;width:40px;height:30px;border:2px solid #C9A77F;border-radius:3px 3px 6px 6px;background:#FFFDF8}
+  .checkout .bag:before{content:"";position:absolute;left:8px;top:-8px;width:20px;height:10px;border:2px solid #C9A77F;border-bottom:0;border-radius:7px 7px 0 0}
+  .checkout .bag:after{content:"ПРОДУКТЫ";position:absolute;left:4px;right:4px;top:10px;font-size:4.5px;font-weight:900;letter-spacing:.05em;color:var(--orange-deep);text-align:center}
+  .promo{position:absolute;z-index:6;left:25px;top:72px;background:var(--orange);color:#fff;font-size:6.5px;font-weight:900;letter-spacing:.09em;padding:4px 6px;border-radius:3px;transform:rotate(-3deg);box-shadow:0 3px 7px rgba(182,94,24,.18)}
+  .scene-body{padding:16px 18px 18px}
+  .round-label{font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--blue-2);margin-bottom:9px}
+  .waiter{display:flex;gap:10px;align-items:flex-start}
+  .avatar{width:42px;height:42px;border-radius:50%;flex:none;background:var(--ice);border:1px solid #CFE5EE;display:flex;align-items:center;justify-content:center;font-size:19px}
+  .bubble{position:relative;flex:1;min-width:0;background:#F7FCFE;border:1px solid #D8EAF2;border-radius:14px;padding:10px 12px}
+  .bubble:before{content:"";position:absolute;left:-6px;top:15px;width:10px;height:10px;background:#F7FCFE;border-left:1px solid #D8EAF2;border-bottom:1px solid #D8EAF2;transform:rotate(45deg)}
+  .bubble-top{display:flex;align-items:center;gap:7px;margin-bottom:3px}
+  .who{font-size:10px;color:var(--muted);font-weight:800;letter-spacing:.04em}
+  .speak{margin-left:auto;border:1px solid var(--line);background:#fff;color:var(--blue);border-radius:999px;padding:3px 8px;font-size:10px;font-weight:800}
+  .speak:hover{background:var(--blue-soft);border-color:#C4E0EB}
+  .ru{font-family:"Iowan Old Style","Palatino Linotype",Georgia,"Times New Roman",serif}
+  .itt{font-size:17px;font-weight:700;line-height:1.35;color:var(--ink)}
+  .zh{font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:3px}
+  .prompt{font-size:12px;color:var(--muted);margin:16px 0 8px;font-weight:700}
+  .choices{display:flex;flex-direction:column;gap:8px}
+  .choice{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:11px;padding:10px 11px;color:var(--ink);transition:.13s}
+  .choice:hover{border-color:#BFDDE9;background:#F8FDFE;transform:translateY(-1px)}
+  .choice .letter{width:25px;height:25px;border-radius:50%;flex:none;background:var(--ice);color:var(--blue);font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .choice .main{min-width:0;display:flex;flex-direction:column;gap:1px}
+  .choice b{font-size:14px;line-height:1.35;font-weight:700}
+  .choice small{font-size:11px;color:var(--muted);line-height:1.4}
+  .choice.good{border-color:#9CCDB8;background:var(--green-soft);box-shadow:0 0 0 2px rgba(79,138,91,.1)}
+  .choice.good .letter{background:var(--green);color:#fff}
+  .choice.okay{border-color:#E1C887;background:var(--gold-soft)}
+  .choice.okay .letter{background:var(--gold);color:#fff}
+  .choice.wrong{border-color:#E5B3AE;background:var(--red-soft);opacity:.78}
+  .choice.wrong .letter{background:var(--red);color:#fff}
+  .choice.dim{opacity:.45}
+  .feedback{display:none;margin-top:12px;border:1px solid var(--line);border-radius:12px;padding:12px 13px;background:#fff}
+  .feedback.show{display:block}
+  .feedback.good{border-color:#B8DCCB;background:var(--green-soft)}
+  .feedback.bad{border-color:#E5B3AE;background:var(--red-soft)}
+  .feedback.okay{border-color:#E1C887;background:var(--gold-soft)}
+  .fb-title{font-size:12.5px;font-weight:900;margin-bottom:5px}
+  .feedback.good .fb-title{color:var(--green-deep)}
+  .feedback.bad .fb-title{color:var(--red-deep)}
+  .feedback.okay .fb-title{color:#8A6628}
+  .fb-why{font-size:12px;line-height:1.65;color:#53666F}
+  .fb-tip{font-size:11px;line-height:1.6;color:#70848E;margin-top:7px;padding-top:7px;border-top:1px dashed rgba(112,132,142,.22)}
+  .retry{font-size:11px;color:var(--red-deep);font-weight:800;margin-top:7px}
+  .key{margin-top:9px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 10px}
+  .key-label{font-size:9px;letter-spacing:.12em;color:var(--muted);font-weight:900;margin-bottom:3px}
+  .key-it{font-size:13px;font-weight:700;display:flex;align-items:center;gap:7px;line-height:1.4}
+  .key-zh{font-size:10.5px;color:var(--muted);margin-top:2px}
+  .continue{margin-top:10px;border:0;border-radius:9px;background:var(--orange);color:#fff;padding:9px 16px;font-size:12px;font-weight:800;box-shadow:0 5px 12px rgba(217,119,42,.18)}
+  .continue:hover{background:var(--orange-deep)}
+  .side{display:flex;flex-direction:column;gap:12px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px;box-shadow:var(--shadow-soft)}
+  .card-title{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:900;margin-bottom:9px}
+  .chip{margin-left:auto;font-size:8.5px;font-weight:800;color:var(--blue);background:var(--blue-soft);border:1px solid #CFE5EE;border-radius:999px;padding:3px 6px;white-space:nowrap}
+  .vrow{display:flex;align-items:flex-start;gap:7px;padding:7px 0;border-top:1px dashed var(--line)}
+  .vrow:first-child{border-top:0;padding-top:0}
+  .vmain{min-width:0;flex:1}
+  .vmain b{font-size:12px;font-weight:700}
+  .vmain small{display:block;font-size:10px;color:var(--muted);margin-top:1px}
+  .vtag{flex:none;font-size:8px;font-weight:800;border-radius:999px;padding:3px 6px;margin-top:1px;white-space:nowrap}
+  .vtag.base{color:var(--green-deep);background:var(--green-soft);border:1px solid #C8E2D6}
+  .vtag.scene{color:var(--orange-deep);background:var(--orange-soft);border:1px solid #F0C9A4}
+  .side-note{font-size:10.5px;line-height:1.55;color:var(--muted);margin-top:9px;border-top:1px dashed var(--line);padding-top:8px}
+  .mini-menu{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+  .mini-menu span{font-size:9.5px;color:#53666F;background:#F7FCFE;border:1px solid #D8EAF2;border-radius:7px;padding:5px 6px;line-height:1.35}
+  .mini-menu b{display:block;font-size:10px;color:var(--blue);line-height:1.3}
+  .steps{display:flex;flex-direction:column;gap:7px;font-size:11px;color:#53666F;line-height:1.5}
+  .steps span{display:flex;gap:7px}
+  .steps b{color:var(--orange-deep);font-weight:900}
+  .done-view{padding:34px 22px 28px;text-align:center}
+  .done-badge{width:48px;height:48px;border-radius:50%;margin:0 auto 12px;background:var(--green-soft);border:1px solid #C8E2D6;color:var(--green-deep);display:flex;align-items:center;justify-content:center;font-size:23px;font-weight:900}
+  .done-view h2{font-size:24px;margin:0 0 6px;color:var(--blue)}
+  .done-view p{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
+  .done-trip{font-size:14px!important;color:var(--green-deep)!important;font-weight:800;margin-top:7px!important}
+  .done-stats{font-size:12px;color:var(--blue);font-weight:800;margin:12px 0 5px}
+  .done-stats b{font-size:24px;color:var(--orange);margin-right:3px}
+  .done-order{font-size:11.5px;color:var(--muted);margin:0 0 14px!important;min-height:17px;line-height:1.65}
+  .recap{display:flex;flex-direction:column;gap:7px;text-align:left;max-width:560px;margin:0 auto}
+  .recap-row{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 10px}
+  .recap-row div{min-width:0;flex:1}
+  .recap-row b{display:block;font-size:12.5px;line-height:1.35}
+  .recap-row small{display:block;font-size:10.5px;color:var(--muted);margin-top:1px}
+  .again{margin-top:15px;border:1px solid var(--orange);background:var(--orange);color:#fff;border-radius:9px;padding:9px 18px;font-size:12px;font-weight:800}
+  .again:hover{background:var(--orange-deep)}
+  .done-note{font-size:10.5px;color:var(--muted);margin-top:10px}
+  .hide-zh .zh,.hide-zh .fb-why,.hide-zh .fb-tip,.hide-zh .retry,.hide-zh .side-note,.hide-zh .done-note,.hide-zh .vmain small,.hide-zh .mini-zh{display:none!important}
+  @media (max-width:860px){
+    .page{padding:0 14px 84px}
+    .topbar{flex-wrap:wrap}
+    .top-right{margin-left:auto}
+    .hero{padding-top:28px}
+    h1{font-size:38px}
+    h1 span{display:block;margin:6px 0 0;font-size:16px}
+    .lead{font-size:12.5px}
+    .layout{grid-template-columns:1fr}
+    .side{order:2}
+    .scene-visual{height:150px}
+    .sign{left:10px;top:10px;font-size:7.5px;padding:5px 7px 4px;border-width:2px}
+    .sign small{font-size:5.5px}
+    .shelf{left:10px;bottom:42px;transform:scale(.78);transform-origin:left bottom}
+    .crate{right:8px;bottom:42px;transform:scale(.86);transform-origin:right bottom}
+    .checkout{right:8px;bottom:38px;transform:scale(.84);transform-origin:right bottom}
+    .promo{left:10px;top:58px;font-size:5.5px;padding:3px 5px}
+    .scene-body{padding:14px}
+    .top-right .scene-badge{display:none}
+    .side{width:100%}
+    .done-view{padding:28px 16px 24px}
+  }
+  @media (max-width:420px){
+    h1{font-size:34px}
+    .scene-visual{height:136px}
+    .shelf{left:8px;bottom:38px;transform:scale(.66)}
+    .crate{right:8px;bottom:38px;transform:scale(.74)}
+    .checkout{display:none}
+    .promo{display:none}
+    .choice b{font-size:13px}
+    .choice small{font-size:10.5px}
+  }
+</style>
+</head>
+<body class="hide-zh">
+<div class="page">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">Я</span>
+      <div><b>РУССКИЙ</b><small>俄语情景对话</small></div>
+    </div>
+    <div class="top-right">
+      <span class="scene-badge">04 · СУПЕРМАРКЕТ</span>
+      <button class="zh-btn" id="zhToggle" type="button" aria-pressed="false">显示中文</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <a class="back-link" href="03-酒店.html">← 03 酒店</a>
+    <a class="back-link" href="index.html" style="margin-left:12px">大厅</a>
+    <div class="kicker"><i></i> СЦЕНА 04 · СУПЕРМАРКЕТ · ПРОДУКТЫ</div>
+    <h1>В супермаркете <span>在超市</span></h1>
+    <p class="lead">03 酒店之后，你回到宿舍前，去社区超市买牛奶、鸡蛋、苹果、茶/咖啡和糖。找货架、称水果、拿袋子、自助收银、付款；7 轮 9 个决策。</p>
+    <div class="rounds">
+      <div class="round active" data-round="1"><b>1</b><span>找牛奶 · 易</span></div>
+      <div class="round" data-round="2"><b>2</b><span>牛奶/鸡蛋 · 易</span></div>
+      <div class="round" data-round="3"><b>3</b><span>苹果称重 · 易</span></div>
+      <div class="round" data-round="4"><b>4</b><span>茶/咖啡/糖 · 易</span></div>
+      <div class="round" data-round="5"><b>5</b><span>袋子 · 易</span></div>
+      <div class="round" data-round="6"><b>6</b><span>收银 · 中</span></div>
+      <div class="round" data-round="7"><b>7</b><span>付款 · 中</span></div>
+    </div>
+  </section>
+
+  <div class="layout">
+    <main class="main">
+      <section class="scene-card">
+        <div class="scene-visual" aria-hidden="true">
+          <div class="sign">ПРОДУКТЫ<small>24 ЧАСА · САМОКАССА</small></div>
+          <div class="shelf">
+            <span class="prod milk p1"></span><span class="prod milk p2"></span><span class="prod tea p3"></span><span class="prod tea p4"></span>
+            <span class="prod sugar p5"></span><span class="prod sugar p6"></span><span class="prod cereal p7"></span><span class="prod cereal p8"></span>
+            <span class="prod milk p9"></span><span class="prod tea p10"></span><span class="prod sugar p11"></span><span class="prod cereal p12"></span>
+          </div>
+          <div class="promo">-20%</div>
+          <div class="crate">
+            <span class="apple a1"></span><span class="apple a2"></span><span class="apple a3"></span><span class="apple a4"></span>
+            <span class="apple a5"></span><span class="apple a6"></span><span class="apple a7"></span>
+          </div>
+          <div class="checkout">
+            <span class="screen"></span>
+            <span class="bag"></span>
+          </div>
+        </div>
+
+        <div id="playView">
+          <div class="scene-body">
+            <div class="round-label" id="roundLabel">第 1 轮 · 易 · 找牛奶</div>
+            <div class="waiter">
+              <div class="avatar" id="avatar">🛒</div>
+              <div class="bubble">
+                <div class="bubble-top">
+                  <span class="who"><span id="whoRu">Сотру́дник</span><span class="zh" id="whoZh"> · 超市员工</span></span>
+                  <button class="speak" id="waiterSpeak" data-speak="">♪ 听</button>
+                </div>
+                <div class="itt ru" id="waiterRu"></div>
+                <div class="zh" id="waiterZh"></div>
+              </div>
+            </div>
+            <div class="prompt" id="prompt">你在找牛奶，怎么问？</div>
+            <div class="choices" id="choices"></div>
+            <div class="feedback" id="feedback" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="done-view" id="doneView" hidden>
+          <div class="done-badge">✓</div>
+          <h2>04 超市完成</h2>
+          <p>你找到了牛奶，拿了鸡蛋和苹果，也没忘茶/咖啡和糖。最后自己装袋、收银、付款，把一篮日常用品带回宿舍。</p>
+          <p class="done-trip" id="doneTrip">Спаси́бо за покупку!<span class="zh"> · 谢谢惠顾</span></p>
+          <div class="done-stats"><b id="doneScore">0</b> / <span id="doneTotal">9</span> 次第一次就选对</div>
+          <p class="done-order" id="doneOrder"></p>
+          <div class="recap" id="recap"></div>
+          <button class="again" id="againBtn">再练一次</button>
+          <p class="done-note">没有分数和排行榜，只看自己这一次的选择。</p>
+        </div>
+      </section>
+    </main>
+
+    <aside class="side">
+      <div class="card">
+        <div class="card-title">本场景词汇 <span class="chip">СЛОВА</span></div>
+        <div id="vocabList"></div>
+        <div class="side-note">标「基础」的是 00 预备课学过的词；标「场景」的是超市里新增的固定说法。</div>
+      </div>
+      <div class="card">
+        <div class="card-title">超市小抄 <span class="chip">8 ФРАЗ</span></div>
+        <div class="mini-menu">
+          <span><b>Где молоко́?</b><i class="mini-zh">牛奶在哪？</i></span>
+          <span><b>Мне деся́ток яи́ц</b><i class="mini-zh">十个鸡蛋</i></span>
+          <span><b>Полкило́ я́блок</b><i class="mini-zh">半公斤苹果</i></span>
+          <span><b>Паке́т ну́жен?</b><i class="mini-zh">要袋子吗？</i></span>
+          <span><b>Вы на самока́ссе?</b><i class="mini-zh">自助收银吗？</i></span>
+          <span><b>Ка́ртой, пожа́луйста</b><i class="mini-zh">刷卡，谢谢</i></span>
+          <span><b>Спаси́бо</b><i class="mini-zh">谢谢</i></span>
+          <span><b>До свида́ния</b><i class="mini-zh">再见</i></span>
+        </div>
+        <div class="side-note"><b style="color:var(--blue)">Повтори́те, пожа́луйста.</b> 请再说一遍。<br><b style="color:var(--blue)">Говори́те ме́дленнее.</b> 请说慢一点。<br><b style="color:var(--blue)">Я не понима́ю.</b> 我不明白。</div>
+      </div>
+      <div class="card">
+        <div class="card-title">怎么练</div>
+        <div class="steps">
+          <span><b>1</b>先听店员/收银员说什么</span>
+          <span><b>2</b>选一个回答；很多步不止一个答案成立</span>
+          <span><b>3</b>看解释，再继续</span>
+        </div>
+        <div class="side-note">同一个决定可以换一种选法。点「再练一次」可以换牛奶、鸡蛋、水果、茶/咖啡、糖和收银方式。♪ 点「听」可朗读。</div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const strip = s => String(s || '').normalize('NFC').replace(/́/g, '');
+
+const VOCAB = {
+  'суперма́ркет':{zh:'超市',pos:'名词',src:'scene'},
+  'магази́н':{zh:'商店',pos:'名词',src:'scene'},
+  'проду́кты':{zh:'食品；杂货',pos:'名词复数',src:'scene'},
+  'сотру́дник':{zh:'员工',pos:'名词',src:'scene'},
+  'касси́р':{zh:'收银员',pos:'名词',src:'scene'},
+  'ка́сса':{zh:'收银台',pos:'名词',src:'scene'},
+  'самока́сса':{zh:'自助收银',pos:'名词',src:'scene'},
+  'молоко́':{zh:'牛奶',pos:'名词',src:'scene'},
+  'моло́чный отде́л':{zh:'乳制品区',pos:'固定搭配',src:'scene'},
+  'буты́лка':{zh:'瓶子',pos:'名词',src:'scene'},
+  'паке́т молока́':{zh:'一盒/一袋牛奶',pos:'固定搭配',src:'scene'},
+  'полли́тра':{zh:'半升',pos:'数量',src:'scene'},
+  'кефи́р':{zh:'开菲尔',pos:'名词',src:'scene'},
+  'яйцо́':{zh:'鸡蛋',pos:'名词',src:'scene'},
+  'яи́ца':{zh:'鸡蛋（复数）',pos:'名词复数',src:'scene'},
+  'деся́ток':{zh:'十个',pos:'数量',src:'scene'},
+  'лото́к':{zh:'一托；一盒',pos:'名词',src:'scene'},
+  'ку́рица':{zh:'鸡；鸡肉',pos:'名词',src:'scene'},
+  'я́блоко':{zh:'苹果',pos:'名词',src:'scene'},
+  'я́блоки':{zh:'苹果（复数）',pos:'名词复数',src:'scene'},
+  'полкило́':{zh:'半公斤',pos:'数量',src:'scene'},
+  'килогра́мм':{zh:'公斤',pos:'名词',src:'scene'},
+  'взве́сить':{zh:'称重',pos:'动词',src:'scene'},
+  'взве́сьте':{zh:'请称一下',pos:'祈使句',src:'scene'},
+  'чай':{zh:'茶',pos:'名词',src:'scene'},
+  'ко́фе':{zh:'咖啡',pos:'不变名词',src:'scene'},
+  'па́чка':{zh:'一包',pos:'名词',src:'scene'},
+  'ба́нка':{zh:'一罐',pos:'名词',src:'scene'},
+  'паке́тик':{zh:'小袋；茶包',pos:'名词',src:'scene'},
+  'раствори́мый':{zh:'速溶的',pos:'形容词',src:'scene'},
+  'моло́тый':{zh:'研磨的',pos:'形容词',src:'scene'},
+  'са́хар':{zh:'糖',pos:'名词',src:'scene'},
+  'са́хар-песо́к':{zh:'砂糖',pos:'固定搭配',src:'scene'},
+  'са́хар-рафина́д':{zh:'方糖',pos:'固定搭配',src:'scene'},
+  'коро́бка':{zh:'盒子',pos:'名词',src:'scene'},
+  'соль':{zh:'盐',pos:'名词',src:'scene'},
+  'паке́т':{zh:'袋子',pos:'名词',src:'scene'},
+  'свой':{zh:'自己的',pos:'代词',src:'base'},
+  'без':{zh:'没有；不带',pos:'介词',src:'base'},
+  'побо́льше':{zh:'大一点',pos:'比较级',src:'scene'},
+  'ка́рта':{zh:'银行卡',pos:'名词',src:'scene'},
+  'нали́чные':{zh:'现金',pos:'名词复数',src:'scene'},
+  'оплати́ть':{zh:'支付',pos:'动词',src:'scene'},
+  'термина́л':{zh:'刷卡机',pos:'名词',src:'scene'},
+  'чек':{zh:'收据',pos:'名词',src:'scene'},
+  'сда́ча':{zh:'找零',pos:'名词',src:'scene'},
+  'рубль':{zh:'卢布',pos:'名词',src:'scene'},
+  'рубле́й':{zh:'卢布（复数二格）',pos:'名词',src:'scene'},
+  'срок го́дности':{zh:'保质期',pos:'固定搭配',src:'scene'},
+  'весы́':{zh:'秤',pos:'名词复数',src:'scene'},
+  'а́кция':{zh:'促销',pos:'名词',src:'scene'},
+  'ски́дка':{zh:'折扣',pos:'名词',src:'scene'},
+  'бону́сная ка́рта':{zh:'积分卡',pos:'固定搭配',src:'scene'},
+  'о́чередь':{zh:'队伍',pos:'名词',src:'scene'},
+  'извини́те':{zh:'对不起；打扰一下',pos:'礼貌用语',src:'base'},
+  'где':{zh:'在哪里',pos:'疑问词',src:'base'},
+  'что-нибу́дь':{zh:'随便什么',pos:'代词',src:'base'},
+  'ещё':{zh:'还；再',pos:'副词',src:'base'},
+  'ну́жен':{zh:'需要（阳性）',pos:'短尾形容词',src:'base'},
+  'нужна́':{zh:'需要（阴性）',pos:'短尾形容词',src:'base'},
+  'пожа́луйста':{zh:'请 / 不客气',pos:'礼貌用语',src:'base'},
+  'спаси́бо':{zh:'谢谢',pos:'礼貌用语',src:'base'},
+  'здра́вствуйте':{zh:'您好',pos:'礼貌用语',src:'base'},
+  'до свида́ния':{zh:'再见',pos:'告别',src:'base'},
+  'мо́жно':{zh:'可以',pos:'情态词',src:'base'},
+  'есть':{zh:'有；是',pos:'动词',src:'base'}
+};
+
+function milkPrice(){ return ({bottle:100, percent:100, half_liter:70})[state.milk] || 100; }
+function eggsPrice(){ return ({ten:140, tray:140, twenty:280})[state.eggs] || 140; }
+function applesPrice(){ return ({half_kilo:90, kilo:180, weigh:90})[state.apples] || 90; }
+function drinkPrice(){ return ({tea_pack:200, coffee_jar:350, tea_bags:200, instant_coffee:350})[state.drink] || 200; }
+function sugarPrice(){ return ({sand:90, refined:120, kilo:90})[state.sugar] || 90; }
+function bagPrice(){ return ({buy:8, own:0, none:0, big:12})[state.bag] || 0; }
+function total(){ return milkPrice() + eggsPrice() + applesPrice() + drinkPrice() + sugarPrice() + bagPrice(); }
+
+const STEPS = [
+  {
+    round:1, level:'易', title:'找牛奶', stepNo:1, stepsInRound:1,
+    whoRu:'Сотру́дник', whoZh:'超市员工', avatar:'🛒',
+    waiter:{ru:'Вам помочь?',zh:'需要帮忙吗？'},
+    prompt:'你在找牛奶，怎么问？',
+    choices:[
+      {id:'a', ru:'Извини́те, где молоко́?', zh:'打扰一下，牛奶在哪里？', verdict:'best',
+       why:'最直接。', key:'Извини́те, где молоко́?', keyZh:'打扰一下，牛奶在哪里？'},
+      {id:'b', ru:'Где моло́чный отде́л?', zh:'乳制品区在哪里？', verdict:'best',
+       why:'更具体；молочный отдел = 乳制品区。', key:'Где моло́чный отде́л?', keyZh:'乳制品区在哪里？'},
+      {id:'c', ru:'Я ищу́ молоко́.', zh:'我在找牛奶。', verdict:'best',
+       why:'也完全成立。', key:'Я ищу́ молоко́.', keyZh:'我在找牛奶。'},
+      {id:'d', ru:'Я хочу́ ко́фе.', zh:'我想喝咖啡。', verdict:'wrong',
+       why:'咖啡在另一排；这一轮先找牛奶。'}
+    ],
+    vocab:['суперма́ркет','проду́кты','молоко́','моло́чный отде́л','извини́те','где']
+  },
+  {
+    round:2, level:'易', title:'选牛奶', stepNo:1, stepsInRound:2,
+    whoRu:'Сотру́дник', whoZh:'超市员工', avatar:'🥛',
+    waiter:{ru:'Како́е молоко́ вам ну́жно?',zh:'您要哪种牛奶？'},
+    prompt:'你要一瓶牛奶。',
+    choices:[
+      {id:'a', ru:'Мне буты́лку молока́, пожа́луйста.', zh:'请给我一瓶牛奶。', verdict:'best', set:{milk:'bottle'},
+       why:'最直接。', key:'Мне буты́лку молока́, пожа́луйста.', keyZh:'请给我一瓶牛奶。'},
+      {id:'b', ru:'Молоко́ 2,5%, пожа́луйста.', zh:'要 2.5% 的牛奶。', verdict:'best', set:{milk:'percent'},
+       why:'俄罗斯牛奶常标脂肪含量。', key:'Молоко́ 2,5%, пожа́луйста.', keyZh:'要 2.5% 的牛奶。'},
+      {id:'c', ru:'Полли́тра, пожа́луйста.', zh:'半升，谢谢。', verdict:'best', set:{milk:'half_liter'},
+       why:'小包装也常见。', key:'Полли́тра, пожа́луйста.', keyZh:'半升，谢谢。'},
+      {id:'d', ru:'Кефи́р, пожа́луйста.', zh:'请给我开菲尔。', verdict:'wrong',
+       why:'开菲尔是发酵乳，不是牛奶。'}
+    ],
+    vocab:['молоко́','буты́лка','паке́т молока́','полли́тра','кефи́р','пожа́луйста']
+  },
+  {
+    round:2, level:'易', title:'鸡蛋', stepNo:2, stepsInRound:2,
+    whoRu:'Сотру́дник', whoZh:'超市员工', avatar:'🥚',
+    waiter:{ru:'Что-нибу́дь ещё?',zh:'还要点什么吗？'},
+    prompt:'你要十个鸡蛋。',
+    choices:[
+      {id:'a', ru:'Мне деся́ток яи́ц, пожа́луйста.', zh:'请给我十个鸡蛋。', verdict:'best', set:{eggs:'ten'},
+       why:'десяток = 十个。', key:'Мне деся́ток яи́ц, пожа́луйста.', keyZh:'请给我十个鸡蛋。'},
+      {id:'b', ru:'Лото́к яи́ц, пожа́луйста.', zh:'请给我一盒鸡蛋。', verdict:'best', set:{eggs:'tray'},
+       why:'лоток 是一托/一盒。', key:'Лото́к яи́ц, пожа́луйста.', keyZh:'请给我一盒鸡蛋。'},
+      {id:'c', ru:'Два́дцать яи́ц, пожа́луйста.', zh:'请给我二十个鸡蛋。', verdict:'best', set:{eggs:'twenty'},
+       why:'也成立。', key:'Два́дцать яи́ц, пожа́луйста.', keyZh:'请给我二十个鸡蛋。'},
+      {id:'d', ru:'Ку́рицу, пожа́луйста.', zh:'请给我一只鸡。', verdict:'wrong',
+       why:'这是鸡肉，不是鸡蛋。'}
+    ],
+    vocab:['яйцо́','яи́ца','деся́ток','лото́к','ку́рица','пожа́луйста']
+  },
+  {
+    round:3, level:'易', title:'苹果称重', stepNo:1, stepsInRound:1,
+    whoRu:'Сотру́дник', whoZh:'超市员工', avatar:'🍎',
+    waiter:{ru:'Я́блоки бу́дете брать?',zh:'要买苹果吗？'},
+    prompt:'你要半公斤苹果。',
+    choices:[
+      {id:'a', ru:'Полкило́ я́блок, пожа́луйста.', zh:'请给我半公斤苹果。', verdict:'best', set:{apples:'half_kilo'},
+       why:'полкило = 500 克。', key:'Полкило́ я́блок, пожа́луйста.', keyZh:'请给我半公斤苹果。'},
+      {id:'b', ru:'Килогра́мм я́блок, пожа́луйста.', zh:'请给我一公斤苹果。', verdict:'best', set:{apples:'kilo'},
+       why:'也完全成立。', key:'Килогра́мм я́блок, пожа́луйста.', keyZh:'请给我一公斤苹果。'},
+      {id:'c', ru:'Взве́сьте, пожа́луйста, я́блоки.', zh:'请把苹果称一下。', verdict:'best', set:{apples:'weigh'},
+       why:'很实用；взвесить = 称重。', key:'Взве́сьте, пожа́луйста, я́блоки.', keyZh:'请把苹果称一下。'},
+      {id:'d', ru:'Я́блочный сок, пожа́луйста.', zh:'请给我苹果汁。', verdict:'wrong',
+       why:'果汁不是苹果；这一轮买水果。'}
+    ],
+    vocab:['я́блоко','я́блоки','полкило́','килогра́мм','взве́сить','взве́сьте']
+  },
+  {
+    round:4, level:'易', title:'茶/咖啡', stepNo:1, stepsInRound:2,
+    whoRu:'Сотру́дник', whoZh:'超市员工', avatar:'☕',
+    waiter:{ru:'Что-нибу́дь ещё?',zh:'还要点什么吗？'},
+    prompt:'你想买茶或咖啡。',
+    choices:[
+      {id:'a', ru:'Мне па́чку ча́я, пожа́луйста.', zh:'请给我一包茶。', verdict:'best', set:{drink:'tea_pack'},
+       why:'最常用。', key:'Мне па́чку ча́я, пожа́луйста.', keyZh:'请给我一包茶。'},
+      {id:'b', ru:'Мне ба́нку ко́фе, пожа́луйста.', zh:'请给我一罐咖啡。', verdict:'best', set:{drink:'coffee_jar'},
+       why:'也完全成立。', key:'Мне ба́нку ко́фе, пожа́луйста.', keyZh:'请给我一罐咖啡。'},
+      {id:'c', ru:'Чай в паке́тиках, пожа́луйста.', zh:'请给我茶包。', verdict:'best', set:{drink:'tea_bags'},
+       why:'学生日常很方便。', key:'Чай в паке́тиках, пожа́луйста.', keyZh:'请给我茶包。'},
+      {id:'d', ru:'Раствори́мый ко́фе, пожа́луйста.', zh:'请给我速溶咖啡。', verdict:'best', set:{drink:'instant_coffee'},
+       why:'也很常见。', key:'Раствори́мый ко́фе, пожа́луйста.', keyZh:'请给我速溶咖啡。'}
+    ],
+    vocab:['чай','ко́фе','па́чка','ба́нка','паке́тик','раствори́мый','моло́тый']
+  },
+  {
+    round:4, level:'易', title:'糖', stepNo:2, stepsInRound:2,
+    whoRu:'Сотру́дник', whoZh:'超市员工', avatar:'🍬',
+    waiter:{ru:'Са́хар ну́жен?',zh:'要糖吗？'},
+    prompt:'你想买一包砂糖。',
+    choices:[
+      {id:'a', ru:'Па́чку са́хара-песка́, пожа́луйста.', zh:'请给我一包砂糖。', verdict:'best', set:{sugar:'sand'},
+       why:'学生日常首选；便宜、用途广。', key:'Па́чку са́хара-песка́, пожа́луйста.', keyZh:'请给我一包砂糖。'},
+      {id:'b', ru:'Коро́бку са́хара-рафина́да, пожа́луйста.', zh:'请给我一盒方糖。', verdict:'best', set:{sugar:'refined'},
+       why:'泡茶/咖啡方便，但通常贵一点。', key:'Коро́бку са́хара-рафина́да, пожа́луйста.', keyZh:'请给我一盒方糖。'},
+      {id:'c', ru:'Килогра́мм са́хара, пожа́луйста.', zh:'请给我一公斤糖。', verdict:'best', set:{sugar:'kilo'},
+       why:'也完全成立；默认是砂糖。', key:'Килогра́мм са́хара, пожа́луйста.', keyZh:'请给我一公斤糖。'},
+      {id:'d', ru:'Соль, пожа́луйста.', zh:'请给我盐。', verdict:'wrong',
+       why:'这是盐，不是糖。'}
+    ],
+    vocab:['са́хар','са́хар-песо́к','са́хар-рафина́д','коро́бка','килогра́мм','соль']
+  },
+  {
+    round:5, level:'易', title:'袋子', stepNo:1, stepsInRound:1,
+    whoRu:'Касси́р', whoZh:'收银员', avatar:'🛍️',
+    waiter:{ru:'Паке́т ну́жен?',zh:'要袋子吗？'},
+    prompt:'你要一个袋子。',
+    choices:[
+      {id:'a', ru:'Паке́т, пожа́луйста.', zh:'要袋子，谢谢。', verdict:'best', set:{bag:'buy'},
+       why:'袋子通常几卢布。', key:'Паке́т, пожа́луйста.', keyZh:'要袋子，谢谢。'},
+      {id:'b', ru:'У меня́ свой паке́т.', zh:'我自己有袋子。', verdict:'best', set:{bag:'own'},
+       why:'很常见；环保也省钱。', key:'У меня́ свой паке́т.', keyZh:'我自己有袋子。'},
+      {id:'c', ru:'Без паке́та, спаси́бо.', zh:'不要袋子，谢谢。', verdict:'best', set:{bag:'none'},
+       why:'也完全成立。', key:'Без паке́та, спаси́бо.', keyZh:'不要袋子，谢谢。'},
+      {id:'d', ru:'Паке́т побо́льше, пожа́луйста.', zh:'请给一个大一点的袋子。', verdict:'best', set:{bag:'big'},
+       why:'也成立；大袋子可能更贵。', key:'Паке́т побо́льше, пожа́луйста.', keyZh:'请给一个大一点的袋子。'}
+    ],
+    vocab:['паке́т','свой','без','побо́льше','пожа́луйста']
+  },
+  {
+    round:6, level:'中', title:'收银', stepNo:1, stepsInRound:1,
+    whoRu:'Касси́р', whoZh:'收银员', avatar:'🧾',
+    waiter:{ru:'Вы на самока́ссе?',zh:'您用自助收银吗？'},
+    prompt:'你想用自助收银。',
+    choices:[
+      {id:'a', ru:'Я на самока́ссе.', zh:'我用自助收银。', verdict:'best', set:{checkout:'self'},
+       why:'俄罗斯超市很常见。', key:'Я на самока́ссе.', keyZh:'我用自助收银。'},
+      {id:'b', ru:'Я на ка́ссе.', zh:'我去人工收银。', verdict:'best', set:{checkout:'cashier'},
+       why:'也完全成立。', key:'Я на ка́ссе.', keyZh:'我去人工收银。'},
+      {id:'c', ru:'Мо́жно на ка́ссе?', zh:'可以去人工收银吗？', verdict:'best', set:{checkout:'cashier'},
+       why:'有问题时最稳。', key:'Мо́жно на ка́ссе?', keyZh:'可以去人工收银吗？'},
+      {id:'d', ru:'Где туале́т?', zh:'洗手间在哪里？', verdict:'wrong',
+       why:'这里问收银方式，不问洗手间。'}
+    ],
+    vocab:['самока́сса','ка́сса','касси́р','мо́жно']
+  },
+  {
+    round:7, level:'中', title:'付款', stepNo:1, stepsInRound:1,
+    whoRu:'Касси́р', whoZh:'收银员', avatar:'💳',
+    waiter:() => ({ru:`С вас ${total()} рубле́й. Как бу́дете плати́ть?`,zh:`一共 ${total()} 卢布。您怎么付款？`}),
+    prompt:'你准备刷卡。',
+    choices:[
+      {id:'a', ru:'Ка́ртой, пожа́луйста.', zh:'刷卡，谢谢。', verdict:'best', set:{payment:'card'},
+       why:'最方便。', key:'Ка́ртой, пожа́луйста.', keyZh:'刷卡，谢谢。'},
+      {id:'b', ru:'Нали́чными, пожа́луйста.', zh:'现金，谢谢。', verdict:'best', set:{payment:'cash'},
+       why:'备现金更稳。', key:'Нали́чными, пожа́луйста.', keyZh:'现金，谢谢。'},
+      {id:'c', ru:'Мо́жно ка́ртой?', zh:'可以刷卡吗？', verdict:'best', set:{payment:'card'},
+       why:'也完全成立。', key:'Мо́жно ка́ртой?', keyZh:'可以刷卡吗？'},
+      {id:'d', ru:'У меня́ нет де́нег.', zh:'我没钱。', verdict:'wrong',
+       why:'不能解决付款。'}
+    ],
+    vocab:['ка́рта','нали́чные','оплати́ть','термина́л','чек','сда́ча','рубль','рубле́й']
+  }
+];
+
+let idx = 0, pickedId = null, solved = false, wrong = new Set(), hadWrong = false, firstTry = 0;
+let state = {};
+let currentStep = null;
+let recapLog = [];
+
+function materialize(base){
+  return {
+    ...base,
+    waiter: typeof base.waiter === 'function' ? base.waiter() : base.waiter,
+    choices: typeof base.choices === 'function' ? base.choices() : base.choices,
+    vocab: typeof base.vocab === 'function' ? base.vocab() : base.vocab
+  };
+}
+function renderRounds(step){
+  document.querySelectorAll('.round').forEach(el => {
+    const r = +el.dataset.round;
+    el.classList.toggle('active', r === step.round);
+    el.classList.toggle('done', r < step.round);
+  });
+}
+function renderChoices(step){
+  $('choices').innerHTML = step.choices.map((c, i) => {
+    const cls = ['choice'];
+    if(wrong.has(c.id)) cls.push('wrong');
+    if(solved && pickedId === c.id) cls.push(c.verdict === 'best' ? 'good' : 'okay');
+    if(solved && pickedId !== c.id) cls.push('dim');
+    return `<button class="${cls.join(' ')}" data-id="${esc(c.id)}">
+      <span class="letter">${'ABCD'[i] || '?'}</span>
+      <span class="main"><b>${esc(c.ru)}</b><small class="zh">${esc(c.zh)}</small></span>
+    </button>`;
+  }).join('');
+}
+function renderFeedback(step){
+  const box = $('feedback');
+  if(!pickedId){ box.className = 'feedback'; box.innerHTML = ''; return; }
+  const c = step.choices.find(x => x.id === pickedId);
+  if(!c){ box.className = 'feedback'; box.innerHTML = ''; return; }
+  if(solved){
+    const kind = c.verdict === 'best' ? 'good' : 'okay';
+    const title = c.verdict === 'best' ? '✓ Отли́чно' : '△ Поня́тно';
+    box.className = 'feedback show ' + kind;
+    box.innerHTML = `<div class="fb-title">${title}</div>
+      <div class="fb-why">${esc(c.why)}</div>
+      ${c.key ? `<div class="key"><div class="key-label">关键表达</div><div class="key-it">${esc(c.key)} <button class="speak" data-speak="${esc(strip(c.key))}">♪</button></div><div class="key-zh zh">${esc(c.keyZh || '')}</div></div>` : ''}
+      ${c.tip ? `<div class="fb-tip">${esc(c.tip)}</div>` : ''}
+      <button class="continue" data-continue>继续 →</button>`;
+  } else {
+    box.className = 'feedback show bad';
+    box.innerHTML = `<div class="fb-title">✗ Ещё раз</div><div class="fb-why">${esc(c.why)}</div><div class="retry">换一个回答试试</div>`;
+  }
+}
+function renderVocab(step){
+  $('vocabList').innerHTML = step.vocab.map(key => {
+    const v = VOCAB[key];
+    if(!v) return '';
+    return `<div class="vrow"><div class="vmain"><b>${esc(key)}</b><small>${esc(v.zh)} · ${esc(v.pos)}</small></div><span class="vtag ${v.src}">${v.src === 'base' ? '基础' : '场景'}</span></div>`;
+  }).join('');
+}
+function render(){
+  currentStep = materialize(STEPS[idx]);
+  const step = currentStep;
+  $('doneTotal').textContent = STEPS.length;
+  $('roundLabel').textContent = `第 ${step.round} 轮 · ${step.level} · ${step.title}` + (step.stepsInRound > 1 ? ` · ${step.stepNo}/${step.stepsInRound}` : '');
+  $('whoRu').textContent = step.whoRu || 'Сотру́дник';
+  $('whoZh').textContent = step.whoZh ? ` · ${step.whoZh}` : '';
+  $('avatar').textContent = step.avatar || '🛒';
+  $('waiterRu').textContent = step.waiter.ru;
+  $('waiterZh').textContent = step.waiter.zh;
+  $('waiterSpeak').dataset.speak = strip(step.waiter.ru);
+  $('prompt').textContent = step.prompt || '你会怎么回答？';
+  renderRounds(step);
+  renderChoices(step);
+  renderFeedback(step);
+  renderVocab(step);
+}
+function scrollToCard(){
+  if(window.innerWidth < 860) document.querySelector('.scene-card').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function choose(id){
+  if(solved) return;
+  const step = currentStep;
+  const c = step.choices.find(x => x.id === id);
+  if(!c || wrong.has(id)) return;
+  if(c.verdict === 'wrong'){
+    wrong.add(id); hadWrong = true; pickedId = id; solved = false;
+  } else {
+    pickedId = id; solved = true;
+    if(c.set) Object.assign(state, c.set);
+    if(!hadWrong) firstTry++;
+    recapLog.push({it:c.key || c.ru, zh:c.keyZh || c.zh});
+  }
+  renderChoices(step); renderFeedback(step);
+  if(window.innerWidth < 860) $('feedback').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function nextStep(){
+  if(!solved) return;
+  if(idx < STEPS.length - 1){
+    idx++; pickedId = null; solved = false; wrong = new Set(); hadWrong = false; render(); scrollToCard();
+  } else {
+    showDone();
+  }
+}
+function showDone(){
+  $('playView').hidden = true; $('doneView').hidden = false;
+  $('doneScore').textContent = firstTry; $('doneTotal').textContent = STEPS.length;
+  const milkMap = {bottle:'бутылка', percent:'2,5%', half_liter:'поллитра'};
+  const milkZhMap = {bottle:'一瓶', percent:'2.5%', half_liter:'半升'};
+  const eggsMap = {ten:'десяток', tray:'лоток', twenty:'двадцать'};
+  const eggsZhMap = {ten:'十个', tray:'一盒', twenty:'二十个'};
+  const applesMap = {half_kilo:'полкило', kilo:'килограмм', weigh:'взвесили'};
+  const applesZhMap = {half_kilo:'半公斤', kilo:'一公斤', weigh:'称重'};
+  const drinkMap = {tea_pack:'пачка чая', coffee_jar:'банка кофе', tea_bags:'чай в пакетиках', instant_coffee:'растворимый кофе'};
+  const drinkZhMap = {tea_pack:'一包茶', coffee_jar:'一罐咖啡', tea_bags:'茶包', instant_coffee:'速溶咖啡'};
+  const sugarMap = {sand:'сахар-песок', refined:'сахар-рафинад', kilo:'килограмм сахара'};
+  const sugarZhMap = {sand:'砂糖', refined:'方糖', kilo:'一公斤糖'};
+  const bagMap = {buy:'пакет', own:'свой пакет', none:'без пакета', big:'большой пакет'};
+  const bagZhMap = {buy:'买袋子', own:'自带袋子', none:'不要袋子', big:'大袋子'};
+  const checkoutMap = {self:'самокасса', cashier:'касса'};
+  const checkoutZhMap = {self:'自助收银', cashier:'人工收银'};
+  const payMap = {card:'карта', cash:'наличные'};
+  const payZhMap = {card:'刷卡', cash:'现金'};
+  const milk = milkMap[state.milk] || 'бутылка';
+  const milkZh = milkZhMap[state.milk] || '一瓶';
+  const eggs = eggsMap[state.eggs] || 'десяток';
+  const eggsZh = eggsZhMap[state.eggs] || '十个';
+  const apples = applesMap[state.apples] || 'полкило';
+  const applesZh = applesZhMap[state.apples] || '半公斤';
+  const drink = drinkMap[state.drink] || 'пачка чая';
+  const drinkZh = drinkZhMap[state.drink] || '一包茶';
+  const sugar = sugarMap[state.sugar] || 'сахар-песок';
+  const sugarZh = sugarZhMap[state.sugar] || '砂糖';
+  const bag = bagMap[state.bag] || 'пакет';
+  const bagZh = bagZhMap[state.bag] || '买袋子';
+  const checkout = checkoutMap[state.checkout] || 'самокасса';
+  const checkoutZh = checkoutZhMap[state.checkout] || '自助收银';
+  const pay = payMap[state.payment] || 'карта';
+  const payZh = payZhMap[state.payment] || '刷卡';
+  const sum = total();
+  $('doneOrder').innerHTML = esc(`Молоко: ${milk} · Яйца: ${eggs} · Яблоки: ${apples} · ${drink} · ${sugar} · ${bag} · ${checkout} · ${pay} · ${sum} ₽`) +
+    `<span class="zh"> · 牛奶：${esc(milkZh)} · 鸡蛋：${esc(eggsZh)} · 苹果：${esc(applesZh)} · ${esc(drinkZh)} · ${esc(sugarZh)} · ${esc(bagZh)} · ${esc(checkoutZh)} · ${esc(payZh)} · ${sum} 卢布</span>`;
+  document.querySelectorAll('.round').forEach(el => { el.classList.remove('active'); el.classList.add('done'); });
+  $('recap').innerHTML = recapLog.map(r => `<div class="recap-row"><div><b>${esc(r.it)}</b><small class="zh">${esc(r.zh)}</small></div><button class="speak" data-speak="${esc(strip(r.it))}">♪</button></div>`).join('');
+}
+function restart(){
+  idx = 0; pickedId = null; solved = false; wrong = new Set(); hadWrong = false; firstTry = 0; state = {}; currentStep = null; recapLog = [];
+  $('doneScore').textContent = '0'; $('doneOrder').textContent = ''; $('recap').innerHTML = '';
+  $('doneView').hidden = true; $('playView').hidden = false; render(); scrollToCard();
+}
+document.addEventListener('click', e => {
+  const sp = e.target.closest('[data-speak]');
+  if(sp){ e.preventDefault(); e.stopPropagation(); speak(sp.dataset.speak); return; }
+  if(e.target.closest('[data-continue]')){ nextStep(); return; }
+  const ch = e.target.closest('.choice');
+  if(ch) choose(ch.dataset.id);
+});
+$('againBtn').addEventListener('click', restart);
+
+const zhBtn = $('zhToggle');
+function setZhVisible(show){
+  document.body.classList.toggle('hide-zh', !show);
+  zhBtn.textContent = show ? '隐藏中文' : '显示中文';
+  zhBtn.setAttribute('aria-pressed', String(show));
+}
+setZhVisible(false);
+zhBtn.addEventListener('click', () => setZhVisible(document.body.classList.contains('hide-zh')));
+
+const synth = window.speechSynthesis || null;
+let ruVoice = null;
+function refreshVoice(){
+  if(!synth) return;
+  const vs = synth.getVoices() || [];
+  ruVoice = vs.find(v => /^ru([-_]|$)/i.test(v.lang)) || null;
+}
+if(synth){ refreshVoice(); if(typeof synth.addEventListener === 'function') synth.addEventListener('voiceschanged', refreshVoice); else synth.onvoiceschanged = refreshVoice; }
+function speak(text){
+  if(!synth || !text) return;
+  try{
+    if(synth.speaking || synth.pending) synth.cancel();
+    const u = new SpeechSynthesisUtterance(strip(text));
+    u.lang = 'ru-RU'; if(ruVoice) u.voice = ruVoice; u.rate = .84; u.pitch = 1; synth.speak(u);
+  }catch(e){}
+}
+render();
+</script>
+</body>
+</html>
